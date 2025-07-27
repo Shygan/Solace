@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float Speed = 5f;
+    [SerializeField] private float Jump = 7f;
     private PlayerMovement playerMovement;
     private Rigidbody2D rb;
 
@@ -25,11 +27,11 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Vector2 move = playerMovement.Land.Move.ReadValue<Vector2>();
-        rb.linearVelocity = new Vector2(move.x * 5f, rb.linearVelocity.y); // Set a value!
+        rb.linearVelocity = new Vector2(move.x * Speed, rb.linearVelocity.y); 
 
         if (playerMovement.Land.Jump.triggered)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 7f); // Set a value!
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Jump);
         }
     }
 }
