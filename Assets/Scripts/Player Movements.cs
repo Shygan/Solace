@@ -11,10 +11,10 @@ public class Player : MonoBehaviour
     private Vector3 originalScale;
     private Animator animator; // For animations!!!
     private bool grounded; // For jumping (Keeps track of when player is on ground or not)
-    private float previousVertVelocity;
+    private float previousVertVelocity; // Stores vertical velocity from previous frame for peak jump detection
     private void Awake()
     {
-        // Grabs references for rigidbody, animator, etc.
+        // Initializes references for rigidbody, animator, etc.
         playerMovement = new PlayerMovement();
         rb = GetComponent<Rigidbody2D>();
         originalScale = transform.localScale; // Stores original scale from Unity
@@ -23,12 +23,12 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        playerMovement.Enable();
+        playerMovement.Enable(); // Enable input system
     }
 
     private void OnDisable()
     {
-        playerMovement.Disable();
+        playerMovement.Disable(); // Disable input system
     }
 
     private void Update()
