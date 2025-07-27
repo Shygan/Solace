@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 450267342}
   - component: {fileID: 450267341}
   - component: {fileID: 450267345}
+  - component: {fileID: 450267346}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -374,7 +375,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 7
-  Jump: 8
+  JumpHeight: 7
+--- !u!95 &450267346
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450267340}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 188322ed0510ab84d9c47367a444c259, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &455118601
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +411,7 @@ GameObject:
   - component: {fileID: 455118602}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
