@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private Vector3 originalScale;
     private Animator animator; // For animations!!!
     private bool grounded; // For jumping (Keeps track of when player is on ground or not)
+    private float previousVertVelocity;
     private void Awake()
     {
         // Grabs references for rigidbody, animator, etc.
@@ -51,6 +52,13 @@ public class Player : MonoBehaviour
         // Set animator parameters
         animator.SetBool("run", horizontalInput != 0);
         animator.SetBool("grounded", grounded);
+
+        // Detect transition from going up to going down
+        if (previousVertVelocity > 0 && rb.linearVelocity.y <= 0 && !grounded)
+        {
+            animator.SetTrigger("fall"); // Switch to fall animation
+        }
+        previousVertVelocity = rb.linearVelocity.y; // Store velocity for next frame
     }
 
     private void Jump()
