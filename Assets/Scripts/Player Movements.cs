@@ -7,11 +7,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float Jump = 7f;
     private PlayerMovement playerMovement;
     private Rigidbody2D rb;
+    private Vector3 originalScale;
 
     private void Awake()
     {
         playerMovement = new PlayerMovement();
         rb = GetComponent<Rigidbody2D>();
+        originalScale = transform.localScale; //Stores original scale from Unity
     }
 
     private void OnEnable()
@@ -27,11 +29,18 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Vector2 move = playerMovement.Land.Move.ReadValue<Vector2>();
-        rb.linearVelocity = new Vector2(move.x * Speed, rb.linearVelocity.y); 
+        float horizontalInput = move.x;
+
+        rb.linearVelocity = new Vector2(horizontalInput * Speed, rb.linearVelocity.y);
+
+        if (horizontalInput > 0.01f)
+            transform.localScale = originalScale;
+        else if (horizontalInput < -0.01f)
+            transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z);
 
         if (playerMovement.Land.Jump.triggered)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Jump);
-        }
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, Jump);
+            }
     }
 }
