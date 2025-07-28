@@ -425,7 +425,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16) 1_16
+      name: Terrain (16x16) 1_14
       rect:
         serializedVersion: 2
         x: 0
@@ -440,8 +440,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31154679ee6029945be3c94a5355e11b
-      internalID: -1304110587
+      spriteID: d89da09bb86da2d4fb4c8d2aae665c9b
+      internalID: 1092365337
       vertices: []
       indices: 
       edges: []
