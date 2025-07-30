@@ -440,8 +440,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d89da09bb86da2d4fb4c8d2aae665c9b
-      internalID: 1092365337
+      spriteID: eb0e61c9cccda2b43bf0f5bd3824f730
+      internalID: -557847650
       vertices: []
       indices: 
       edges: []
@@ -460,7 +460,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Terrain (16x16) 1_0: -274454601
       Terrain (16x16) 1_1: 852155467
@@ -468,9 +468,7 @@ TextureImporter:
       Terrain (16x16) 1_11: 737158008
       Terrain (16x16) 1_12: -114223954
       Terrain (16x16) 1_13: -885369467
-      Terrain (16x16) 1_14: 1092365337
-      Terrain (16x16) 1_15: -549137166
-      Terrain (16x16) 1_16: -1304110587
+      Terrain (16x16) 1_14: -557847650
       Terrain (16x16) 1_2: 1666745774
       Terrain (16x16) 1_3: 751339871
       Terrain (16x16) 1_4: 1467761633
