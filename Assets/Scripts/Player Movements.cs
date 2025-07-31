@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private Vector3 originalScale;
     private Animator animator; // For animations!!!
     private bool grounded; // For jumping (Keeps track of when player is on ground or not)
+    private int jumpCount = 0;
+    [SerializeField] private int maxJumps = 2;
     private float previousVertVelocity; // Stores vertical velocity from previous frame for peak jump detection
     private void Awake()
     {
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
         else if (horizontalInput < -0.01f)
             transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z); // Has to be Vector3 as even tho its 2D, transform.localScale is a 3D property
 
-        if (playerMovement.Land.Jump.triggered && grounded)
+        if (playerMovement.Land.Jump.triggered && jumpCount < maxJumps)
         {
             Jump();
         }
@@ -65,12 +67,16 @@ public class Player : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpHeight);
         animator.SetTrigger("jump");
+        jumpCount++;
         grounded = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
+        {
             grounded = true;
+            jumpCount = 0;
+        }
     }
 }
