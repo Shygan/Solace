@@ -1129,10 +1129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ffab54ff0cb596409e0f47fb4a7da31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 450267344}
-  followSpeed: 5
-  offset: {x: -1.5, y: 0.5, z: 0}
-  smoothTime: 0.2
 --- !u!50 &1403828049
 Rigidbody2D:
   serializedVersion: 5
