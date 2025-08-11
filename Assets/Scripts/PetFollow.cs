@@ -17,29 +17,37 @@ using UnityEngine;
 
 public class PetFollow : MonoBehaviour
 {
-    public Transform player; // Assign your player's Transform in the Inspector
+    public Transform player;
     public float moveSpeed = 5f;
-    public float followDistance = 1.5f; // Distance at which the pet stops following
+    public float followDistance = 1.5f;
+
     private Rigidbody2D rb;
+    private BoxCollider2D petCollider;
+    private BoxCollider2D playerCollider;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
-    private void Update()
-    {
+        petCollider = GetComponent<BoxCollider2D>();
+
         if (player != null)
+            playerCollider = player.GetComponent<BoxCollider2D>();
+
+        // Ignore collisions between pet and player
+        if (petCollider != null && playerCollider != null)
+            Physics2D.IgnoreCollision(petCollider, playerCollider);
+    }
+
+    private void FixedUpdate()
+    {
+        if (player == null) return;
+
+        float distanceToPlayer = Vector2.Distance(rb.position, player.position);
+
+        if (distanceToPlayer > followDistance)
         {
-            float distanceToPlayer = Vector2.Distance(rb.position, player.position);
-
-            if (distanceToPlayer > followDistance)
-            {
-                // Smoothly move toward the player's position (both X and Y axes)
-                Vector2 newPosition = Vector2.MoveTowards(rb.position, player.position, moveSpeed * Time.fixedDeltaTime);
-
-                // Move the Rigidbody to the new position
-                rb.MovePosition(newPosition);
-            }
+            Vector2 targetPosition = Vector2.MoveTowards(rb.position, player.position, moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(targetPosition);
         }
     }
 }

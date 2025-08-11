@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 450267344}
-  moveSpeed: 5
+  moveSpeed: 6
   followDistance: 1.5
 --- !u!50 &1403828049
 Rigidbody2D:
