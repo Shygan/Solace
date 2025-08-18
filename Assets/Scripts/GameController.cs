@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
         progressAmount = 0;
         progressSlider.value = 0;
         Apple.OnAppleCollect += IncreaseProgressAmount;
+        Debug.Log("Start");
     }
 
     // Update is called once per frame
@@ -23,6 +24,8 @@ public class GameController : MonoBehaviour
     {
         progressAmount += amount;
         progressSlider.value = progressAmount;
+        Debug.Log($"Added {amount}. Total now {progressAmount}. Max is {progressSlider.maxValue}");
+
         if (progressAmount >= 100)
         {
             // Level is complete
