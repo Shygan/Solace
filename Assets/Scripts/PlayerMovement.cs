@@ -22,7 +22,9 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
 
     [Header("CheckForThoughtBubble")]
+    public GameObject dialogueObject;
     private bool hasTriggeredThoughtBubble = false;
+
 
     [Header("Coyote Time")]
     public float coyoteTime = 5f;
@@ -145,6 +147,7 @@ private void CheckForThoughtBubble()
             if (hit != null && hit.CompareTag("ThoughtBubble") && !hasTriggeredThoughtBubble)
             {
                 Debug.Log("Dialogue Pops Up");
+                dialogueObject.SetActive(true); // Show Dialogue
                 hasTriggeredThoughtBubble = true;
             }
     }
