@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     bool isGrounded;
 
+    [Header("CheckForThoughtBubble")]
+    private bool hasTriggeredThoughtBubble = false;
+
     [Header("Coyote Time")]
     public float coyoteTime = 5f;
     private float coyoteTimeCounter;
@@ -56,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         GroundCheck();
+        CheckForThoughtBubble();
         Gravity();
         ProcessWallSlide();
         ProcessWallJump();
@@ -133,10 +137,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+private void CheckForThoughtBubble()
+{
+    if (isGrounded)
+    {
+        Collider2D hit = Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer);
+            if (hit != null && hit.CompareTag("ThoughtBubble") && !hasTriggeredThoughtBubble)
+            {
+                Debug.Log("Dialogue Pops Up");
+                hasTriggeredThoughtBubble = true;
+            }
+    }
+}
+
     private bool WallCheck()
     {
         return Physics2D.OverlapBox(wallCheckPos.position, wallCheckSize, 0, wallLayer);
-
     }
 
     private void Flip()
