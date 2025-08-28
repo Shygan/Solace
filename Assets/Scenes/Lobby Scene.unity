@@ -4173,6 +4173,7 @@ MonoBehaviour:
   - 'A platform has appeared! [Click]'
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
+  platformToReveal: {fileID: 1017090552}
 --- !u!1 &1585055806
 GameObject:
   m_ObjectHideFlags: 0
