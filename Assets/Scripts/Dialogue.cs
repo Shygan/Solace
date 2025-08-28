@@ -10,6 +10,7 @@ public class Dialogue : MonoBehaviour
     public float textSpeed;
     private int index;
     public PlayerMovement playerMovement; // Assign in Inspector
+    public GameObject platformToReveal;
 
 
     // Start is called before the first frame update
@@ -64,6 +65,10 @@ public class Dialogue : MonoBehaviour
         {
             playerMovement.isMovementLocked = false;
             gameObject.SetActive(false);
+            if (platformToReveal != null)
+            {
+                platformToReveal.SetActive(true);
+            }
         }
     }
 }
