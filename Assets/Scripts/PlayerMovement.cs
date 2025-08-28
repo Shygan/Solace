@@ -50,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
     public float baseGravity = 2f;
     public float maxFallSpeed = 18f;
     public float fallspeedMultiplier = 2f;
+
+    [HideInInspector]
+    public bool isMovementLocked = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -59,6 +62,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isMovementLocked) // Ensures animation transition to idle state
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            animator.SetFloat("yVelocity", rb.linearVelocity.y);
+            animator.SetFloat("magnitude", 0); // idle movement
+            animator.SetBool("isWallSliding", false);
+            return;
+        }
 
         GroundCheck();
         CheckForThoughtBubble();
@@ -84,25 +95,30 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (jumpsRemaining > 0 || coyoteTimeCounter > 0f)
+        if (isMovementLocked)
         {
-            if (context.performed)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-                if (coyoteTimeCounter <= 0f) // only consume mid-air jump
-                    jumpsRemaining--;
-
-                coyoteTimeCounter = 0f;
-
-                animator.SetTrigger("jump");
-            }
-            else if (context.canceled)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-                jumpsRemaining--;
-                animator.SetTrigger("jump");
-            }
+            return;
         }
+
+        if (jumpsRemaining > 0 || coyoteTimeCounter > 0f)
+            {
+                if (context.performed)
+                {
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+                    if (coyoteTimeCounter <= 0f) // only consume mid-air jump
+                        jumpsRemaining--;
+
+                    coyoteTimeCounter = 0f;
+
+                    animator.SetTrigger("jump");
+                }
+                else if (context.canceled)
+                {
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+                    jumpsRemaining--;
+                    animator.SetTrigger("jump");
+                }
+            }
 
         //Wall Jump
         if (context.performed && wallJumpTimer > 0f)

@@ -968,6 +968,7 @@ MonoBehaviour:
   baseGravity: 1.5
   maxFallSpeed: 10
   fallspeedMultiplier: 2
+  isMovementLocked: 0
 --- !u!114 &450267348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4167,10 +4168,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   textComponent: {fileID: 836472004}
   lines:
-  - 'You did it! You acknowledged the thought instead of avoiding it. '
-  - That is a powerful first step toward managing your worries!
-  - A platform has appeared!
+  - 'You did it! You acknowledged the thought instead of avoiding it. [Left Click] '
+  - 'That is a powerful first step toward managing your worries! [Left Click]'
+  - 'A platform has appeared! [Left Click]'
   textSpeed: 0.05
+  playerMovement: {fileID: 450267347}
 --- !u!1 &1585055806
 GameObject:
   m_ObjectHideFlags: 0
