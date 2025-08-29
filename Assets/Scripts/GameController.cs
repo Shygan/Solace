@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
         levels[currentLevelIndex].SetActive(false);
         levels[nextLevelIndex].SetActive(true);
 
-        player.transform.position = new Vector3(0, 0, 0);
+        //player.transform.position = new Vector3(0, 0, 0);
 
         currentLevelIndex = nextLevelIndex;
         progressAmount = 0;
