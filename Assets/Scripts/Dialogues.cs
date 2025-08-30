@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Dialogue : MonoBehaviour
+public class Dialogues : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     public string[] lines;
