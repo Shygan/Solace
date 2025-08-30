@@ -127,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y); // Jump away frm wall
             wallJumpTimer = 0;
 
-            //force flip
+            //Force flip
             if (transform.localScale.x != wallJumpDirection)
             {
                 isFacingRight = !isFacingRight;
@@ -164,6 +164,7 @@ private void CheckForThoughtBubble()
             {
                 Debug.Log("Dialogue Pops Up");
                 dialogueObject.SetActive(true); // Show Dialogue
+                dialogueObject.GetComponent<Dialogue>().StartDialogue(); // Start typing
                 hasTriggeredThoughtBubble = true;
             }
     }

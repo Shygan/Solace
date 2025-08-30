@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     public GameObject LoadCanvas;
     public List<GameObject> levels;
     private int currentLevelIndex = 0;
+    public GameObject level2IntroDialogue;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,8 +20,13 @@ public class GameController : MonoBehaviour
         Apple.OnAppleCollect += IncreaseProgressAmount;
         HoldToLoadLevel.OnHoldComplete += LoadNextLevel;
         LoadCanvas.SetActive(false);
-        Debug.Log("Start");
-    }
+        // if (levelIntroDialogue != null)
+        // {
+        //     levelIntroDialogue.gameObject.SetActive(true);
+        //     levelIntroDialogue.StartDialogue();
+        // }
+        //Debug.Log("Start");
+        }
 
     // Update is called once per frame
     void Update()
@@ -49,10 +56,18 @@ public class GameController : MonoBehaviour
         levels[currentLevelIndex].SetActive(false);
         levels[nextLevelIndex].SetActive(true);
 
+        levels[nextLevelIndex].SetActive(true);
+
         player.transform.position = new Vector3(-9, -2, 0);
 
         currentLevelIndex = nextLevelIndex;
         progressAmount = 0;
         progressSlider.value = 0;
+
+        if (nextLevelIndex == 1) // Level 2
+        {
+            level2IntroDialogue.SetActive(true); // Show Dialogue
+            level2IntroDialogue.GetComponent<Dialogue>().StartDialogue(); // Start typing
+        }
     }
 }
