@@ -12,7 +12,6 @@ public class Dialogue : MonoBehaviour
     public PlayerMovement playerMovement; // Assign in Inspector
     public GameObject platformToReveal;
 
-
     // Start is called before the first frame update
     void Start()
     {
