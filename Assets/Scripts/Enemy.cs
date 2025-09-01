@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
         float direction = Mathf.Sign(player.position.x - transform.position.x);
 
         //Player above detection (Is player above me?)
-        bool isPlayerAbove = Physics2D.Raycast(transform.position, Vector2.up, 5f, 1 << player.gameObject.layer); //Last param is a bitmask
+        bool isPlayerAbove = Physics2D.Raycast(transform.position, Vector2.up, 3f, 1 << player.gameObject.layer); //Last param is a bitmask
 
         if (isGrounded)
         {
@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
             RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(direction, 0, 0), Vector2.down, 2f, groundLayer);
 
             // If Platform
-            RaycastHit2D platformAbove = Physics2D.Raycast(transform.position, Vector2.up, 5f, groundLayer);
+            RaycastHit2D platformAbove = Physics2D.Raycast(transform.position, Vector2.up, 3f, groundLayer);
 
             if (!groundInFront.collider && !gapAhead.collider)
             {
