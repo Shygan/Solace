@@ -12686,6 +12686,7 @@ GameObject:
   - component: {fileID: 2002732016}
   - component: {fileID: 2002732015}
   - component: {fileID: 2002732019}
+  - component: {fileID: 2002732020}
   m_Layer: 0
   m_Name: EnemyV2
   m_TagString: Untagged
@@ -12849,6 +12850,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14693c891654b8a41868ffc14e72ca5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &2002732020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002732014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0dc1884f42cad4c9fede5e3731b1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
 --- !u!4 &2071229458 stripped
