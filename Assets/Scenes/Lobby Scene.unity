@@ -12756,7 +12756,7 @@ Rigidbody2D:
   m_LinearDamping: 2
   m_AngularDamping: 0.05
   m_GravityScale: 1.5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c3eaa6e9fe0ca7c4482009f70331facc, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -12853,19 +12853,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   target: {fileID: 450267344}
-  activateDistance: 80
-  pathUpdateSeconds: 0.5
-  speed: 6
-  jumpForce: 100
-  nextWaypointDistance: 1
-  jumpNodeHeightRequirement: 0.4
+  activateDistance: 30
+  pathUpdateSeconds: 1
+  speed: 3
+  jumpForce: 16
+  nextWaypointDistance: 0.5
+  jumpNodeHeightRequirement: 0.8
   jumpModifier: 0.1
   jumpCheckOffset: 0.1
   followEnabled: 1
   jumpEnabled: 1
-  isJumping: 0
-  isInAir: 0
-  directionLookEnabled: 0
+  isJumping: 1
+  isInAir: 1
+  directionLookEnabled: 1
   startOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &2002732020
 MonoBehaviour:

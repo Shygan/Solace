@@ -74,32 +74,38 @@ public class EnemyAI : MonoBehaviour
 
         // See if colliding with anything
         startOffset = transform.position - new Vector3(0f, GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset, transform.position.z);
-        isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.05f);
+        isGrounded = Physics2D.Raycast(startOffset, Vector2.down, 0.2f, LayerMask.GetMask("Ground"));
 
         // Direction Calculation
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed;
 
         // Jump
-        if (jumpEnabled && isGrounded && !isInAir && !isOnCoolDown)
+        if (jumpEnabled && isGrounded && !isOnCoolDown)
         {
             if (direction.y > jumpNodeHeightRequirement)
             {
-                if (isInAir) return; 
+                // mark airborne BEFORE applying velocity so we can't re-jump this frame
                 isJumping = true;
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                StartCoroutine(JumpCoolDown());
+                isInAir   = true;
 
+                // (optional but safer) don't overwrite an upward velocity with a smaller one
+                float vy = Mathf.Max(rb.linearVelocity.y, jumpForce);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, vy);
+
+                StartCoroutine(JumpCoolDown());
             }
         }
+
+        // update grounded/airborne flags AFTER movement decisions
         if (isGrounded)
         {
             isJumping = false;
-            isInAir = false; 
+            isInAir   = false;
         }
         else
         {
-            isInAir = true;
+            isInAir   = true;
         }
 
         // Movement
