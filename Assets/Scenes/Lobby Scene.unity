@@ -817,12 +817,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: AstarPathfindingProject::AstarPath
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAABAIewlDYX2dgIAAC4FAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty4jAQ/BVK54WSCY+wt10gZA9JqJCtXHyRrTFWIUsuSQ6QFP++GtnGDssFuXsePa2xv4hQtoTUabMxgj9pDuTngOCZ/Bh05COc2F6rnfiENuZdcJdjEAsxr8wJ7fEI06wuwBmR/lJ7icHUg5USmTbFmu9hqa2zHs6YtOApox1mKw99DcjJ/w0XmHL2p/EcT5/+tKCDiz+moByYLnQyWuCPTmZtxmjWZNyPFhM6n87WQ7oIuZVKJStK4DhIV+JuOoqmTXZ0PxqHWOXnbMLoiCKdaimFbXQSdy6DD7syBwNoBBfMjx20oQs5iH3uUFA/9yXLLLjGE8POK2G8e3VR8lvXlhbMHmp5H0xW2GZei6prPv1HD6NAZ0YXj23biGILl4v08MrOKbOuZ3kfXn3XXakjkweWSHjPQT3rjdGV4p50psLUysJ41T1eJ1vmkB46vJZ6A1Zl53p7w+394gyXMPxpKUWRBOMnNbCTOrgd1gKMv5o/XnBYGtuU8Ciq+Gvhje3729UQD8JY56lmSoXyEl0ZDCXr4BlOU7mlNgoC3IguQTHpzltfxt3e4A3Xa3vDPDB8j5rmDde+HjcpAe7iKb2htvp4vSyb6+MT2PylclIo6EQj8ex9Wmql6gXre9Km7SqTsbSXtq8E/75aZD6miyTLoiwZ399N59kwo5RHQGc0mbBklk5I2D2h/JxMbmuhjT3+1lRXXPk9az8vg41hZVh2bthxIz4L3bNcqEzvUgOgXuoKV+FgfBP/WvI1F96gHTgnVLhv8hUTqdMD8PhaKA6Trk/OsLirEpNSfGiHSEyW4XsSE4Svu7w18CHgiM3bYhdy+QdQSwMEFAAACAgAAEAh7CVQguhtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJK5kYFlUlqaYVqSkYWxqXmabpqBQYphqoGZQZJJYpJZsolSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAEAh7CUNhfZ2AgAALgUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAEAh7CVQguhtAAAAeAAAAAkAJAAAAAAAAAAAAAAAwwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB7AwAAAAA=
+    dataString: UEsDBBQAAAgIAABAIewsQ4rHegIAADEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoWR+QjQWwuE9JCECe3k4otsrbEGWfJIcoBk+O/VyjZ2qS+W3369fbvyFxHKlpA6bbZG8GfNgXwfEDyTb4PO+ARndtBqLz6h9XkX3OXoxILPG3NCezzCMKsLcEakP9RBojP1YKVEpk2x4QdYaeushzMmLXiT0Q6jlYe+BuTsX8Mlhlz8aTzH06c/Leng6o8pKAemc52Opkt8ZuMmYjKi+ETRsgmMRvPFIprR6WQzpPOQpFKpZEUJHDvqck1mTY5oEdyU77XxwL5SLaWwDVHiLmUQYl/mYACV4IL5vgM5Olp4IAdxyB120Y9+zTILrpHFsMtaGC9gnZb81LWqBbPHmtgHkxUWmo8Dpzrn83/mYRTMmdHFU1s2oljC5SI9vrFLyqzrqd6H1x3zKMhzYvLIEgnvOagXvTW6UtwbnakwtLIwXneft85WOaTHDq+p3oFV2endDrkdMfZwDc2fV1IUSRByWgN7qYPeYTPA+Mn88oTD3tgmhUeRxR8Lv9mhv2CN4VEY67yp6VIhvURXBl3JJmiG3VRupY2CADekS1BMusvOp3H3E7yz9creWR4ZXqWmeGNrb8hdSIA7f0rvTDt9ug3L5vr0DDZ/rZwUCjrSaHjxOq20UvWC9TVpw/aVyVjaCztUgv+7WmQ+pssky6IsGS8ms3k2zCjlEdAHmkxZ8pBOSdg9oXyfTO5qoo08fmqqS678nrV/mMHWsDIsOzfstBWfhe5JLlSm96kBUK91hhtxML6Iv5V8w4UXaA/OCRXmTb5iInV6BB7fEsWh083ZGRZ3WWJSig/tEInJKvxSYoLwbZd3Bj4EnLB4m+xKrn8BUEsDBBQAAAgIAABAIewlUILobQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSuZGBZVJammFakpGFsal5mm6agUGKYaqBmUGSSWKSWbKJUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAABAIewsQ4rHegIAADEFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAABAIewlUILobQAAAHgAAAAJACQAAAAAAAAAAAAAAMcCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAfwMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
-  showNavGraphs: 0
+  showNavGraphs: 1
   showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0
@@ -849,7 +849,7 @@ MonoBehaviour:
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -3521,7 +3521,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -3640,7 +3640,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []
@@ -5318,7 +5318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &984481967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5873,7 +5873,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []
@@ -8261,7 +8261,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -10979,7 +10979,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []
@@ -12687,7 +12687,7 @@ GameObject:
   - component: {fileID: 2002732015}
   - component: {fileID: 2002732019}
   - component: {fileID: 2002732020}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyV2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12753,7 +12753,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 2
   m_AngularDamping: 0.05
   m_GravityScale: 1.5
   m_Material: {fileID: 0}
@@ -12765,7 +12765,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &2002732017
 SpriteRenderer:
@@ -12853,19 +12853,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   target: {fileID: 450267344}
-  activateDistance: 50
+  activateDistance: 80
   pathUpdateSeconds: 0.5
-  speed: 200
+  speed: 6
   jumpForce: 100
-  nextWaypointDistance: 3
-  jumpNodeHeightRequirement: 0.8
-  jumpModifier: 0.3
+  nextWaypointDistance: 1
+  jumpNodeHeightRequirement: 0.4
+  jumpModifier: 0.1
   jumpCheckOffset: 0.1
   followEnabled: 1
   jumpEnabled: 1
   isJumping: 0
   isInAir: 0
-  directionLookEnabled: 1
+  directionLookEnabled: 0
   startOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &2002732020
 MonoBehaviour:
