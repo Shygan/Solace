@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheckPos;
     public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask groundLayer;
-    bool isGrounded;
+    public bool isGrounded;
 
     [Header("CheckForThoughtBubble")]
     public GameObject dialogueObject;
