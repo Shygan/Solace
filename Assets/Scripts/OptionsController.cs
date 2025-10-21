@@ -30,6 +30,5 @@ public class OptionsController : MonoBehaviour
         var anim = player.GetComponent<Animator>();
         anim.Play("Idle", 0, 0f); 
         anim.Update(0f);
-
     }
 }
