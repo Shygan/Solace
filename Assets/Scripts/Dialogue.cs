@@ -40,7 +40,7 @@ public class Dialogue : MonoBehaviour
     {
         playerMovement.isMovementLocked = true;
         index = 0;
-        // StopAllCoroutines();
+        //StopAllCoroutines();
         StartCoroutine(TypeLine());
     }
 

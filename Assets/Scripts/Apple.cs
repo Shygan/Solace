@@ -12,6 +12,11 @@ public class Apple : MonoBehaviour, IItem
     private bool collected = false;
     private Collider2D _col;   // cache to disable instantly
 
+    [Header("Dialogue Settings (Optional)")]
+    public GameObject dialogueObject;       // assign in Inspector if needed
+    public float dialogueDelay = 3f;        // delay before dialogue starts
+    public string requiredLevelName = "Level 2"; // only triggers in this level
+
     private void Awake()
     {
         _col = GetComponent<Collider2D>();
@@ -24,6 +29,35 @@ public class Apple : MonoBehaviour, IItem
 
         if (_col) _col.enabled = false;  // stop further trigger events this frame
         OnAppleCollect?.Invoke(worth);   // safe invoke (null-checked)
+
+        if (dialogueObject != null && IsCorrectLevelActive())
+        {
+            StartCoroutine(StartDialogueAfterDelay());
+            GetComponent<SpriteRenderer>().enabled = false; // hide apple
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator StartDialogueAfterDelay()
+    {
+        yield return new WaitForSeconds(dialogueDelay);
+
+        dialogueObject.SetActive(true);
+        var dialogue = dialogueObject.GetComponent<Dialogue>();
+        if (dialogue != null)
+        {
+            //dialogue.StartDialogue(); //alr starts in Dialogue script
+        }
+
         Destroy(gameObject);
+    }
+    
+    private bool IsCorrectLevelActive()
+    {
+        GameObject currentLevel = GameObject.Find(requiredLevelName);
+        return currentLevel != null && currentLevel.activeSelf;
     }
 }

@@ -3076,7 +3076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &548679726
 Grid:
   m_ObjectHideFlags: 0
@@ -4855,33 +4855,7 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 701912107}
-    m_ColliderPaths:
-    - - X: 220333328
-        Y: 50333332
-      - X: 99666664
-        Y: 50333332
-      - X: 99666664
-        Y: 39666668
-      - X: 220333328
-        Y: 39666668
-    - - X: 30333334
-        Y: 333333
-      - X: -333333
-        Y: 333333
-      - X: -333333
-        Y: -10333333
-      - X: 30333334
-        Y: -10333333
-    - - X: 100333336
-        Y: -29666666
-      - X: -120333336
-        Y: -29666666
-      - X: -120333336
-        Y: -60333332
-      - X: 100333336
-        Y: -60333332
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 22.033304, y: 3.966667}
@@ -4974,7 +4948,25 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 707796789}
+    m_ColliderPaths:
+    - - X: 220333328
+        Y: 50333332
+      - X: 99666664
+        Y: 50333332
+      - X: 99666664
+        Y: 39666668
+      - X: 220333328
+        Y: 39666668
+    - - X: 100333336
+        Y: -29666666
+      - X: -120333336
+        Y: -29666666
+      - X: -120333336
+        Y: -60333332
+      - X: 100333336
+        Y: -60333332
   m_CompositePaths:
     m_Paths:
     - - {x: 22.033304, y: 3.966667}
@@ -8322,6 +8314,9 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  levelToReturnTo: 
+  levelsParent: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &818595888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13601,6 +13596,9 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  levelToReturnTo: 
+  levelsParent: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &944701545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16268,6 +16266,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Apple
       objectReference: {fileID: 0}
+    - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+      propertyPath: dialogueObject
+      value: 
+      objectReference: {fileID: 2079438667}
+    - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+      propertyPath: requiredLevelName
+      value: Level 2 Option 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.51
@@ -16411,6 +16417,9 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 1017090552}
+  levelToReturnTo: 
+  levelsParent: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &1585055806
 GameObject:
   m_ObjectHideFlags: 0
@@ -20240,7 +20249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1719975358
 Transform:
   m_ObjectHideFlags: 0
@@ -20495,14 +20504,17 @@ MonoBehaviour:
   - That thought can be heavy, right? You're not alone in feeling this way.
   - In this level, you'll explore 4 ways someone might respond to that thought.
   - Some paths might feel easy... but not all are helpful.
-  - "Your task is to try each option \u2014 reflect on how it feels, and see where
-    it leads you."
+  - Your task is to try each option and reflect on how it feels. Try to reach the
+    top of the platform, and see where it leads you.
   - "The goal isn\u2019t to be perfect \u2014 it\u2019s to understand yourself a
     little better."
   - Click to begin!
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  levelToReturnTo: 
+  levelsParent: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1744306419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20774,41 +20786,7 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1778889608}
-    m_ColliderPaths:
-    - - X: -117000000
-        Y: 109666664
-      - X: 217000000
-        Y: 109666664
-      - X: 217000000
-        Y: 49666668
-      - X: 220333328
-        Y: 49666668
-      - X: 220333328
-        Y: 113000000
-      - X: -120333336
-        Y: 113000000
-      - X: -120333336
-        Y: -30333334
-      - X: -117000000
-        Y: -30333334
-    - - X: -89666664
-        Y: 80333336
-      - X: -93000000
-        Y: 80333336
-      - X: -93000000
-        Y: -333333
-      - X: -89666664
-        Y: -333333
-    - - X: 220333328
-        Y: 40333332
-      - X: 99666664
-        Y: 40333332
-      - X: 99666664
-        Y: -60333332
-      - X: 220333328
-        Y: -60333332
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: -11.700029, y: -3.0333335}
@@ -28789,7 +28767,33 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1963108957}
+    m_ColliderPaths:
+    - - X: -117000000
+        Y: 109666664
+      - X: 217000000
+        Y: 109666664
+      - X: 217000000
+        Y: 49666668
+      - X: 220333328
+        Y: 49666668
+      - X: 220333328
+        Y: 113000000
+      - X: -120333336
+        Y: 113000000
+      - X: -120333336
+        Y: -30333334
+      - X: -117000000
+        Y: -30333334
+    - - X: 220333328
+        Y: 40333332
+      - X: 99666664
+        Y: 40333332
+      - X: 99666664
+        Y: -60333332
+      - X: 220333328
+        Y: -60333332
   m_CompositePaths:
     m_Paths:
     - - {x: -11.700029, y: -3.0333335}
@@ -31322,6 +31326,9 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  levelToReturnTo: 
+  levelsParent: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &2063936727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31388,7 +31395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2079438668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31434,6 +31441,9 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  levelToReturnTo: Level 2
+  levelsParent: {fileID: 102503062}
+  player: {fileID: 450267340}
 --- !u!114 &2079438670
 MonoBehaviour:
   m_ObjectHideFlags: 0
