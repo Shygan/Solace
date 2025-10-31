@@ -164,7 +164,7 @@ private void CheckForThoughtBubble()
             {
                 Debug.Log("Dialogue Pops Up");
                 dialogueObject.SetActive(true); // Show Dialogue
-                dialogueObject.GetComponent<Dialogue>().StartDialogue(); // Start typing
+                //dialogueObject.GetComponent<Dialogue>().StartDialogue(); // Start typing
                 hasTriggeredThoughtBubble = true;
             }
     }

@@ -16,7 +16,7 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         //textComponent.text = string.Empty;
-        //StartDialogue();
+        StartDialogue();
     }
 
     // Update is called once per frame
@@ -40,6 +40,7 @@ public class Dialogue : MonoBehaviour
     {
         playerMovement.isMovementLocked = true;
         index = 0;
+        // StopAllCoroutines();
         StartCoroutine(TypeLine());
     }
 
