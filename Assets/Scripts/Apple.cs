@@ -52,6 +52,7 @@ public class Apple : MonoBehaviour, IItem
             //dialogue.StartDialogue(); //alr starts in Dialogue script
         }
 
+        yield return new WaitForSeconds(0.2f); // small delay to ensure dialogue starts
         Destroy(gameObject);
     }
     

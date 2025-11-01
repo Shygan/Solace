@@ -12,6 +12,12 @@ public class Dialogue : MonoBehaviour
     public PlayerMovement playerMovement; // Assign in Inspector
     public GameObject platformToReveal;
 
+    [Header("Level Return (Optional)")]
+    public string levelToReturnTo;          // The name of the level to go back to (e.g. "Level 2")
+    public Transform levelsParent;          // Drag the parent GameObject that contains all levels
+    public GameObject player;               // Reference to player object for repositioning
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,11 +70,81 @@ public class Dialogue : MonoBehaviour
         else
         {
             playerMovement.isMovementLocked = false;
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            // if (platformToReveal != null)
+            // {
+            //     platformToReveal.SetActive(true);
+            // }
+
+            if (!string.IsNullOrEmpty(levelToReturnTo))
+            {
+                StartCoroutine(ReturnToLevelAfterDelay(levelToReturnTo, 0.5f));
+                Debug.Log("[Dialogue] Reached end of dialogue, attempting to return to level...");
+            }
+
+            StartCoroutine(DisableAfterDelay(0.2f));
+            
             if (platformToReveal != null)
             {
                 platformToReveal.SetActive(true);
             }
         }
     }
+
+    private IEnumerator ReturnToLevelAfterDelay(string levelName, float delay)
+    {
+        Debug.Log($"[Dialogue] Attempting to return to {levelName} after {delay}s...");
+        yield return new WaitForSeconds(delay);
+
+        if (levelsParent == null)
+        {
+            Debug.LogWarning("[Dialogue] Levels Parent not assigned in Inspector!");
+            yield break;
+        }
+
+        // Deactivate all levels
+        foreach (Transform child in levelsParent)
+            child.gameObject.SetActive(false);
+
+        // Search recursively for any object with the correct name
+        Transform targetLevel = FindChildRecursive(levelsParent, levelName);
+
+        if (targetLevel == null)
+        {
+            Debug.LogWarning($"[Dialogue] ❌ Could not find '{levelName}' anywhere under '{levelsParent.name}'!");
+            yield break;
+        }
+
+        targetLevel.gameObject.SetActive(true);
+        Debug.Log($"[Dialogue] ✅ Activated {targetLevel.name}");
+
+        if (player != null)
+        {
+            player.transform.SetParent(targetLevel); // move player into active level hierarchy
+            player.transform.position = new Vector3(-9f, -2f, 0f);
+            Debug.Log("[Dialogue] Player repositioned to start point.");
+        }
+    }
+
+    // Helper method to search all descendants
+    private Transform FindChildRecursive(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name.Replace(" ", "").ToLower() == name.Replace(" ", "").ToLower())
+                return child;
+
+            Transform result = FindChildRecursive(child, name);
+            if (result != null)
+                return result;
+        }
+        return null;
+    }
+
+    private IEnumerator DisableAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        gameObject.SetActive(false);
+    }
+
 }
