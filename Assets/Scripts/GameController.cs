@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     public Slider progressSlider;
     public GameObject player;
     public GameObject LoadCanvas;
+    public GameObject holdPromptWorldText;
+
     public List<GameObject> levels;
     private int currentLevelIndex = 0;
 
@@ -74,12 +76,23 @@ public class GameController : MonoBehaviour
         {
             // Level is complete
             LoadCanvas.SetActive(true);
+
+            if (holdPromptWorldText != null)
+            {
+                holdPromptWorldText.SetActive(true);
+            }
+
             Debug.Log("Level Complete");
         }
     }
 
     void LoadNextLevel()
     {
+        if (holdPromptWorldText != null)
+        {
+            holdPromptWorldText.SetActive(false);
+        }
+        
         if (levels == null || levels.Count == 0) return;
 
         int nextLevelIndex = (currentLevelIndex == levels.Count - 1) ? 0 : currentLevelIndex + 1;
