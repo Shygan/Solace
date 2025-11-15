@@ -13,19 +13,17 @@ public class Dialogue : MonoBehaviour
     public GameObject platformToReveal;
 
     [Header("Level Return (Optional)")]
-    public string levelToReturnTo;          // The name of the level to go back to (e.g. "Level 2")
-    public Transform levelsParent;          // Drag the parent GameObject that contains all levels
-    public GameObject player;               // Reference to player object for repositioning
+    public string levelToReturnTo;          // Must match level name exactly (e.g., "Level 2")
+    public Transform levelsParent;          // Drag the parent GameObject "Levels"
+    public GameObject player;               // Reference to player for repositioning
 
 
-    // Start is called before the first frame update
     void Start()
     {
-        //textComponent.text = string.Empty;
         StartDialogue();
+        //textComponent.text = string.Empty;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -46,7 +44,7 @@ public class Dialogue : MonoBehaviour
     {
         playerMovement.isMovementLocked = true;
         index = 0;
-        //StopAllCoroutines();
+        textComponent.text = string.Empty;
         StartCoroutine(TypeLine());
     }
 
@@ -69,66 +67,70 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
+            // End of dialogue
             playerMovement.isMovementLocked = false;
-            //gameObject.SetActive(false);
-            // if (platformToReveal != null)
-            // {
-            //     platformToReveal.SetActive(true);
-            // }
 
+            // Reveal the platform immediately
+            if (platformToReveal != null)
+                platformToReveal.SetActive(true);
+
+            // If returning to a level, handle that FIRST
             if (!string.IsNullOrEmpty(levelToReturnTo))
             {
-                StartCoroutine(ReturnToLevelAfterDelay(levelToReturnTo, 0.5f));
-                Debug.Log("[Dialogue] Reached end of dialogue, attempting to return to level...");
+                StartCoroutine(ReturnToLevelThenDisable(levelToReturnTo, 0.5f));
             }
-
-            StartCoroutine(DisableAfterDelay(0.2f));
-            
-            if (platformToReveal != null)
+            else
             {
-                platformToReveal.SetActive(true);
+                // Otherwise just hide dialogue normally
+                StartCoroutine(DisableAfterDelay(0.2f));
             }
         }
+    }
+
+    // NEW: Proper sequence — return to level THEN disable dialogue
+    private IEnumerator ReturnToLevelThenDisable(string levelName, float delay)
+    {
+        yield return ReturnToLevelAfterDelay(levelName, delay);
+        yield return new WaitForSeconds(0.1f); 
+        gameObject.SetActive(false);
     }
 
     private IEnumerator ReturnToLevelAfterDelay(string levelName, float delay)
     {
-        Debug.Log($"[Dialogue] Attempting to return to {levelName} after {delay}s...");
         yield return new WaitForSeconds(delay);
 
         if (levelsParent == null)
         {
-            Debug.LogWarning("[Dialogue] Levels Parent not assigned in Inspector!");
+            Debug.LogWarning("[Dialogue] Levels Parent not assigned!");
             yield break;
         }
 
-        // Search recursively for target level BEFORE deactivating anything
+        // Find the level by name
         Transform targetLevel = FindChildRecursive(levelsParent, levelName);
 
         if (targetLevel == null)
         {
-            Debug.LogWarning($"[Dialogue] ❌ Could not find '{levelName}' anywhere under '{levelsParent.name}'!");
+            Debug.LogWarning($"[Dialogue] ❌ Could not find '{levelName}' under '{levelsParent.name}'!");
             yield break;
         }
 
-        // Move player FIRST (before deactivating current level)
+        // Move player to the target level BEFORE disabling anything
         if (player != null)
         {
-            player.transform.SetParent(targetLevel); // move player into target level hierarchy
+            player.transform.SetParent(null);
             player.transform.position = new Vector3(-9f, -2f, 0f);
-            Debug.Log("[Dialogue] Player repositioned to start point.");
+            //player.transform.SetParent(targetLevel);
+            //player.transform.position = new Vector3(-9f, -2f, 0f);
         }
 
-        // Now deactivate all levels EXCEPT the target
+        // Deactivate all levels except the target one
         foreach (Transform child in levelsParent)
-        {
             child.gameObject.SetActive(child == targetLevel);
-        }
 
-        Debug.Log($"[Dialogue] ✅ Activated {targetLevel.name}");
+        Debug.Log($"[Dialogue] ✅ Returned to {targetLevel.name}");
     }
 
-    // Helper method to search all descendants
+    // Recursive search for level by name
     private Transform FindChildRecursive(Transform parent, string name)
     {
         foreach (Transform child in parent)
@@ -148,5 +150,4 @@ public class Dialogue : MonoBehaviour
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
     }
-
 }

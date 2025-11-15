@@ -12,7 +12,7 @@ public class OptionsController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject != player)
+        if (!other.CompareTag("Player"))
             return;
 
         foreach (var g in groupsToDisable)
@@ -23,6 +23,7 @@ public class OptionsController : MonoBehaviour
 
         // Teleport player
         var rb = player.GetComponent<Rigidbody2D>();
+        //player.SetActive(true); // ensure active
         player.transform.position = spawnCoordinates;
         rb.linearVelocity = Vector2.zero;
 
