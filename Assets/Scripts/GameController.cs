@@ -20,8 +20,13 @@ public class GameController : MonoBehaviour
     // Optional per-level intro dialogues (match levels.Count)
     public List<GameObject> levelIntroDialogues;
 
+    [SerializeField] int debugStartLevelIndex = 0;
+
+
     void Start()
     {
+        currentLevelIndex = debugStartLevelIndex;
+        
         progressAmount = 0;
         progressSlider.value = 0;
         progressSlider.maxValue = progressGoal;

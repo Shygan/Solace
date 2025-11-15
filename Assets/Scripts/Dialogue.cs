@@ -102,11 +102,7 @@ public class Dialogue : MonoBehaviour
             yield break;
         }
 
-        // Deactivate all levels
-        foreach (Transform child in levelsParent)
-            child.gameObject.SetActive(false);
-
-        // Search recursively for any object with the correct name
+        // Search recursively for target level BEFORE deactivating anything
         Transform targetLevel = FindChildRecursive(levelsParent, levelName);
 
         if (targetLevel == null)
@@ -115,15 +111,21 @@ public class Dialogue : MonoBehaviour
             yield break;
         }
 
-        targetLevel.gameObject.SetActive(true);
-        Debug.Log($"[Dialogue] ✅ Activated {targetLevel.name}");
-
+        // Move player FIRST (before deactivating current level)
         if (player != null)
         {
-            player.transform.SetParent(targetLevel); // move player into active level hierarchy
+            player.transform.SetParent(targetLevel); // move player into target level hierarchy
             player.transform.position = new Vector3(-9f, -2f, 0f);
             Debug.Log("[Dialogue] Player repositioned to start point.");
         }
+
+        // Now deactivate all levels EXCEPT the target
+        foreach (Transform child in levelsParent)
+        {
+            child.gameObject.SetActive(child == targetLevel);
+        }
+
+        Debug.Log($"[Dialogue] ✅ Activated {targetLevel.name}");
     }
 
     // Helper method to search all descendants

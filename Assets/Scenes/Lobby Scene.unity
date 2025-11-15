@@ -2324,6 +2324,7 @@ MonoBehaviour:
   progressGoal: 100
   levelSpawnPoints: []
   levelIntroDialogues: []
+  debugStartLevelIndex: 1
 --- !u!4 &420372267
 Transform:
   m_ObjectHideFlags: 0
