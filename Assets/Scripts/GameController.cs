@@ -236,6 +236,31 @@ public class GameController : MonoBehaviour
         currentLevelIndex = index;
         levels[currentLevelIndex].SetActive(true);
     }
+
+    /// <summary>
+    /// Force reload Level 2 with AI-generated content (skips returning to Level 1)
+    /// Call this at the end of the first authored Level 2 run
+    /// </summary>
+    public void ForceReloadLevel2WithAI()
+    {
+        // Mark first run as done
+        PlayerPrefs.SetInt(PlayerPrefsFirstRunKey, 1);
+        PlayerPrefs.Save();
+
+        // Reset progress for the new run
+        progressAmount = 0;
+        progressSlider.value = 0;
+
+        // Deactivate all dialogues to prepare for AI dialogue
+        if (levelIntroDialogues != null)
+        {
+            foreach (var dlg in levelIntroDialogues)
+                if (dlg != null) dlg.SetActive(false);
+        }
+
+        // Load Level 2 with AI content
+        StartCoroutine(LoadLevelWithAIThought(aiThoughtLevelIndex));
+    }
 }
 
 // using System.Collections.Generic;
