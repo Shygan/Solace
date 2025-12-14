@@ -13,7 +13,7 @@ public class ThoughtManager : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI thoughtDisplayText; // shows the worry on screen
-    [SerializeField] private TextMeshProUGUI[] optionTexts = new TextMeshProUGUI[4]; // the 4 option labels
+    [SerializeField] private TextMeshProUGUI[] optionTexts = new TextMeshProUGUI[4]; // the 4 coping strategy buttons
 
     void Awake()
     {
@@ -48,9 +48,9 @@ public class ThoughtManager : MonoBehaviour
     /// </summary>
     public string GetCopingStrategy(int optionIndex)
     {
-        if (currentThought == null || currentThought.options == null) return null;
-        if (optionIndex < 0 || optionIndex >= currentThought.options.Length) return null;
-        return currentThought.options[optionIndex].dialogue;
+        if (currentThought == null || optionIndex < 0 || optionIndex >= currentThought.copingStrategies.Length)
+            return null;
+        return currentThought.copingStrategies[optionIndex];
     }
 
     private void UpdateUI()
@@ -65,11 +65,11 @@ public class ThoughtManager : MonoBehaviour
         if (thoughtDisplayText != null)
             thoughtDisplayText.text = currentThought.worriedThought;
 
-        // Update the 4 option labels (short titles)
-        for (int i = 0; i < optionTexts.Length && i < currentThought.options.Length; i++)
+        // Update the 4 coping strategy buttons
+        for (int i = 0; i < optionTexts.Length && i < currentThought.copingStrategies.Length; i++)
         {
             if (optionTexts[i] != null)
-                optionTexts[i].text = currentThought.options[i].title;
+                optionTexts[i].text = currentThought.copingStrategies[i];
         }
 
         Debug.Log("[ThoughtManager] UI updated with new thought and strategies");

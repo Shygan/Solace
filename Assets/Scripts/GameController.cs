@@ -30,10 +30,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private AIThoughtGenerator aiThoughtGenerator;
     [SerializeField] private bool generateAIThoughtForLevel2 = true;
     [SerializeField] private int aiThoughtLevelIndex = 1; // Level 2 (0-indexed)
-    [SerializeField] private bool useFixedFirstRun = true; // show authored content first, AI from second run
-
-    private AnxietyThoughtData cachedAIThought;
-    private const string PlayerPrefsFirstRunKey = "Solace_FirstRunDone";
 
 
     void Start()
@@ -125,18 +121,7 @@ public class GameController : MonoBehaviour
         // Generate AI thought if this is the designated AI level
         if (generateAIThoughtForLevel2 && nextLevelIndex == aiThoughtLevelIndex && aiThoughtGenerator != null)
         {
-            // Fixed first run: use authored dialogue once
-            bool firstRunDone = PlayerPrefs.GetInt(PlayerPrefsFirstRunKey, 0) == 1;
-            if (useFixedFirstRun && !firstRunDone)
-            {
-                PlayerPrefs.SetInt(PlayerPrefsFirstRunKey, 1);
-                PlayerPrefs.Save();
-                StartDialogueForLevel(nextLevelIndex); // authored content
-            }
-            else
-            {
-                StartCoroutine(LoadLevelWithAIThought(nextLevelIndex));
-            }
+            StartCoroutine(LoadLevelWithAIThought(nextLevelIndex));
         }
         else
         {
@@ -151,35 +136,25 @@ public class GameController : MonoBehaviour
         LoadCanvas.SetActive(true);
         
         bool generationComplete = false;
-        AnxietyThoughtData thoughtData = cachedAIThought;
+        AnxietyThoughtData thoughtData = null;
 
-        if (thoughtData == null)
-        {
-            // Call AI to generate thought (single request)
-            aiThoughtGenerator.GenerateThought(
-                (data) =>
-                {
-                    cachedAIThought = data; // cache for session
-                    thoughtData = data;
-                    generationComplete = true;
-                    LoadCanvas.SetActive(false);
-                },
-                (error) =>
-                {
-                    Debug.LogError($"[GameController] AI Generation Error: {error}");
-                    generationComplete = true;
-                    LoadCanvas.SetActive(false);
-                    // Fall back to default dialogue if AI fails
-                    StartDialogueForLevel(levelIndex);
-                }
-            );
-        }
-        else
-        {
-            // Already cached
-            generationComplete = true;
-            LoadCanvas.SetActive(false);
-        }
+        // Call AI to generate thought
+        aiThoughtGenerator.GenerateThought(
+            (data) =>
+            {
+                thoughtData = data;
+                generationComplete = true;
+                LoadCanvas.SetActive(false);
+            },
+            (error) =>
+            {
+                Debug.LogError($"[GameController] AI Generation Error: {error}");
+                generationComplete = true;
+                LoadCanvas.SetActive(false);
+                // Fall back to default dialogue if AI fails
+                StartDialogueForLevel(levelIndex);
+            }
+        );
 
         // Wait for AI generation to complete
         yield return new WaitUntil(() => generationComplete);
@@ -200,7 +175,7 @@ public class GameController : MonoBehaviour
                     var dialogueComp = dlgObj.GetComponent<Dialogue>();
                     if (dialogueComp != null)
                     {
-                        // Override dialogue lines with AI-generated intro (kept concise)
+                        // Override dialogue lines with AI-generated intro
                         dialogueComp.SetDialogueLines(new[] { thoughtData.introDialogue });
                         dialogueComp.StartDialogue();
                     }

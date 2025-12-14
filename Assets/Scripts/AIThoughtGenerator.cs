@@ -9,33 +9,42 @@ using UnityEngine.Networking;
 /// </summary>
 public class AIThoughtGenerator : MonoBehaviour
 {
-    [SerializeField] private string apiKey = "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"; // Set in Inspector or use PlayerPrefs
+    [SerializeField] private string apiKey = "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"; // Set in Inspector or use PlayerPrefs
     [SerializeField] private string apiEndpoint = "https://api.openai.com/v1/chat/completions";
     [SerializeField] private string model = "gpt-4o-mini";
     [SerializeField] private float temperature = 0.7f;
 
-        // Single-call prompt returning compact JSON with 3 non-optimal and 1 optimal option
-        private const string COMBINED_PROMPT = "You are helping in an anxiety-awareness game.\n" +
-            "Task: Given no input, generate a concise worrying thought and four coping options:\n" +
-            "- EXACTLY 3 non-optimal themes: Avoidance, Self-criticism, Over-control (brief 6-12 words each)\n" +
-            "- EXACTLY 1 optimal theme: Cognitive Reframe (brief 6-12 words)\n" +
-            "- Provide a short introDialogue (<= 40 words) empathetic to the worrying thought\n" +
-            "- For EACH option, include a 15-25 word explanation dialogue tailored to the worrying thought.\n\n" +
-            "Output STRICT JSON ONLY in this schema (no extra text):\n" +
-            "{\n" +
-            "  \"thought\": \"under 14 words\",\n" +
-            "  \"introDialogue\": \"under 40 words\",\n" +
-            "  \"options\": [\n" +
-            "    { \"title\": \"short option text\", \"theme\": \"Avoidance|Self-criticism|Over-control|Cognitive Reframe\", \"dialogue\": \"15-25 words explanation\", \"optimal\": false },\n" +
-            "    { \"title\": \"short option text\", \"theme\": \"Avoidance|Self-criticism|Over-control|Cognitive Reframe\", \"dialogue\": \"15-25 words explanation\", \"optimal\": false },\n" +
-            "    { \"title\": \"short option text\", \"theme\": \"Avoidance|Self-criticism|Over-control|Cognitive Reframe\", \"dialogue\": \"15-25 words explanation\", \"optimal\": false },\n" +
-            "    { \"title\": \"short option text\", \"theme\": \"Cognitive Reframe\", \"dialogue\": \"15-25 words explanation\", \"optimal\": true }\n" +
-            "  ]\n" +
-            "}\n" +
-            "Ensure the last option is the Cognitive Reframe with \"optimal\": true. Keep all texts concise to fit UI.";
+    private const string THOUGHT_PROMPT = @"Generate a realistic worrying thought that someone with anxiety might experience. 
+The thought should be:
+- Specific and relatable (e.g., 'I'm going to fail this exam')
+- Not too extreme or harmful
+- Common among people with anxiety
+
+Respond with ONLY the thought, nothing else. Keep it under 20 words.";
+
+    private const string COPING_PROMPT = @"Given this worrying thought: ""{0}""
+
+Generate 4 evidence-based coping strategies or cognitive reframes that can help someone challenge this thought. 
+These should be:
+1. Realistic and actionable
+2. Based on CBT or mindfulness techniques
+3. Encouraging but not dismissive
+
+Format your response as 4 bullet points, each starting with '- ' and under 15 words each.";
+
+    private const string DIALOGUE_PROMPT = @"Create a short, supportive dialogue (2-3 lines) that introduces this worrying thought to a player in an anxiety awareness game:
+
+Worrying Thought: ""{0}""
+
+The dialogue should:
+- Be empathetic and validating
+- Acknowledge the thought without judgment
+- Introduce the coping strategies that follow
+
+Keep it under 50 words total. Format as a single paragraph.";
 
     /// <summary>
-    /// Generates a worrying thought, concise dialogue, and 4 options (3 non-optimal, 1 optimal)
+    /// Generates a worrying thought, coping strategies, and dialogue
     /// </summary>
     public void GenerateThought(Action<AnxietyThoughtData> onComplete, Action<string> onError)
     {
@@ -44,31 +53,54 @@ public class AIThoughtGenerator : MonoBehaviour
 
     private IEnumerator GenerateThoughtCoroutine(Action<AnxietyThoughtData> onComplete, Action<string> onError)
     {
-        string json = null;
-        yield return StartCoroutine(CallOpenAI(COMBINED_PROMPT, (result) => json = result, onError));
+        // Step 1: Generate the worrying thought
+        string thought = null;
+        yield return StartCoroutine(CallOpenAI(THOUGHT_PROMPT, (result) => thought = result, onError));
 
-        if (string.IsNullOrEmpty(json))
+        if (thought == null)
         {
-            onError?.Invoke("Failed to generate AI JSON response");
+            onError?.Invoke("Failed to generate worrying thought");
             yield break;
         }
 
-        var parsed = JsonUtility.FromJson<AIResponseJson>(json);
-        if (parsed == null || parsed.options == null || parsed.options.Length != 4)
+        Debug.Log($"[AI] Generated thought: {thought}");
+
+        // Step 2: Generate dialogue
+        string dialogue = null;
+        string dialoguePrompt = string.Format(DIALOGUE_PROMPT, thought);
+        yield return StartCoroutine(CallOpenAI(dialoguePrompt, (result) => dialogue = result, onError));
+
+        if (dialogue == null)
         {
-            Debug.LogError("[AI] JSON parse failed or wrong schema: " + json);
-            onError?.Invoke("AI response invalid. Try again.");
+            onError?.Invoke("Failed to generate dialogue");
             yield break;
         }
 
-        var data = new AnxietyThoughtData
+        Debug.Log($"[AI] Generated dialogue: {dialogue}");
+
+        // Step 3: Generate 4 coping strategies
+        string strategiesRaw = null;
+        string strategiesPrompt = string.Format(COPING_PROMPT, thought);
+        yield return StartCoroutine(CallOpenAI(strategiesPrompt, (result) => strategiesRaw = result, onError));
+
+        if (strategiesRaw == null)
         {
-            worriedThought = parsed.thought,
-            introDialogue = parsed.introDialogue,
-            options = parsed.options
+            onError?.Invoke("Failed to generate coping strategies");
+            yield break;
+        }
+
+        // Parse strategies (split by '- ')
+        string[] strategies = ParseStrategies(strategiesRaw);
+
+        // Create final data object
+        AnxietyThoughtData data = new AnxietyThoughtData
+        {
+            worriedThought = thought,
+            introDialogue = dialogue,
+            copingStrategies = strategies
         };
 
-        Debug.Log("[AI] Generated thought + 4 options (3 non-optimal, 1 optimal)");
+        Debug.Log($"[AI] Generated complete thought data with {strategies.Length} strategies");
         onComplete?.Invoke(data);
     }
 
@@ -143,7 +175,26 @@ public class AIThoughtGenerator : MonoBehaviour
         }
     }
 
-    // (No longer used) strategy parser removed in favor of strict JSON
+    private string[] ParseStrategies(string rawStrategies)
+    {
+        string[] lines = rawStrategies.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+        System.Collections.Generic.List<string> strategies = new System.Collections.Generic.List<string>();
+
+        foreach (string line in lines)
+        {
+            string clean = line.Trim();
+            if (clean.StartsWith("- "))
+                clean = clean.Substring(2);
+            if (!string.IsNullOrEmpty(clean))
+                strategies.Add(clean);
+        }
+
+        // Return exactly 4, or pad with defaults if fewer
+        while (strategies.Count < 4)
+            strategies.Add("Take a deep breath and remind yourself this thought is just a thought.");
+
+        return strategies.GetRange(0, 4).ToArray();
+    }
 
     // ===== JSON SERIALIZATION CLASSES =====
     [System.Serializable]
@@ -198,22 +249,5 @@ public class AnxietyThoughtData
 {
     public string worriedThought;
     public string introDialogue;
-    public OptionData[] options; // 4 items: 3 non-optimal, 1 optimal
-}
-
-[System.Serializable]
-public class OptionData
-{
-    public string title;     // short label for button
-    public string theme;     // Avoidance | Self-criticism | Over-control | Cognitive Reframe
-    public string dialogue;  // 15-25 word explanation
-    public bool optimal;     // true for the Cognitive Reframe
-}
-
-[System.Serializable]
-public class AIResponseJson
-{
-    public string thought;
-    public string introDialogue;
-    public OptionData[] options;
+    public string[] copingStrategies;
 }
