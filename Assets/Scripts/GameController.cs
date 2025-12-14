@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,16 @@ public class GameController : MonoBehaviour
     public List<GameObject> levelIntroDialogues;
 
     [SerializeField] int debugStartLevelIndex = 0;
+
+    // AI Thought Generation for Level 2
+    [Header("AI Thought Generation")]
+    [SerializeField] private AIThoughtGenerator aiThoughtGenerator;
+    [SerializeField] private bool generateAIThoughtForLevel2 = true;
+    [SerializeField] private int aiThoughtLevelIndex = 1; // Level 2 (0-indexed)
+    [SerializeField] private bool useFixedFirstRun = true; // show authored content first, AI from second run
+
+    private AnxietyThoughtData cachedAIThought;
+    private const string PlayerPrefsFirstRunKey = "Solace_FirstRunDone";
 
 
     void Start()
@@ -111,14 +122,103 @@ public class GameController : MonoBehaviour
         progressAmount = 0;
         progressSlider.value = 0;
 
+        // Generate AI thought if this is the designated AI level
+        if (generateAIThoughtForLevel2 && nextLevelIndex == aiThoughtLevelIndex && aiThoughtGenerator != null)
+        {
+            // Fixed first run: use authored dialogue once
+            bool firstRunDone = PlayerPrefs.GetInt(PlayerPrefsFirstRunKey, 0) == 1;
+            if (useFixedFirstRun && !firstRunDone)
+            {
+                PlayerPrefs.SetInt(PlayerPrefsFirstRunKey, 1);
+                PlayerPrefs.Save();
+                StartDialogueForLevel(nextLevelIndex); // authored content
+            }
+            else
+            {
+                StartCoroutine(LoadLevelWithAIThought(nextLevelIndex));
+            }
+        }
+        else
+        {
+            // Normal dialogue flow for non-AI levels
+            StartDialogueForLevel(nextLevelIndex);
+        }
+    }
+
+    private IEnumerator LoadLevelWithAIThought(int levelIndex)
+    {
+        // Show loading UI while generating thought
+        LoadCanvas.SetActive(true);
+        
+        bool generationComplete = false;
+        AnxietyThoughtData thoughtData = cachedAIThought;
+
+        if (thoughtData == null)
+        {
+            // Call AI to generate thought (single request)
+            aiThoughtGenerator.GenerateThought(
+                (data) =>
+                {
+                    cachedAIThought = data; // cache for session
+                    thoughtData = data;
+                    generationComplete = true;
+                    LoadCanvas.SetActive(false);
+                },
+                (error) =>
+                {
+                    Debug.LogError($"[GameController] AI Generation Error: {error}");
+                    generationComplete = true;
+                    LoadCanvas.SetActive(false);
+                    // Fall back to default dialogue if AI fails
+                    StartDialogueForLevel(levelIndex);
+                }
+            );
+        }
+        else
+        {
+            // Already cached
+            generationComplete = true;
+            LoadCanvas.SetActive(false);
+        }
+
+        // Wait for AI generation to complete
+        yield return new WaitUntil(() => generationComplete);
+
+        if (thoughtData != null)
+        {
+            // Store the thought in ThoughtManager
+            if (ThoughtManager.instance != null)
+                ThoughtManager.instance.SetCurrentThought(thoughtData);
+
+            // Update dialogue with the generated intro dialogue
+            if (levelIntroDialogues != null && levelIndex < levelIntroDialogues.Count)
+            {
+                var dlgObj = levelIntroDialogues[levelIndex];
+                if (dlgObj != null)
+                {
+                    dlgObj.SetActive(true);
+                    var dialogueComp = dlgObj.GetComponent<Dialogue>();
+                    if (dialogueComp != null)
+                    {
+                        // Override dialogue lines with AI-generated intro (kept concise)
+                        dialogueComp.SetDialogueLines(new[] { thoughtData.introDialogue });
+                        dialogueComp.StartDialogue();
+                    }
+                }
+            }
+        }
+    }
+
+    private void StartDialogueForLevel(int levelIndex)
+    {
         // Handle per-level intro dialogues
-        if (levelIntroDialogues != null && nextLevelIndex < levelIntroDialogues.Count)
+        if (levelIntroDialogues != null && levelIndex < levelIntroDialogues.Count)
         {
             // deactivate others
             foreach (var dlg in levelIntroDialogues)
                 if (dlg != null) dlg.SetActive(false);
 
-            var dlgObj = levelIntroDialogues[nextLevelIndex];
+            var dlgObj = levelIntroDialogues[levelIndex];
             if (dlgObj != null)
             {
                 dlgObj.SetActive(true);
