@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 /// </summary>
 public class AIThoughtGenerator : MonoBehaviour
 {
-    [SerializeField] private string apiKey = "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"; // Set in Inspector or use PlayerPrefs
+    [SerializeField] private string apiKey = "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"; // Set in Inspector or use PlayerPrefs
     [SerializeField] private string apiEndpoint = "https://api.openai.com/v1/chat/completions";
     [SerializeField] private string model = "gpt-4o-mini";
     [SerializeField] private float temperature = 0.7f;
