@@ -48,15 +48,6 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(TypeLine());
     }
 
-    /// <summary>
-    /// Set dialogue lines at runtime (used for AI-generated dialogue)
-    /// </summary>
-    public void SetDialogueLines(string[] newLines)
-    {
-        lines = newLines;
-        Debug.Log($"[Dialogue] Dialogue lines updated to {newLines.Length} line(s)");
-    }
-
     IEnumerator TypeLine()
     {
         foreach (char c in lines[index].ToCharArray())
