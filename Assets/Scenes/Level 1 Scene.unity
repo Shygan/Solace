@@ -2472,6 +2472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 420372267}
   - component: {fileID: 420372266}
+  - component: {fileID: 420372268}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2502,6 +2503,9 @@ MonoBehaviour:
   levelSpawnPoints: []
   levelIntroDialogues: []
   debugStartLevelIndex: 0
+  aiThoughtGenerator: {fileID: 420372268}
+  generateAIThoughtForLevel2: 1
+  aiThoughtLevelIndex: 1
 --- !u!4 &420372267
 Transform:
   m_ObjectHideFlags: 0
@@ -2517,6 +2521,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &420372268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420372265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d038b9d6dfcd82647a39ef52febb9adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIThoughtGenerator
+  apiKey: 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
+  apiEndpoint: https://api.openai.com/v1/chat/completions
+  model: gpt-3.5-turbo
+  temperature: 0.7
+  openAIOrganization: 
 --- !u!1 &450267340
 GameObject:
   m_ObjectHideFlags: 0
@@ -3202,7 +3223,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3937964, y: -1.0058, z: -10}
+  m_LocalPosition: {x: -8.506073, y: -1.00711, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16334,6 +16355,56 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1380148615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1380148617}
+  - component: {fileID: 1380148616}
+  m_Layer: 0
+  m_Name: ThoughtManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1380148616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380148615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f374ea7923d70d419164b7c33c2a035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThoughtManager
+  thoughtDisplayText: {fileID: 1793151797}
+  optionTexts:
+  - {fileID: 1007409082}
+  - {fileID: 265095051}
+  - {fileID: 1695826441}
+  - {fileID: 1822027346}
+--- !u!4 &1380148617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380148615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.52677, y: -0.79614, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1386362273
 GameObject:
   m_ObjectHideFlags: 0
@@ -32817,3 +32888,4 @@ SceneRoots:
   - {fileID: 420372267}
   - {fileID: 356401956}
   - {fileID: 255724262}
+  - {fileID: 1380148617}
