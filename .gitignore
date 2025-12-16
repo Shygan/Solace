@@ -1,4 +1,17 @@
-# This .gitignore file should be placed at the root of your Unity project directory
+# Unity + secrets
+
+# Exclude real secrets from repo
+Assets/secrets.json
+Assets/StreamingAssets/secrets.json
+
+# Standard Unity ignores (minimal subset; extend if needed)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/# This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #

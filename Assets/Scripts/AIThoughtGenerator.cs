@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -9,10 +10,15 @@ using UnityEngine.Networking;
 /// </summary>
 public class AIThoughtGenerator : MonoBehaviour
 {
-    [SerializeField] private string apiKey = "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"; // Set in Inspector or use PlayerPrefs
+    [SerializeField] private string apiKey = ""; // Loaded from secrets.json or PlayerPrefs; keep empty in public repo
     [SerializeField] private string apiEndpoint = "https://api.openai.com/v1/chat/completions";
     [SerializeField] private string model = "gpt-4o-mini";
     [SerializeField] private float temperature = 0.7f;
+
+    // Location(s) to look for secrets.json. Preferred: StreamingAssets.
+    private const string SecretsFileName = "secrets.json";
+    private const string SecretsJsonKey = "ApiKey";
+    private const string PlayerPrefsApiKey = "OpenAI_ApiKey";
 
     private const string THOUGHT_PROMPT = @"Generate a realistic worrying thought that someone with anxiety might experience. 
 The thought should be:
@@ -48,6 +54,8 @@ Keep it under 50 words total. Format as a single paragraph.";
     /// </summary>
     public void GenerateThought(Action<AnxietyThoughtData> onComplete, Action<string> onError)
     {
+        // Ensure API key is loaded before making any calls
+        EnsureApiKeyLoaded();
         StartCoroutine(GenerateThoughtCoroutine(onComplete, onError));
     }
 
@@ -175,6 +183,54 @@ Keep it under 50 words total. Format as a single paragraph.";
         }
     }
 
+    /// <summary>
+    /// Loads the API key from PlayerPrefs or secrets.json if not already set.
+    /// Search order: Inspector (serialized) -> PlayerPrefs -> StreamingAssets -> Assets root.
+    /// </summary>
+    private void EnsureApiKeyLoaded()
+    {
+        if (!string.IsNullOrEmpty(apiKey)) return;
+
+        // Try PlayerPrefs first (allows setting securely at runtime without files)
+        var ppKey = PlayerPrefs.GetString(PlayerPrefsApiKey, string.Empty);
+        if (!string.IsNullOrEmpty(ppKey))
+        {
+            apiKey = ppKey;
+            return;
+        }
+
+        // Try StreamingAssets/secrets.json
+        string streamingPath = Path.Combine(Application.streamingAssetsPath, SecretsFileName);
+        if (File.Exists(streamingPath))
+        {
+            var json = File.ReadAllText(streamingPath);
+            apiKey = ExtractApiKeyFromJson(json);
+            if (!string.IsNullOrEmpty(apiKey)) return;
+        }
+
+        // Fallback: Assets/secrets.json (useful in Editor/testing; exclude via .gitignore)
+        string assetsPath = Path.Combine(Application.dataPath, SecretsFileName);
+        if (File.Exists(assetsPath))
+        {
+            var json = File.ReadAllText(assetsPath);
+            apiKey = ExtractApiKeyFromJson(json);
+        }
+    }
+
+    private string ExtractApiKeyFromJson(string json)
+    {
+        if (string.IsNullOrEmpty(json)) return string.Empty;
+        try
+        {
+            var kv = JsonUtility.FromJson<SimpleSecrets>(json);
+            return kv != null ? kv.ApiKey : string.Empty;
+        }
+        catch
+        {
+            return string.Empty;
+        }
+    }
+
     private string[] ParseStrategies(string rawStrategies)
     {
         string[] lines = rawStrategies.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
@@ -238,6 +294,12 @@ Keep it under 50 words total. Format as a single paragraph.";
         public string type;
         public object param;
         public object code;
+    }
+
+    [System.Serializable]
+    private class SimpleSecrets
+    {
+        public string ApiKey;
     }
 }
 
