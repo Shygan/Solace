@@ -2533,7 +2533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d038b9d6dfcd82647a39ef52febb9adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIThoughtGenerator
-  apiKey: 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
+  apiKey: 
   apiEndpoint: https://api.openai.com/v1/chat/completions
   model: gpt-4o-mini
   temperature: 0.7
@@ -3222,7 +3222,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.728778, y: -1.00622, z: -10}
+  m_LocalPosition: {x: -5.797319, y: -1.00625, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
