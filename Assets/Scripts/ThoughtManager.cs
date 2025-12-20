@@ -36,6 +36,68 @@ public class ThoughtManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Bind UI references for the currently active level by locating child objects
+    /// named 'Thought Bubble' and 'Option 1'..'Option 4' under the provided level root.
+    /// </summary>
+    public void BindToLevel(GameObject levelRoot)
+    {
+        if (levelRoot == null)
+        {
+            Debug.LogWarning("[ThoughtManager] BindToLevel called with null level root");
+            return;
+        }
+
+        // Find thought bubble text
+        var thoughtText = FindTMPByName(levelRoot, "Thought Bubble");
+
+        // Find option texts 1..4
+        var opts = new TextMeshProUGUI[4];
+        for (int i = 1; i <= 4; i++)
+        {
+            opts[i - 1] = FindTMPByName(levelRoot, $"Option {i}");
+        }
+
+        // Apply bindings
+        thoughtDisplayText = thoughtText;
+        optionTexts = opts;
+
+        Debug.Log($"[ThoughtManager] Bound UI for level '{levelRoot.name}'. Thought={(thoughtDisplayText!=null)}, Options={(optionTexts!=null)}");
+
+        // Refresh UI with existing thought if available
+        UpdateUI();
+    }
+
+    private TextMeshProUGUI FindTMPByName(GameObject root, string childName)
+    {
+        if (root == null) return null;
+
+        // Try direct child lookup
+        var t = root.transform.Find(childName);
+        TextMeshProUGUI tmp = null;
+        if (t != null)
+            tmp = t.GetComponentInChildren<TextMeshProUGUI>(true);
+
+        // Fallback: search all TMP components by GameObject name
+        if (tmp == null)
+        {
+            var tmps = root.GetComponentsInChildren<TextMeshProUGUI>(true);
+            foreach (var x in tmps)
+            {
+                if (x.gameObject.name == childName)
+                {
+                    tmp = x;
+                    break;
+                }
+            }
+        }
+
+        if (tmp == null)
+            Debug.LogWarning($"[ThoughtManager] Could not find TMP '{childName}' under '{root.name}'");
+
+        return tmp;
+    }
+
+    /// <summary>
     /// Get the current thought
     /// </summary>
     public AnxietyThoughtData GetCurrentThought()

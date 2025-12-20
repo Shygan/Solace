@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -25,11 +26,11 @@ public class GameController : MonoBehaviour
 
     [SerializeField] int debugStartLevelIndex = 0;
 
-    // AI Thought Generation for Level 2
+    // AI Thought Generation for specific levels
     [Header("AI Thought Generation")]
     [SerializeField] private AIThoughtGenerator aiThoughtGenerator;
-    [SerializeField] private bool generateAIThoughtForLevel2 = true;
-    [SerializeField] private int aiThoughtLevelIndex = 1; // Level 2 (0-indexed)
+    [SerializeField] private bool generateAIThought = true;
+    [SerializeField] private int[] aiThoughtLevelIndices = new int[] { 1, 2 }; // Levels 2 & 3 (0-indexed)
 
 
     void Start()
@@ -48,8 +49,12 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < levels.Count; i++)
             levels[i].SetActive(i == currentLevelIndex);
 
-        // If we start directly on the AI-designated level, generate the AI thought now.
-        if (generateAIThoughtForLevel2 && currentLevelIndex == aiThoughtLevelIndex && aiThoughtGenerator != null)
+        // Bind ThoughtManager UI to the active level
+        if (ThoughtManager.instance != null && levels != null && currentLevelIndex < levels.Count)
+            ThoughtManager.instance.BindToLevel(levels[currentLevelIndex]);
+
+        // If we start directly on an AI-designated level, generate the AI thought now.
+        if (generateAIThought && IsAILevel(currentLevelIndex) && aiThoughtGenerator != null)
         {
             StartCoroutine(LoadLevelWithAIThought(currentLevelIndex));
         }
@@ -117,8 +122,12 @@ public class GameController : MonoBehaviour
         progressAmount = 0;
         progressSlider.value = 0;
 
-        // Generate AI thought if this is the designated AI level
-        if (generateAIThoughtForLevel2 && nextLevelIndex == aiThoughtLevelIndex && aiThoughtGenerator != null)
+        // Re-bind ThoughtManager UI to the new active level
+        if (ThoughtManager.instance != null && levels != null && nextLevelIndex < levels.Count)
+            ThoughtManager.instance.BindToLevel(levels[nextLevelIndex]);
+
+        // Generate AI thought if this is a designated AI level
+        if (generateAIThought && IsAILevel(nextLevelIndex) && aiThoughtGenerator != null)
         {
             StartCoroutine(LoadLevelWithAIThought(nextLevelIndex));
         }
@@ -133,6 +142,7 @@ public class GameController : MonoBehaviour
     {
         // Show loading UI while generating thought
         LoadCanvas.SetActive(true);
+        Debug.Log($"[GameController] Starting AI thought generation for Level {levelIndex + 1}");
         
         bool generationComplete = false;
         AnxietyThoughtData thoughtData = null;
@@ -144,6 +154,7 @@ public class GameController : MonoBehaviour
                 thoughtData = data;
                 generationComplete = true;
                 LoadCanvas.SetActive(false);
+                Debug.Log($"[GameController] AI thought generation complete for Level {levelIndex + 1}");
             },
             (error) =>
             {
@@ -160,6 +171,7 @@ public class GameController : MonoBehaviour
 
         if (thoughtData != null)
         {
+            Debug.Log($"[GameController] Setting thought in ThoughtManager");
             // Store the thought in ThoughtManager
             if (ThoughtManager.instance != null)
                 ThoughtManager.instance.SetCurrentThought(thoughtData);
@@ -167,6 +179,7 @@ public class GameController : MonoBehaviour
             // Update dialogue with the generated intro dialogue
             if (levelIntroDialogues != null && levelIndex < levelIntroDialogues.Count)
             {
+                Debug.Log($"[GameController] Activating intro dialogue for Level {levelIndex + 1}");
                 var dlgObj = levelIntroDialogues[levelIndex];
                 if (dlgObj != null)
                 {
@@ -180,6 +193,14 @@ public class GameController : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                Debug.LogWarning($"[GameController] Level intro dialogues not properly configured for Level {levelIndex + 1}. levelIntroDialogues={levelIntroDialogues}, count={levelIntroDialogues?.Count ?? -1}, levelIndex={levelIndex}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"[GameController] Thought data was null for Level {levelIndex + 1}");
         }
     }
 
@@ -200,6 +221,21 @@ public class GameController : MonoBehaviour
                 if (dialogueComp != null) dialogueComp.StartDialogue();
             }
         }
+    }
+
+    private bool IsAILevel(int levelIndex)
+    {
+        if (aiThoughtLevelIndices == null) return false;
+        foreach (int idx in aiThoughtLevelIndices)
+        {
+            if (levelIndex == idx)
+            {
+                Debug.Log($"[GameController] Level {levelIndex + 1} is an AI level");
+                return true;
+            }
+        }
+        Debug.Log($"[GameController] Level {levelIndex + 1} is NOT an AI level");
+        return false;
     }
 
     // Optional helper to set the starting level at runtime
