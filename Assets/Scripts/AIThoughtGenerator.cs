@@ -36,7 +36,7 @@ These should be:
 2. Based on CBT or mindfulness techniques
 3. Encouraging but not dismissive
 
-Format your response as 4 bullet points, each starting with '- ' and under 12 words each.";
+Format your response as 4 bullet points, each starting with '- ' and under 10 words each.";
 
     private const string DIALOGUE_PROMPT = @"Create a short, supportive dialogue (2-3 lines) that introduces this worrying thought to a player in an anxiety awareness game:
 
