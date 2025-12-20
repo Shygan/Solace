@@ -48,16 +48,15 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < levels.Count; i++)
             levels[i].SetActive(i == currentLevelIndex);
 
-        // Show intro for starting level if present
-        if (levelIntroDialogues != null && currentLevelIndex < levelIntroDialogues.Count)
+        // If we start directly on the AI-designated level, generate the AI thought now.
+        if (generateAIThoughtForLevel2 && currentLevelIndex == aiThoughtLevelIndex && aiThoughtGenerator != null)
         {
-            var dlg = levelIntroDialogues[currentLevelIndex];
-            if (dlg != null)
-            {
-                dlg.SetActive(true);
-                var dialogueComp = dlg.GetComponent<Dialogue>();
-                if (dialogueComp != null) dialogueComp.StartDialogue();
-            }
+            StartCoroutine(LoadLevelWithAIThought(currentLevelIndex));
+        }
+        else
+        {
+            // Normal dialogue flow for non-AI levels
+            StartDialogueForLevel(currentLevelIndex);
         }
     }
 

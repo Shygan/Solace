@@ -43,6 +43,11 @@ public class EnemyAI : MonoBehaviour
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
 
+    private void OnDisable()
+    {
+        CancelInvoke("UpdatePath");
+    }
+
     private void FixedUpdate()
     {
         if (TargetInDistance() && followEnabled)

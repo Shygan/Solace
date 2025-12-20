@@ -2502,7 +2502,7 @@ MonoBehaviour:
   progressGoal: 100
   levelSpawnPoints: []
   levelIntroDialogues: []
-  debugStartLevelIndex: 0
+  debugStartLevelIndex: 1
   aiThoughtGenerator: {fileID: 420372268}
   generateAIThoughtForLevel2: 1
   aiThoughtLevelIndex: 1
@@ -3222,7 +3222,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.797319, y: -1.00625, z: -10}
+  m_LocalPosition: {x: -7.9022985, y: -1.00692, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
