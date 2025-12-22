@@ -183,13 +183,23 @@ public class GameController : MonoBehaviour
                 var dlgObj = levelIntroDialogues[levelIndex];
                 if (dlgObj != null)
                 {
-                    dlgObj.SetActive(true);
+                    // Get dialogue component while GameObject is still inactive
                     var dialogueComp = dlgObj.GetComponent<Dialogue>();
                     if (dialogueComp != null)
                     {
-                        // Override dialogue lines with AI-generated intro
+                        // Clear any existing text and set AI-generated lines BEFORE activating
+                        if (dialogueComp.textComponent != null)
+                            dialogueComp.textComponent.text = string.Empty;
+                        
                         dialogueComp.SetDialogueLines(new[] { thoughtData.introDialogue });
+                        
+                        // Now activate and start
+                        dlgObj.SetActive(true);
                         dialogueComp.StartDialogue();
+                    }
+                    else
+                    {
+                        Debug.LogError($"[GameController] No Dialogue component found on {dlgObj.name}");
                     }
                 }
             }

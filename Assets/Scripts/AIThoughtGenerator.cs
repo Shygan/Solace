@@ -26,17 +26,27 @@ The thought should be:
 - Not too extreme or harmful
 - Common among people with anxiety
 
-Respond with ONLY the thought, nothing else. Keep it under 15 words.";
+Respond with ONLY the thought, nothing else. Keep it under 12 words.";
 
     private const string COPING_PROMPT = @"Given this worrying thought: ""{0}""
 
-Generate 4 evidence-based coping strategies or cognitive reframes that can help someone challenge this thought. 
-These should be:
-1. Realistic and actionable
-2. Based on CBT or mindfulness techniques
-3. Encouraging but not dismissive
+Create 4 distinct player choices in this exact order:
+1) Avoidance/escape that sounds doable but ends in a blocked path.
+2) Self-criticism that invites trouble and offers no route upward.
+3) Over-control that is technically possible but long, tiring, and roundabout.
+4) Healthy, balanced cognitive reframe with the simplest, kindest way forward.
 
-Format your response as 4 bullet points, each starting with '- ' and under 10 words each.";
+Write one short sentence for each (<=10 words). Format exactly as 4 bullet lines, no labels:
+- ...
+- ...
+- ...
+- ...
+
+Example for the thought ""Everyone else is handling things better than me."":
+- Just don't think about it.
+- I'm falling behind. I'll never catch up.
+- I must work harder to catch up.
+- Everyone struggles sometimes. I'm doing my best, and that's enough.";
 
     private const string DIALOGUE_PROMPT = @"Create a short, supportive dialogue (2-3 lines) that introduces this worrying thought to a player in an anxiety awareness game:
 
