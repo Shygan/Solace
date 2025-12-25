@@ -15,7 +15,12 @@ public class Apple : MonoBehaviour, IItem
     [Header("Dialogue Settings (Optional)")]
     public GameObject dialogueObject;       // assign in Inspector if needed
     public float dialogueDelay = 3f;        // delay before dialogue starts
-    public string requiredLevelName = "Level 2"; // only triggers in this level
+
+    [Tooltip("Optional: assign the level root this apple belongs to. Dialogue only triggers when this level is active.")]
+    public GameObject levelRoot;
+
+    [Tooltip("Fallback name check if levelRoot is not set.")]
+    public string requiredLevelName = "";
 
     private void Awake()
     {
@@ -58,7 +63,23 @@ public class Apple : MonoBehaviour, IItem
     
     private bool IsCorrectLevelActive()
     {
-        GameObject currentLevel = GameObject.Find(requiredLevelName);
-        return currentLevel != null && currentLevel.activeSelf;
+        // Preferred: explicit level root reference
+        if (levelRoot != null)
+            return levelRoot.activeInHierarchy;
+
+        // Fallback: name-based lookup if provided
+        if (!string.IsNullOrWhiteSpace(requiredLevelName))
+        {
+            GameObject currentLevel = GameObject.Find(requiredLevelName);
+            if (currentLevel != null)
+                return currentLevel.activeInHierarchy;
+
+            // If not found, fail open so dialogue can still trigger instead of blocking progression
+            Debug.LogWarning($"[Apple] Level named '{requiredLevelName}' not found; allowing dialogue to trigger.");
+            return true;
+        }
+
+        // If nothing is specified, allow dialogue
+        return true;
     }
 }

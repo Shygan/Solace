@@ -42,6 +42,7 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue()
     {
+        StopAllCoroutines();
         playerMovement.isMovementLocked = true;
         index = 0;
         textComponent.text = string.Empty;
@@ -53,7 +54,11 @@ public class Dialogue : MonoBehaviour
     /// </summary>
     public void SetDialogueLines(string[] newLines)
     {
+        StopAllCoroutines();
         lines = newLines;
+        index = 0;
+        if (textComponent != null)
+            textComponent.text = string.Empty;
         Debug.Log($"[Dialogue] Dialogue lines updated to {newLines.Length} line(s)");
     }
 
