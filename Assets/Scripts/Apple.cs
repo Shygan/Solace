@@ -16,6 +16,9 @@ public class Apple : MonoBehaviour, IItem
     public GameObject dialogueObject;       // assign in Inspector if needed
     public float dialogueDelay = 3f;        // delay before dialogue starts
 
+    [Tooltip("Which option does this apple belong to? (0=Option1, 1=Option2, 2=Option3, 3=Option4). Used for AI-generated explanations.")]
+    public int optionIndex = 0;
+
     [Tooltip("Optional: assign the level root this apple belongs to. Dialogue only triggers when this level is active.")]
     public GameObject levelRoot;
 
@@ -54,6 +57,8 @@ public class Apple : MonoBehaviour, IItem
         var dialogue = dialogueObject.GetComponent<Dialogue>();
         if (dialogue != null)
         {
+            // Set the option index so dialogue knows which explanation to show
+            dialogue.SetOptionIndex(optionIndex);
             //dialogue.StartDialogue(); //alr starts in Dialogue script
         }
 

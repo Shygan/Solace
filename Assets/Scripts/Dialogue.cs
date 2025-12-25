@@ -17,9 +17,42 @@ public class Dialogue : MonoBehaviour
     public Transform levelsParent;          // Drag the parent GameObject "Levels"
     public GameObject player;               // Reference to player for repositioning
 
+    [Header("AI Thought Integration (Optional)")]
+    [Tooltip("If true, will try to use AI-generated thought explanation when available")]
+    public bool useAIThoughtExplanation = false;
+
+    private int optionIndex = 0; // Which option (0-3) this dialogue represents
+
+    /// <summary>
+    /// Set which option this dialogue represents (0-3)
+    /// </summary>
+    public void SetOptionIndex(int index)
+    {
+        optionIndex = index;
+    }
 
     void Start()
     {
+        // Check if we should use AI-generated thought content
+        if (useAIThoughtExplanation && ThoughtManager.instance != null)
+        {
+            var thought = ThoughtManager.instance.GetCurrentThought();
+            if (thought != null && thought.optionExplanations != null && thought.optionExplanations.Length > optionIndex)
+            {
+                // Use the specific explanation for this option
+                string specificExplanation = thought.optionExplanations[optionIndex];
+                SetDialogueLines(new[] { specificExplanation });
+                Debug.Log($"[Dialogue] Using AI-generated explanation for Option {optionIndex + 1}: {specificExplanation}");
+            }
+            else if (thought != null && !string.IsNullOrEmpty(thought.worriedThought))
+            {
+                // Fallback: just show the worried thought
+                string thoughtExplanation = $"This is an example of: {thought.worriedThought}";
+                SetDialogueLines(new[] { thoughtExplanation });
+                Debug.Log($"[Dialogue] Using AI-generated thought (no explanations available)");
+            }
+        }
+        
         StartDialogue();
         //textComponent.text = string.Empty;
     }

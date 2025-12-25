@@ -59,6 +59,30 @@ The dialogue should:
 
 Keep it under 50 words total. Format as a single paragraph.";
 
+    private const string EXPLANATION_PROMPT = @"Given this worrying thought and 4 coping options:
+
+Thought: ""{0}""
+
+Options:
+1. {1}
+2. {2}
+3. {3}
+4. {4}
+
+Write a brief explanation for EACH option that:
+- Describes why this approach is helpful or unhelpful
+- Explains the outcome (e.g., 'blocks progress', 'creates more anxiety', 'takes longer path', 'healthy and direct')
+- For options 1-3 (the unhelpful ones), END with a gentle suggestion
+- For option 4, affirm it's a healthy choice
+- Keep each explanation to 2-3 sentences (under 30 words each)
+- Keep your tone encouraging and upbeat!
+
+Format exactly as 4 bullet lines, no labels:
+- ...
+- ...
+- ...
+- ...";
+
     /// <summary>
     /// Generates a worrying thought, coping strategies, and dialogue
     /// </summary>
@@ -110,15 +134,34 @@ Keep it under 50 words total. Format as a single paragraph.";
         // Parse strategies (split by '- ')
         string[] strategies = ParseStrategies(strategiesRaw);
 
+        // Step 4: Generate explanations for each option
+        string explanationsRaw = null;
+        string explanationsPrompt = string.Format(EXPLANATION_PROMPT, thought, 
+            strategies.Length > 0 ? strategies[0] : "",
+            strategies.Length > 1 ? strategies[1] : "",
+            strategies.Length > 2 ? strategies[2] : "",
+            strategies.Length > 3 ? strategies[3] : "");
+        yield return StartCoroutine(CallOpenAI(explanationsPrompt, (result) => explanationsRaw = result, onError));
+
+        if (explanationsRaw == null)
+        {
+            onError?.Invoke("Failed to generate option explanations");
+            yield break;
+        }
+
+        // Parse explanations
+        string[] explanations = ParseStrategies(explanationsRaw);
+
         // Create final data object
         AnxietyThoughtData data = new AnxietyThoughtData
         {
             worriedThought = thought,
             introDialogue = dialogue,
-            copingStrategies = strategies
+            copingStrategies = strategies,
+            optionExplanations = explanations
         };
 
-        Debug.Log($"[AI] Generated complete thought data with {strategies.Length} strategies");
+        Debug.Log($"[AI] Generated complete thought data with {strategies.Length} strategies and {explanations.Length} explanations");
         onComplete?.Invoke(data);
     }
 
@@ -322,4 +365,5 @@ public class AnxietyThoughtData
     public string worriedThought;
     public string introDialogue;
     public string[] copingStrategies;
+    public string[] optionExplanations; // Explains why each option is good/bad
 }
