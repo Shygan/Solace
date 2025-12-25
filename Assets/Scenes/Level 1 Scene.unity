@@ -2746,12 +2746,16 @@ PrefabInstance:
       value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+      propertyPath: optionIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 1573328404}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 3
+      value: Level 4 Option 3
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10223,7 +10227,7 @@ PrefabInstance:
       objectReference: {fileID: 1251635143}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 1
+      value: Level 5 Option 1
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15995,7 +15999,7 @@ GameObject:
   - component: {fileID: 427587789}
   - component: {fileID: 427587788}
   m_Layer: 5
-  m_Name: Option2Dialogue
+  m_Name: Lvl5Option2Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16049,9 +16053,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &427587789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17150,12 +17155,16 @@ PrefabInstance:
       value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+      propertyPath: optionIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 2092078081}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 4
+      value: Level 5 Option 4
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17339,7 +17348,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9093685, y: -1.0056499, z: -10}
+  m_LocalPosition: {x: -3.9400392, y: -1.0056599, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19407,7 +19416,7 @@ GameObject:
   - component: {fileID: 606300569}
   - component: {fileID: 606300568}
   m_Layer: 5
-  m_Name: Option2Dialogue
+  m_Name: Lvl3Option2Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19461,9 +19470,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &606300569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23566,12 +23576,16 @@ PrefabInstance:
       value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+      propertyPath: optionIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 1193340979}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 3
+      value: Level 5 Option 3
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34787,7 +34801,7 @@ GameObject:
   - component: {fileID: 770001111}
   - component: {fileID: 770001110}
   m_Layer: 5
-  m_Name: Option4Dialogue
+  m_Name: Lvl4Option4Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34841,9 +34855,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &770001111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38323,7 +38338,7 @@ GameObject:
   - component: {fileID: 818595888}
   - component: {fileID: 818595887}
   m_Layer: 5
-  m_Name: Option3Dialogue
+  m_Name: Lvl2Option3Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38376,6 +38391,7 @@ MonoBehaviour:
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 0
 --- !u!114 &818595888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49608,7 +49624,7 @@ GameObject:
   - component: {fileID: 944701545}
   - component: {fileID: 944701544}
   m_Layer: 5
-  m_Name: Option2Dialogue
+  m_Name: Lvl2Option2Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49665,6 +49681,7 @@ MonoBehaviour:
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 0
 --- !u!114 &944701545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52451,12 +52468,16 @@ PrefabInstance:
       value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+      propertyPath: optionIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 1247845674}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 3
+      value: Level 3 Option 3
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52870,12 +52891,16 @@ PrefabInstance:
       value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+      propertyPath: optionIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 770001108}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 4
+      value: Level 4 Option 4
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -64566,7 +64591,7 @@ GameObject:
   - component: {fileID: 1143507124}
   - component: {fileID: 1143507123}
   m_Layer: 5
-  m_Name: Option1Dialogue
+  m_Name: Lvl3Option1Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64617,9 +64642,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &1143507124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65300,7 +65326,7 @@ GameObject:
   - component: {fileID: 1193340982}
   - component: {fileID: 1193340981}
   m_Layer: 5
-  m_Name: Option3Dialogue
+  m_Name: Lvl5Option3Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65350,9 +65376,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &1193340982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69971,7 +69998,7 @@ GameObject:
   - component: {fileID: 1247845677}
   - component: {fileID: 1247845676}
   m_Layer: 5
-  m_Name: Option3Dialogue
+  m_Name: Lvl3Option3Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70021,9 +70048,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &1247845677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70337,7 +70365,7 @@ GameObject:
   - component: {fileID: 1251635146}
   - component: {fileID: 1251635145}
   m_Layer: 5
-  m_Name: Option1Dialogue
+  m_Name: Lvl5Option1Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70388,9 +70416,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &1251635146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74111,7 +74140,7 @@ PrefabInstance:
       objectReference: {fileID: 2092572569}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 1
+      value: Level 4 Option 1
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -79421,7 +79450,7 @@ GameObject:
   - component: {fileID: 1573328407}
   - component: {fileID: 1573328406}
   m_Layer: 5
-  m_Name: Option3Dialogue
+  m_Name: Lvl4Option3Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79471,9 +79500,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &1573328407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79613,6 +79643,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  useAIThoughtExplanation: 0
 --- !u!1 &1585055806
 GameObject:
   m_ObjectHideFlags: 0
@@ -80212,6 +80243,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  useAIThoughtExplanation: 0
 --- !u!114 &1607803692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82106,12 +82138,16 @@ PrefabInstance:
       value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+      propertyPath: optionIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 606300566}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 2
+      value: Level 3 Option 2
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -85494,12 +85530,16 @@ PrefabInstance:
       value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+      propertyPath: optionIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 2024992752}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 4
+      value: Level 3 Option 4
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -86138,6 +86178,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  useAIThoughtExplanation: 0
 --- !u!114 &1742331066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86319,6 +86360,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  useAIThoughtExplanation: 0
 --- !u!114 &1744306419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92119,6 +92161,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  useAIThoughtExplanation: 0
 --- !u!114 &1834021834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92447,12 +92490,16 @@ PrefabInstance:
       value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+      propertyPath: optionIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 2072313533}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 2
+      value: Level 4 Option 2
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -105095,7 +105142,7 @@ GameObject:
   - component: {fileID: 2024992755}
   - component: {fileID: 2024992754}
   m_Layer: 5
-  m_Name: Option4Dialogue
+  m_Name: Lvl3Option4Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105149,9 +105196,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &2024992755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105334,6 +105382,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  useAIThoughtExplanation: 0
 --- !u!114 &2028062849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105930,7 +105979,7 @@ GameObject:
   - component: {fileID: 2063936727}
   - component: {fileID: 2063936726}
   m_Layer: 5
-  m_Name: Option4Dialogue
+  m_Name: Lvl2Option4Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105987,6 +106036,7 @@ MonoBehaviour:
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 0
 --- !u!114 &2063936727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106043,7 +106093,7 @@ GameObject:
   - component: {fileID: 2072313536}
   - component: {fileID: 2072313535}
   m_Layer: 5
-  m_Name: Option2Dialogue
+  m_Name: Lvl4Option2Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106097,9 +106147,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &2072313536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106156,7 +106207,7 @@ GameObject:
   - component: {fileID: 2079438670}
   - component: {fileID: 2079438669}
   m_Layer: 5
-  m_Name: Option1Dialogue
+  m_Name: Lvl2Option1Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106210,6 +106261,7 @@ MonoBehaviour:
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 0
 --- !u!114 &2079438670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106261,7 +106313,7 @@ GameObject:
   - component: {fileID: 2092078084}
   - component: {fileID: 2092078083}
   m_Layer: 5
-  m_Name: Option4Dialogue
+  m_Name: Lvl5Option4Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106315,9 +106367,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &2092078084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106369,7 +106422,7 @@ GameObject:
   - component: {fileID: 2092572572}
   - component: {fileID: 2092572571}
   m_Layer: 5
-  m_Name: Option1Dialogue
+  m_Name: Lvl4Option1Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106420,9 +106473,10 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
-  levelToReturnTo: Level 2
+  levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  useAIThoughtExplanation: 1
 --- !u!114 &2092572572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106857,7 +106911,7 @@ PrefabInstance:
       objectReference: {fileID: 1143507121}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 1
+      value: Level 3 Option 1
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -107547,12 +107601,16 @@ PrefabInstance:
       value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+      propertyPath: optionIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 427587786}
     - target: {fileID: 3444442609747036898, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: requiredLevelName
-      value: Level 2 Option 2
+      value: Level 5 Option 2
       objectReference: {fileID: 0}
     - target: {fileID: 6954771895531233615, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
       propertyPath: m_LocalPosition.x
