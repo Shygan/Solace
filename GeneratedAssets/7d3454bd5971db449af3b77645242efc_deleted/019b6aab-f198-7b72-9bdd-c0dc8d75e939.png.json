@@ -1,0 +1,20 @@
+{
+    "asset": "7d3454bd5971db449af3b77645242efc",
+    "fileName": "019b6aab-f198-7b72-9bdd-c0dc8d75e939.png",
+    "prompt": "2D Pixel Lavender Potted Plant with transparent background",
+    "negativePrompt": "",
+    "model": "409229d8-9653-42a8-b069-824d11ef6762",
+    "modelName": "8-bit Pixel",
+    "customSeed": -1,
+    "w3CTraceId": "0e774347f2026672ccef3771c6d2fd89",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

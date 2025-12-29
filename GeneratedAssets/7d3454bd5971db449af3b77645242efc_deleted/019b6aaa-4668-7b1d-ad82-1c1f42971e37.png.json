@@ -1,0 +1,20 @@
+{
+    "asset": "7d3454bd5971db449af3b77645242efc",
+    "fileName": "019b6aaa-4668-7b1d-ad82-1c1f42971e37.png",
+    "prompt": "2D Pixel Lavender Potted Plant",
+    "negativePrompt": "",
+    "model": "409229d8-9653-42a8-b069-824d11ef6762",
+    "modelName": "8-bit Pixel",
+    "customSeed": -1,
+    "w3CTraceId": "c16aa4ac990b5f397cd54ec0c8da88de",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}
