@@ -1,0 +1,416 @@
+fileFormatVersion: 2
+guid: ee85f2c2e9a04064eb2d9598d5f21da2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 185197468328144517
+    second: Lavender_Plant-removebg-preview_0
+  - first:
+      213: 1015236509029695958
+    second: Lavender_Plant-removebg-preview_1
+  - first:
+      213: -8686917225465154947
+    second: Lavender_Plant-removebg-preview_2
+  - first:
+      213: -7353869885658168570
+    second: Lavender_Plant-removebg-preview_3
+  - first:
+      213: 8531415909298791836
+    second: Lavender_Plant-removebg-preview_4
+  - first:
+      213: -8915249654051517461
+    second: Lavender_Plant-removebg-preview_5
+  - first:
+      213: 6238362614631079181
+    second: Lavender_Plant-removebg-preview_6
+  - first:
+      213: 7950074307258201254
+    second: Lavender_Plant-removebg-preview_7
+  - first:
+      213: -3245018569410960959
+    second: Lavender_Plant-removebg-preview_8
+  - first:
+      213: 6370922336146820709
+    second: Lavender_Plant-removebg-preview_9
+  - first:
+      213: 8981076211088741950
+    second: Lavender_Plant-removebg-preview_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Lavender_Plant-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 237
+        width: 63
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58e2001cd14f19200800000000000000
+      internalID: 185197468328144517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lavender_Plant-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 237
+        width: 63
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d109bbd938d61e00800000000000000
+      internalID: 1015236509029695958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lavender_Plant-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 237
+        width: 63
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d727de60fced17780800000000000000
+      internalID: -8686917225465154947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lavender_Plant-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 237
+        width: 92
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60307ec2d4ec1f990800000000000000
+      internalID: -7353869885658168570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lavender_Plant-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 102
+        width: 91
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c95eed0719da56670800000000000000
+      internalID: 8531415909298791836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lavender_Plant-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 102
+        width: 91
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bebc556bcaba64480800000000000000
+      internalID: -8915249654051517461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lavender_Plant-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 102
+        width: 91
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0d9929eebd139650800000000000000
+      internalID: 6238362614631079181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lavender_Plant-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 102
+        width: 91
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a4b51e0676545e60800000000000000
+      internalID: 7950074307258201254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lavender_Plant-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 18
+        width: 63
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c1a6b0ddc067f2d0800000000000000
+      internalID: -3245018569410960959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lavender_Plant-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 15
+        width: 97
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56e02a13c101a6850800000000000000
+      internalID: 6370922336146820709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lavender_Plant-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 21
+        width: 75
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e36d7aeea3133ac70800000000000000
+      internalID: 8981076211088741950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Lavender_Plant-removebg-preview_0: 185197468328144517
+      Lavender_Plant-removebg-preview_1: 1015236509029695958
+      Lavender_Plant-removebg-preview_10: 8981076211088741950
+      Lavender_Plant-removebg-preview_2: -8686917225465154947
+      Lavender_Plant-removebg-preview_3: -7353869885658168570
+      Lavender_Plant-removebg-preview_4: 8531415909298791836
+      Lavender_Plant-removebg-preview_5: -8915249654051517461
+      Lavender_Plant-removebg-preview_6: 6238362614631079181
+      Lavender_Plant-removebg-preview_7: 7950074307258201254
+      Lavender_Plant-removebg-preview_8: -3245018569410960959
+      Lavender_Plant-removebg-preview_9: 6370922336146820709
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
