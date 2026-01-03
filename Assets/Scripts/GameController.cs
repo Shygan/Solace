@@ -2,10 +2,15 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameController : MonoBehaviour
 {
+    [Header("Section Completion")]
+    [SerializeField] private string lobbySceneName = "Lobby Scene";
+    [Tooltip("Enable to test section completion without playing all levels")]
+    [SerializeField] private bool debugCompleteSection = false;
     int progressAmount;
     public Slider progressSlider;
     public GameObject player;
@@ -106,7 +111,20 @@ public class GameController : MonoBehaviour
         
         if (levels == null || levels.Count == 0) return;
 
-        int nextLevelIndex = (currentLevelIndex == levels.Count - 1) ? 0 : currentLevelIndex + 1;
+        // Check if we just completed the final level (level 5 = index 4)
+        bool completedAllLevels = currentLevelIndex == levels.Count - 1;
+        
+        if (completedAllLevels || debugCompleteSection)
+        {
+            // Player completed all 5 levels - grant reward and return to lobby
+            Debug.Log("[GameController] Section 1 complete! Unlocking plant reward and returning to lobby.");
+            PlayerProgress.Instance.CompleteSection1();
+            LoadCanvas.SetActive(false);
+            SceneManager.LoadScene(lobbySceneName);
+            return;
+        }
+
+        int nextLevelIndex = currentLevelIndex + 1;
         LoadCanvas.SetActive(false);
 
         levels[currentLevelIndex].SetActive(false);
