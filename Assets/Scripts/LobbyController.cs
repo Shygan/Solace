@@ -113,15 +113,19 @@ public class LobbyController : MonoBehaviour
         }
 
         // Trigger unlock dialogue for this slot, if provided
+        // Only show if this is the first time unlocking (not already shown)
         if (plantUnlockDialogues != null && slotIndex < plantUnlockDialogues.Length)
         {
             var dlgObj = plantUnlockDialogues[slotIndex];
-            if (dlgObj != null)
+            if (dlgObj != null && !PlayerProgress.Instance.HasShownDialogue(slot.sectionName))
             {
                 dlgObj.SetActive(true);
                 var dialogueComp = dlgObj.GetComponent<Dialogue>();
                 if (dialogueComp != null)
                     dialogueComp.StartDialogue();
+                
+                // Mark this dialogue as shown so it won't appear again
+                PlayerProgress.Instance.MarkDialogueShown(slot.sectionName);
             }
         }
     }

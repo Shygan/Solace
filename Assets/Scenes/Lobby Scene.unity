@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5951a9405579124fb5ab56319d0fd1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerProgress
-  debugAllSectionsComplete: 1
+  debugAllSectionsComplete: 0
   resetProgressOnStart: 0
   section1Completed: 0
   section2Completed: 0

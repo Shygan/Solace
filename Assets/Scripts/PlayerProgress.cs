@@ -36,6 +36,15 @@ public class PlayerProgress : MonoBehaviour
     private const string SECTION1_KEY = "Section1_Completed";
     private const string SECTION2_KEY = "Section2_Completed";
     private const string SECTION3_KEY = "Section3_Completed";
+    
+    // Track if unlock dialogue has been shown
+    private const string SECTION1_DIALOGUE_KEY = "Section1_DialogueShown";
+    private const string SECTION2_DIALOGUE_KEY = "Section2_DialogueShown";
+    private const string SECTION3_DIALOGUE_KEY = "Section3_DialogueShown";
+    
+    [SerializeField] private bool section1DialogueShown = false;
+    [SerializeField] private bool section2DialogueShown = false;
+    [SerializeField] private bool section3DialogueShown = false;
 
     void Awake()
     {
@@ -62,6 +71,10 @@ public class PlayerProgress : MonoBehaviour
         section2Completed = PlayerPrefs.GetInt(SECTION2_KEY, 0) == 1;
         section3Completed = PlayerPrefs.GetInt(SECTION3_KEY, 0) == 1;
         
+        section1DialogueShown = PlayerPrefs.GetInt(SECTION1_DIALOGUE_KEY, 0) == 1;
+        section2DialogueShown = PlayerPrefs.GetInt(SECTION2_DIALOGUE_KEY, 0) == 1;
+        section3DialogueShown = PlayerPrefs.GetInt(SECTION3_DIALOGUE_KEY, 0) == 1;
+        
         Debug.Log($"[PlayerProgress] Loaded - Section1: {section1Completed}, Section2: {section2Completed}, Section3: {section3Completed}");
     }
 
@@ -70,6 +83,10 @@ public class PlayerProgress : MonoBehaviour
         PlayerPrefs.SetInt(SECTION1_KEY, section1Completed ? 1 : 0);
         PlayerPrefs.SetInt(SECTION2_KEY, section2Completed ? 1 : 0);
         PlayerPrefs.SetInt(SECTION3_KEY, section3Completed ? 1 : 0);
+        
+        PlayerPrefs.SetInt(SECTION1_DIALOGUE_KEY, section1DialogueShown ? 1 : 0);
+        PlayerPrefs.SetInt(SECTION2_DIALOGUE_KEY, section2DialogueShown ? 1 : 0);
+        PlayerPrefs.SetInt(SECTION3_DIALOGUE_KEY, section3DialogueShown ? 1 : 0);
         PlayerPrefs.Save();
         
         Debug.Log($"[PlayerProgress] Saved - Section1: {section1Completed}, Section2: {section2Completed}, Section3: {section3Completed}");
@@ -124,11 +141,49 @@ public class PlayerProgress : MonoBehaviour
         section1Completed = false;
         section2Completed = false;
         section3Completed = false;
+        section1DialogueShown = false;
+        section2DialogueShown = false;
+        section3DialogueShown = false;
         PlayerPrefs.DeleteKey(SECTION1_KEY);
         PlayerPrefs.DeleteKey(SECTION2_KEY);
         PlayerPrefs.DeleteKey(SECTION3_KEY);
+        PlayerPrefs.DeleteKey(SECTION1_DIALOGUE_KEY);
+        PlayerPrefs.DeleteKey(SECTION2_DIALOGUE_KEY);
+        PlayerPrefs.DeleteKey(SECTION3_DIALOGUE_KEY);
         PlayerPrefs.Save();
         Debug.Log("[PlayerProgress] Progress reset!");
+    }
+
+    public bool HasShownDialogue(string sectionName)
+    {
+        return sectionName switch
+        {
+            "Section 1" or "Section1" => section1DialogueShown,
+            "Section 2" or "Section2" => section2DialogueShown,
+            "Section 3" or "Section3" => section3DialogueShown,
+            _ => false
+        };
+    }
+
+    public void MarkDialogueShown(string sectionName)
+    {
+        switch (sectionName)
+        {
+            case "Section 1":
+            case "Section1":
+                section1DialogueShown = true;
+                break;
+            case "Section 2":
+            case "Section2":
+                section2DialogueShown = true;
+                break;
+            case "Section 3":
+            case "Section3":
+                section3DialogueShown = true;
+                break;
+        }
+        SaveProgress();
+        Debug.Log($"[PlayerProgress] Dialogue shown for {sectionName}");
     }
 
     // Debug helpers - call from inspector or console
