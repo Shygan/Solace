@@ -23,19 +23,19 @@ public class PlayerProgress : MonoBehaviour
     }
 
     [Header("Debug Settings")]
-    [Tooltip("Override: pretend section 1 is completed for testing")]
-    public bool debugSection1Complete = false;
-    [Tooltip("Override: pretend plant is already unlocked for testing")]
-    public bool debugPlantUnlocked = false;
+    [Tooltip("Override: pretend all sections are completed for testing")]
+    public bool debugAllSectionsComplete = false;
     [Tooltip("Clear all saved progress on next game start")]
     public bool resetProgressOnStart = false;
 
     [Header("Progress State (Read-Only)")]
     [SerializeField] private bool section1Completed = false;
-    [SerializeField] private bool plantUnlocked = false;
+    [SerializeField] private bool section2Completed = false;
+    [SerializeField] private bool section3Completed = false;
 
     private const string SECTION1_KEY = "Section1_Completed";
-    private const string PLANT_KEY = "Plant_Unlocked";
+    private const string SECTION2_KEY = "Section2_Completed";
+    private const string SECTION3_KEY = "Section3_Completed";
 
     void Awake()
     {
@@ -59,53 +59,85 @@ public class PlayerProgress : MonoBehaviour
     public void LoadProgress()
     {
         section1Completed = PlayerPrefs.GetInt(SECTION1_KEY, 0) == 1;
-        plantUnlocked = PlayerPrefs.GetInt(PLANT_KEY, 0) == 1;
+        section2Completed = PlayerPrefs.GetInt(SECTION2_KEY, 0) == 1;
+        section3Completed = PlayerPrefs.GetInt(SECTION3_KEY, 0) == 1;
         
-        Debug.Log($"[PlayerProgress] Loaded - Section1: {section1Completed}, Plant: {plantUnlocked}");
+        Debug.Log($"[PlayerProgress] Loaded - Section1: {section1Completed}, Section2: {section2Completed}, Section3: {section3Completed}");
     }
 
     public void SaveProgress()
     {
         PlayerPrefs.SetInt(SECTION1_KEY, section1Completed ? 1 : 0);
-        PlayerPrefs.SetInt(PLANT_KEY, plantUnlocked ? 1 : 0);
+        PlayerPrefs.SetInt(SECTION2_KEY, section2Completed ? 1 : 0);
+        PlayerPrefs.SetInt(SECTION3_KEY, section3Completed ? 1 : 0);
         PlayerPrefs.Save();
         
-        Debug.Log($"[PlayerProgress] Saved - Section1: {section1Completed}, Plant: {plantUnlocked}");
+        Debug.Log($"[PlayerProgress] Saved - Section1: {section1Completed}, Section2: {section2Completed}, Section3: {section3Completed}");
     }
 
-    public bool IsSection1Complete()
+    public bool IsSectionComplete(string sectionName)
     {
-        return debugSection1Complete || section1Completed;
+        if (debugAllSectionsComplete)
+            return true;
+
+        return sectionName switch
+        {
+            "Section 1" or "Section1" => section1Completed,
+            "Section 2" or "Section2" => section2Completed,
+            "Section 3" or "Section3" => section3Completed,
+            _ => false
+        };
     }
 
-    public bool IsPlantUnlocked()
+    // Legacy method for backward compatibility
+    public bool IsPlantUnlocked() => section1Completed;
+
+    public void CompleteSection(string sectionName)
     {
-        return debugPlantUnlocked || plantUnlocked;
+        switch (sectionName)
+        {
+            case "Section 1":
+            case "Section1":
+                section1Completed = true;
+                break;
+            case "Section 2":
+            case "Section2":
+                section2Completed = true;
+                break;
+            case "Section 3":
+            case "Section3":
+                section3Completed = true;
+                break;
+        }
+        SaveProgress();
+        Debug.Log($"[PlayerProgress] {sectionName} completed!");
     }
 
+    // Legacy method for backward compatibility
     public void CompleteSection1()
     {
-        section1Completed = true;
-        plantUnlocked = true;
-        SaveProgress();
-        Debug.Log("[PlayerProgress] Section 1 completed! Plant unlocked.");
+        CompleteSection("Section 1");
     }
 
     public void ResetProgress()
     {
         section1Completed = false;
-        plantUnlocked = false;
+        section2Completed = false;
+        section3Completed = false;
         PlayerPrefs.DeleteKey(SECTION1_KEY);
-        PlayerPrefs.DeleteKey(PLANT_KEY);
+        PlayerPrefs.DeleteKey(SECTION2_KEY);
+        PlayerPrefs.DeleteKey(SECTION3_KEY);
         PlayerPrefs.Save();
         Debug.Log("[PlayerProgress] Progress reset!");
     }
 
-    // Debug helper - call from inspector or console
-    [ContextMenu("Complete Section 1 (Debug)")]
-    public void DebugCompleteSection1()
+    // Debug helpers - call from inspector or console
+    [ContextMenu("Complete All Sections (Debug)")]
+    public void DebugCompleteAllSections()
     {
-        CompleteSection1();
+        CompleteSection("Section 1");
+        CompleteSection("Section 2");
+        CompleteSection("Section 3");
     }
 
     [ContextMenu("Reset All Progress (Debug)")]
