@@ -21,6 +21,9 @@ public class LobbyController : MonoBehaviour
     [Header("Plant Setup")]
     [SerializeField] private PlantSlot[] plantSlots = new PlantSlot[3];
     
+    [Header("Unlock Dialogues (match slots)")]
+    [SerializeField] private GameObject[] plantUnlockDialogues;
+    
     [Header("Scene Names")]
     [SerializeField] private string cognitiveReframeSceneName = "Level 1 Scene";
 
@@ -95,6 +98,19 @@ public class LobbyController : MonoBehaviour
         if (interactable != null)
         {
             interactable.lobbyController = this;
+        }
+
+        // Trigger unlock dialogue for this slot, if provided
+        if (plantUnlockDialogues != null && slotIndex < plantUnlockDialogues.Length)
+        {
+            var dlgObj = plantUnlockDialogues[slotIndex];
+            if (dlgObj != null)
+            {
+                dlgObj.SetActive(true);
+                var dialogueComp = dlgObj.GetComponent<Dialogue>();
+                if (dialogueComp != null)
+                    dialogueComp.StartDialogue();
+            }
         }
     }
 
