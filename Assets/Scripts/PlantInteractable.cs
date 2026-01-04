@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 /// <summary>
 /// Handles player interaction with the plant reward.
@@ -24,6 +25,7 @@ public class PlantInteractable : MonoBehaviour
     
     private Transform player;
     private bool playerInRange = false;
+    private TextMeshPro labelText;
 
     void Start()
     {
@@ -34,6 +36,11 @@ public class PlantInteractable : MonoBehaviour
 
         if (interactPrompt != null)
             interactPrompt.SetActive(false);
+
+        // Find label text on this plant prefab (not the placeholder)
+        labelText = GetComponentInChildren<TextMeshPro>();
+        if (labelText != null)
+            labelText.enabled = false;
     }
 
     void Update()
@@ -47,6 +54,10 @@ public class PlantInteractable : MonoBehaviour
         // Show/hide prompt
         if (interactPrompt != null)
             interactPrompt.SetActive(playerInRange);
+
+        // Show/hide label text
+        if (labelText != null)
+            labelText.enabled = playerInRange;
 
         // Handle interaction
         if (playerInRange && Input.GetKeyDown(interactKey))
