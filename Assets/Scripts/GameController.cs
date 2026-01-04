@@ -40,7 +40,9 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        currentLevelIndex = debugStartLevelIndex;
+        // Practice session can override the starting level
+        currentLevelIndex = PracticeSession.isActive ? PracticeSession.startLevelIndex : debugStartLevelIndex;
+        currentLevelIndex = Mathf.Clamp(currentLevelIndex, 0, levels.Count - 1);
         
         progressAmount = 0;
         progressSlider.value = 0;
@@ -110,6 +112,29 @@ public class GameController : MonoBehaviour
         }
         
         if (levels == null || levels.Count == 0) return;
+
+        // Practice flow: rerun the same level for a fixed count, then return to lobby
+        if (PracticeSession.isActive)
+        {
+            PracticeSession.OnRunCompleted();
+
+            if (PracticeSession.HasMoreRuns())
+            {
+                Debug.Log($"[GameController] Practice run remaining: {PracticeSession.runsRemaining}. Reloading level {currentLevelIndex + 1}.");
+                LoadCanvas.SetActive(false);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                return;
+            }
+            else
+            {
+                Debug.Log("[GameController] Practice complete. Returning to lobby.");
+                LoadCanvas.SetActive(false);
+                string returnScene = PracticeSession.returnScene;
+                PracticeSession.EndPractice();
+                SceneManager.LoadScene(returnScene);
+                return;
+            }
+        }
 
         // Check if we just completed the final level (level 5 = index 4)
         bool completedAllLevels = currentLevelIndex == levels.Count - 1;

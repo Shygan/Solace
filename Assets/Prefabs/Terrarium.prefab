@@ -288,5 +288,8 @@ MonoBehaviour:
   interactPrompt: {fileID: 0}
   quizSceneName: 
   loadQuizScene: 1
+  practiceStartLevelIndex: 2
+  practiceRuns: 1
+  practiceReturnScene: Lobby Scene
   debugShowInteractionRange: 1
   lobbyController: {fileID: 0}

@@ -16055,6 +16055,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -16973,7 +16974,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.324623, y: -1.00673, z: -10}
+  m_LocalPosition: {x: -4.304448, y: -1.00577, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19095,6 +19096,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -34418,6 +34420,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -37951,6 +37954,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -49105,6 +49109,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -63943,6 +63948,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -64677,6 +64683,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -69349,6 +69356,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -69717,6 +69725,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -78801,6 +78810,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -78941,6 +78951,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 1017090552}
+  autoStart: 1
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -79541,6 +79552,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -85476,6 +85488,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -85589,6 +85602,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -91315,6 +91329,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -104353,6 +104368,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -104536,6 +104552,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -105190,6 +105207,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -105304,6 +105322,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -105415,6 +105434,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -105524,6 +105544,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -105630,6 +105651,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
+  autoStart: 1
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}

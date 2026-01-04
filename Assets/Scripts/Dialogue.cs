@@ -12,6 +12,10 @@ public class Dialogue : MonoBehaviour
     public PlayerMovement playerMovement; // Assign in Inspector
     public GameObject platformToReveal;
 
+    [Header("Behaviour")]
+    [Tooltip("If true, dialogue auto starts on enable. Disable for world objects you want to trigger manually.")]
+    [SerializeField] private bool autoStart = true;
+
     [Header("Level Return (Optional)")]
     public string levelToReturnTo;          // Must match level name exactly (e.g., "Level 2")
     public Transform levelsParent;          // Drag the parent GameObject "Levels"
@@ -52,9 +56,9 @@ public class Dialogue : MonoBehaviour
                 Debug.Log($"[Dialogue] Using AI-generated thought (no explanations available)");
             }
         }
-        
-        StartDialogue();
-        //textComponent.text = string.Empty;
+
+        if (autoStart)
+            StartDialogue();
     }
 
     void Update()

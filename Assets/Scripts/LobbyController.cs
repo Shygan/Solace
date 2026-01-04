@@ -38,7 +38,19 @@ public class LobbyController : MonoBehaviour
     void Start()
     {
         spawnedPlants = new GameObject[plantSlots.Length];
+        DeactivateAllUnlockDialogues();
         CheckAndSpawnRewards();
+    }
+
+    // Ensure no unlock dialogues are visible until a plant actually unlocks
+    void DeactivateAllUnlockDialogues()
+    {
+        if (plantUnlockDialogues == null) return;
+        for (int i = 0; i < plantUnlockDialogues.Length; i++)
+        {
+            if (plantUnlockDialogues[i] != null)
+                plantUnlockDialogues[i].SetActive(false);
+        }
     }
 
     void CheckAndSpawnRewards()

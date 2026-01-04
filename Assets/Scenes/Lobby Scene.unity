@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5951a9405579124fb5ab56319d0fd1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerProgress
-  debugAllSectionsComplete: 0
+  debugAllSectionsComplete: 1
   resetProgressOnStart: 0
   section1Completed: 0
   section2Completed: 0
@@ -2139,6 +2139,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 512736419}
   platformToReveal: {fileID: 0}
+  autoStart: 0
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -2246,6 +2247,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 512736419}
   platformToReveal: {fileID: 0}
+  autoStart: 0
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -9651,6 +9653,7 @@ MonoBehaviour:
   textSpeed: 0.05
   playerMovement: {fileID: 512736419}
   platformToReveal: {fileID: 0}
+  autoStart: 0
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}

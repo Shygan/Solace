@@ -17,6 +17,10 @@ public class PlantInteractable : MonoBehaviour
     [SerializeField] private string quizSceneName = "Level 1 Scene"; // Or dedicated quiz scene
     [Tooltip("If true, load quiz scene. If false, trigger in-lobby quiz UI")]
     [SerializeField] private bool loadQuizScene = true;
+    [Header("Practice Settings")]
+    [SerializeField] private int practiceStartLevelIndex = 2; // Level 3 (0-indexed)
+    [SerializeField] private int practiceRuns = 2;
+    [SerializeField] private string practiceReturnScene = "Lobby Scene";
 
     [Header("Debug")]
     [SerializeField] private bool debugShowInteractionRange = true;
@@ -72,6 +76,8 @@ public class PlantInteractable : MonoBehaviour
 
         if (loadQuizScene)
         {
+            // Configure a practice session before loading the scene
+            PracticeSession.StartPractice(practiceStartLevelIndex, practiceRuns, practiceReturnScene);
             // Load the AI quiz scene/level
             SceneManager.LoadScene(quizSceneName);
         }
