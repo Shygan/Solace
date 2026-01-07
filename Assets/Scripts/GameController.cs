@@ -41,7 +41,20 @@ public class GameController : MonoBehaviour
     void Start()
     {
         // Practice session can override the starting level
-        currentLevelIndex = PracticeSession.isActive ? PracticeSession.startLevelIndex : debugStartLevelIndex;
+        // Also check for door entrance override
+        if (PracticeSession.isActive)
+        {
+            currentLevelIndex = PracticeSession.startLevelIndex;
+        }
+        else if (PlayerPrefs.HasKey("StartLevelIndex"))
+        {
+            currentLevelIndex = PlayerPrefs.GetInt("StartLevelIndex", 0);
+            PlayerPrefs.DeleteKey("StartLevelIndex"); // Clear after use
+        }
+        else
+        {
+            currentLevelIndex = debugStartLevelIndex;
+        }
         currentLevelIndex = Mathf.Clamp(currentLevelIndex, 0, levels.Count - 1);
         
         progressAmount = 0;

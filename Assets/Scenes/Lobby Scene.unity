@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 6937755}
   - component: {fileID: 6937754}
   - component: {fileID: 6937756}
+  - component: {fileID: 6937757}
   m_Layer: 0
   m_Name: Door of Reframing
   m_TagString: Untagged
@@ -224,6 +225,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaceholderInteractable
   interactionRange: 1.5
+  debugShowInteractionRange: 1
+--- !u!114 &6937757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5b1009dc662c94ebc7dbeb51f87488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorInteractable
+  interactKey: 101
+  interactionRange: 1.5
+  interactPrompt: {fileID: 0}
+  targetSceneName: Level 1 Scene
+  startLevelIndex: 0
   debugShowInteractionRange: 1
 --- !u!1 &102782829
 GameObject:
