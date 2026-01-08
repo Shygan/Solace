@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 public class PetChatController : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField] private TextMeshProUGUI messagePrefab;
+    [SerializeField] private GameObject messagePrefab; // Changed to GameObject for container
     [SerializeField] private Transform chatContent;
     [SerializeField] private TMP_InputField chatInput;
     [SerializeField] private Button sendButton;
@@ -198,36 +198,63 @@ public class PetChatController : MonoBehaviour
             return;
         }
 
-        // Instantiate message as GameObject
-        GameObject msgObj = Instantiate(messagePrefab.gameObject, chatContent);
-        var msgText = msgObj.GetComponent<TextMeshProUGUI>();
-
+        // Instantiate message container
+        GameObject msgContainer = Instantiate(messagePrefab, chatContent);
+        
+        // Get the text component (should be child of container)
+        TextMeshProUGUI msgText = msgContainer.GetComponentInChildren<TextMeshProUGUI>();
+        Image avatarImg = msgContainer.GetComponentInChildren<Image>();
+        
         if (msgText != null)
         {
-            // Add LayoutElement if missing
-            var layoutElement = msgObj.GetComponent<UnityEngine.UI.LayoutElement>();
-            if (layoutElement == null)
-            {
-                layoutElement = msgObj.AddComponent<UnityEngine.UI.LayoutElement>();
-            }
-            layoutElement.minHeight = 50;
-            layoutElement.preferredHeight = -1;
-            layoutElement.flexibleWidth = 1;
-
-            string sender = isPlayer ? "You" : "Pet";
-            msgText.text = $"<b>{sender}:</b> {text}";
-            msgText.color = isPlayer ? Color.white : Color.cyan;
+            // Set message text
+            msgText.text = text;
             
-            // Enable word wrapping and horizontal alignment
+            // Style based on sender
+            if (isPlayer)
+            {
+                // Player message: right-aligned, white
+                msgText.color = Color.white;
+                msgText.alignment = TextAlignmentOptions.BottomRight;
+                
+                // Hide avatar for player messages
+                if (avatarImg != null)
+                    avatarImg.gameObject.SetActive(false);
+                
+                // Right-align container
+                RectTransform containerRt = msgContainer.GetComponent<RectTransform>();
+                if (containerRt != null)
+                {
+                    containerRt.anchorMin = new Vector2(0.5f, 0.5f);
+                    containerRt.anchorMax = new Vector2(1, 0.5f); // Right side
+                }
+            }
+            else
+            {
+                // Zen message: left-aligned, cyan
+                msgText.color = Color.cyan;
+                msgText.alignment = TextAlignmentOptions.BottomLeft;
+                
+                // Show avatar for Zen messages
+                if (avatarImg != null)
+                    avatarImg.gameObject.SetActive(true);
+                
+                // Left-align container
+                RectTransform containerRt = msgContainer.GetComponent<RectTransform>();
+                if (containerRt != null)
+                {
+                    containerRt.anchorMin = new Vector2(0, 0.5f);
+                    containerRt.anchorMax = new Vector2(0.5f, 0.5f); // Left side
+                }
+            }
+            
+            // Ensure word wrapping
             msgText.enableWordWrapping = true;
             msgText.overflowMode = TextOverflowModes.Overflow;
-            msgText.alignment = TextAlignmentOptions.TopLeft;
         }
 
-        msgObj.gameObject.SetActive(true);
-
         if (debugLogAllMessages)
-            Debug.Log($"[PetChatController] {(isPlayer ? "Player" : "Pet")}: {text}");
+            Debug.Log($"[PetChatController] {(isPlayer ? "Player" : "Zen")}: {text}");
     }
 
     private void AutoScrollToBottom()
