@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lobby Scene.unity
     guid: 5e6b2538a59eb0741b92755d075f218b
+  - enabled: 1
+    path: Assets/Scenes/AI Pet Chat Scene.unity
+    guid: 1589da5b90cc0a54d973ec6d3fb50ffb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: bd9562bff49c3b94f969276de158f2bd, type: 3}
   m_UseUCBPForAssetBundles: 0
