@@ -215,43 +215,70 @@ public class PetChatController : MonoBehaviour
             {
                 // Player message: right-aligned, white
                 msgText.color = Color.white;
-                msgText.alignment = TextAlignmentOptions.BottomRight;
+                msgText.alignment = TextAlignmentOptions.Right;
                 
                 // Hide avatar for player messages
                 if (avatarImg != null)
                     avatarImg.gameObject.SetActive(false);
-                
-                // Right-align container
-                RectTransform containerRt = msgContainer.GetComponent<RectTransform>();
-                if (containerRt != null)
-                {
-                    containerRt.anchorMin = new Vector2(0.5f, 0.5f);
-                    containerRt.anchorMax = new Vector2(1, 0.5f); // Right side
-                }
             }
             else
             {
                 // Zen message: left-aligned, cyan
                 msgText.color = Color.cyan;
-                msgText.alignment = TextAlignmentOptions.BottomLeft;
+                msgText.alignment = TextAlignmentOptions.Left;
                 
                 // Show avatar for Zen messages
                 if (avatarImg != null)
                     avatarImg.gameObject.SetActive(true);
-                
-                // Left-align container
-                RectTransform containerRt = msgContainer.GetComponent<RectTransform>();
-                if (containerRt != null)
-                {
-                    containerRt.anchorMin = new Vector2(0, 0.5f);
-                    containerRt.anchorMax = new Vector2(0.5f, 0.5f); // Left side
-                }
             }
             
-            // Ensure word wrapping
+            // Critical: Ensure TextMeshPro properly calculates height
             msgText.enableWordWrapping = true;
             msgText.overflowMode = TextOverflowModes.Overflow;
+            
+            // Force text to recalculate immediately
+            msgText.ForceMeshUpdate();
+            
+            // Get or add ContentSizeFitter to text's immediate parent (MessageBubble)
+            Transform textParentTransform = msgText.transform.parent;
+            if (textParentTransform != null)
+            {
+                ContentSizeFitter bubbleFitter = textParentTransform.GetComponent<ContentSizeFitter>();
+                if (bubbleFitter == null)
+                {
+                    bubbleFitter = textParentTransform.gameObject.AddComponent<ContentSizeFitter>();
+                }
+                bubbleFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+                bubbleFitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
+            }
         }
+        
+        // CRITICAL: Remove or disable Layout Elements that have fixed heights
+        // They override ContentSizeFitter and cause equal spacing
+        LayoutElement[] allLayoutElements = msgContainer.GetComponentsInChildren<LayoutElement>(true);
+        foreach (LayoutElement le in allLayoutElements)
+        {
+            // Destroy Layout Elements completely - they conflict with ContentSizeFitter
+            Destroy(le);
+        }
+        
+        // Disable child height control on Horizontal Layout Group
+        HorizontalLayoutGroup horizLayout = msgContainer.GetComponent<HorizontalLayoutGroup>();
+        if (horizLayout != null)
+        {
+            horizLayout.childControlHeight = false;
+            horizLayout.childForceExpandHeight = false;
+            horizLayout.childScaleHeight = false;
+        }
+        
+        // Add ContentSizeFitter to container to grow based on children
+        ContentSizeFitter containerFitter = msgContainer.GetComponent<ContentSizeFitter>();
+        if (containerFitter == null)
+        {
+            containerFitter = msgContainer.AddComponent<ContentSizeFitter>();
+        }
+        containerFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+        containerFitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
 
         if (debugLogAllMessages)
             Debug.Log($"[PetChatController] {(isPlayer ? "Player" : "Zen")}: {text}");
@@ -261,11 +288,21 @@ public class PetChatController : MonoBehaviour
     {
         if (chatScroll == null) return;
 
-        // Force layout rebuild to ensure content size is updated
-        LayoutRebuilder.MarkLayoutForRebuild(chatContent as RectTransform);
+        // Force immediate layout rebuild
+        Canvas.ForceUpdateCanvases();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(chatContent as RectTransform);
         
-        // Scroll to bottom
-        chatScroll.verticalNormalizedPosition = 0f;
+        // Wait one frame then scroll to bottom
+        StartCoroutine(ScrollToBottomNextFrame());
+    }
+    
+    private IEnumerator ScrollToBottomNextFrame()
+    {
+        yield return null; // Wait one frame
+        if (chatScroll != null)
+        {
+            chatScroll.verticalNormalizedPosition = 0f;
+        }
     }
 
     private void ReturnToLobby()
