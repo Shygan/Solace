@@ -26,6 +26,7 @@ public class LobbyController : MonoBehaviour
     
     [Header("Scene Names")]
     [SerializeField] private string cognitiveReframeSceneName = "Level 1 Scene";
+    [SerializeField] private string aiPetChatSceneName = "AI Pet Chat Scene";
 
     [Header("Debug Settings")]
     [Tooltip("Force spawn all plants (for testing)")]
@@ -135,6 +136,13 @@ public class LobbyController : MonoBehaviour
     {
         Debug.Log("[LobbyController] Loading Cognitive Reframe section...");
         SceneManager.LoadScene(cognitiveReframeSceneName);
+    }
+
+    // Called by portal/trigger to enter AI Pet Chat section
+    public void EnterAIPetChatSection()
+    {
+        Debug.Log("[LobbyController] Loading AI Pet Chat section...");
+        SceneManager.LoadScene(aiPetChatSceneName);
     }
 
     // Debug helper
