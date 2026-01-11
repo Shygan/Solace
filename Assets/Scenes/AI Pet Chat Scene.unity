@@ -148,7 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592299650fc38ae41bf1b683b820575f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PetChatController
-  messagePrefab: {fileID: 7716899432823441428, guid: 01346e7b1bdfdee41b69cbd9035bb389, type: 3}
+  zenMessagePrefab: {fileID: 7716899432823441428, guid: 01346e7b1bdfdee41b69cbd9035bb389, type: 3}
+  playerMessagePrefab: {fileID: 7716899432823441428, guid: 65cd9765730527d4b8af966775f2139f, type: 3}
   chatContent: {fileID: 1404894497}
   chatInput: {fileID: 710994303}
   sendButton: {fileID: 1392230020}
