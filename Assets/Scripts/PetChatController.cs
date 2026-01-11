@@ -12,7 +12,8 @@ using UnityEngine.SceneManagement;
 public class PetChatController : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField] private GameObject messagePrefab; // Changed to GameObject for container
+    [SerializeField] private GameObject zenMessagePrefab; // Zen's messages with avatar (cyan)
+    [SerializeField] private GameObject playerMessagePrefab; // Player's messages without avatar (white)
     [SerializeField] private Transform chatContent;
     [SerializeField] private TMP_InputField chatInput;
     [SerializeField] private Button sendButton;
@@ -192,14 +193,17 @@ public class PetChatController : MonoBehaviour
 
     private void AppendMessage(string text, bool isPlayer)
     {
-        if (messagePrefab == null || chatContent == null)
+        // Choose the correct prefab
+        GameObject prefabToUse = isPlayer ? playerMessagePrefab : zenMessagePrefab;
+        
+        if (prefabToUse == null || chatContent == null)
         {
-            Debug.LogError("[PetChatController] MessagePrefab or ChatContent not assigned!");
+            Debug.LogError($"[PetChatController] {(isPlayer ? "Player" : "Zen")} MessagePrefab or ChatContent not assigned!");
             return;
         }
 
         // Instantiate message container
-        GameObject msgContainer = Instantiate(messagePrefab, chatContent);
+        GameObject msgContainer = Instantiate(prefabToUse, chatContent);
         
         // Get the text component (should be child of container)
         TextMeshProUGUI msgText = msgContainer.GetComponentInChildren<TextMeshProUGUI>();
