@@ -20,6 +20,10 @@ public class PetChatController : MonoBehaviour
     [SerializeField] private GameObject typingIndicator;
     [SerializeField] private ScrollRect chatScroll;
 
+    [Header("Text Colors")]
+    [SerializeField] private Color zenTextColor = new Color(0.3f, 0.7f, 1f); // default soft blue
+    [SerializeField] private Color playerTextColor = Color.white;
+
     [Header("AI Integration")]
     [SerializeField] private AIConversationService aiConversationService;
 
@@ -218,7 +222,7 @@ public class PetChatController : MonoBehaviour
             if (isPlayer)
             {
                 // Player message: right-aligned, white
-                msgText.color = Color.white;
+                msgText.color = playerTextColor;
                 msgText.alignment = TextAlignmentOptions.Right;
                 
                 // Hide avatar for player messages
@@ -228,7 +232,7 @@ public class PetChatController : MonoBehaviour
             else
             {
                 // Zen message: left-aligned, cyan
-                msgText.color = Color.cyan;
+                msgText.color = zenTextColor;
                 msgText.alignment = TextAlignmentOptions.Left;
                 
                 // Show avatar for Zen messages
