@@ -155,6 +155,8 @@ MonoBehaviour:
   sendButton: {fileID: 1392230020}
   typingIndicator: {fileID: 1047196281}
   chatScroll: {fileID: 1335347143}
+  zenTextColor: {r: 0, g: 0, b: 0, a: 1}
+  playerTextColor: {r: 1, g: 1, b: 1, a: 1}
   aiConversationService: {fileID: 1797407179}
   highRiskPhrases:
   - i want to disappear
@@ -791,7 +793,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: -17}
+  m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &803193089
 MonoBehaviour:
@@ -1158,8 +1160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.000030518, y: 6}
+  m_AnchoredPosition: {x: 0, y: 43}
+  m_SizeDelta: {x: -0.0001, y: -80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335347143
 MonoBehaviour:
@@ -1455,7 +1457,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 8
+  m_Spacing: 16
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
