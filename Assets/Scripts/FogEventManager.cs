@@ -45,6 +45,12 @@ public class FogEventManager : MonoBehaviour
         }
     }
 
+    public void StopLoop()
+    {
+        StopWaiting();
+        Debug.Log("[FogEventManager] Fog loop stopped");
+    }
+
     private IEnumerator WaitThenTrigger()
     {
         // Wait interval, then trigger once

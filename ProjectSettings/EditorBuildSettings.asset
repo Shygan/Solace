@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/AI Pet Chat Scene.unity
     guid: 1589da5b90cc0a54d973ec6d3fb50ffb
   - enabled: 1
-    path: Assets/Scenes/DoorOfRythm.unity
+    path: Assets/Scenes/DoorOfRhythm.unity
     guid: cfc862df384e3b74c87491271e456d04
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: bd9562bff49c3b94f969276de158f2bd, type: 3}

@@ -2867,8 +2867,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.81, y: 10.601}
-  m_SizeDelta: {x: 20, y: 5}
+  m_AnchoredPosition: {x: 0.090815395, y: 10.603939}
+  m_SizeDelta: {x: 27.506, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &768135334
 MonoBehaviour:
@@ -2890,7 +2890,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Door of Rythm
+  m_text: Door of Rhythm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c9ff57af974c64349923c2ef100115e0, type: 2}
   m_sharedMaterial: {fileID: 4473569545004048213, guid: c9ff57af974c64349923c2ef100115e0, type: 2}
@@ -2955,7 +2955,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -4.005235, w: 0}
+  m_margin: {x: 0, y: 0, z: -0.015970701, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -3696,7 +3696,7 @@ GameObject:
   - component: {fileID: 1118225216}
   - component: {fileID: 1118225218}
   m_Layer: 0
-  m_Name: Door of Rythm
+  m_Name: Door of Rhythm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10278,7 +10278,7 @@ Transform:
   m_GameObject: {fileID: 1533286918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.4477854, y: -0.99579, z: -10}
+  m_LocalPosition: {x: -6.499927, y: -0.99581003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

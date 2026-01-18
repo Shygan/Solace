@@ -17872,8 +17872,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorOfRhythmController
   progressSlider: {fileID: 856768920}
-  LoadCanvas: {fileID: 0}
-  progressGoal: 200
+  LoadCanvas: {fileID: 250588356}
+  PromptCanvas: {fileID: 669618684}
+  fogEventManager: {fileID: 892354601}
+  progressGoal: 20
 --- !u!4 &75597649
 Transform:
   m_ObjectHideFlags: 0
@@ -18210,6 +18212,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 024ccf02b3fc33140a03a36238f0d572, type: 3}
+--- !u!1 &250588356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8189555913951640593, guid: 77dd3cff29f0a6744aafd01fea36677c, type: 3}
+  m_PrefabInstance: {fileID: 1488991031}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &250628719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18883,6 +18890,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 4
   m_TargetDisplay: 0
+--- !u!1 &669618684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4737441885982322740, guid: 77dd3cff29f0a6744aafd01fea36677c, type: 3}
+  m_PrefabInstance: {fileID: 1488991031}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &672681598
 PrefabInstance:
   m_ObjectHideFlags: 0
