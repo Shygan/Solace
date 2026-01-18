@@ -7,7 +7,7 @@ public class FogController : MonoBehaviour
     public ParticleSystem fogParticleSystem;
     
     [Header("Fog Settings")]
-    public float maxEmissionRate = 500f; // Maximum fog density
+    public float maxEmissionRate = 700f; // Maximum fog density
     public float fadeDuration = 1f; // Time to transition between fog states
     
     private ParticleSystem.EmissionModule emission;
