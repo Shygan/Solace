@@ -8,51 +8,49 @@ public class FogEventManager : MonoBehaviour
     public HoldToBreathe holdToBreathe;
 
     [Header("Timing")]
-    public float intervalSeconds = 10f; // time between fog events
+    public float intervalSeconds = 15f; // time between fog events
     public bool startOnPlay = true;
 
-    private Coroutine loop;
+    private Coroutine waitRoutine;
 
     void Start()
     {
         if (startOnPlay)
-            StartLoop();
+            QueueNextTrigger();
     }
 
-    public void StartLoop()
+    private void OnEnable()
     {
-        if (loop == null)
-            loop = StartCoroutine(FogLoop());
+        HoldToBreathe.OnBreathingCycleComplete += OnBreathingCycleComplete;
     }
 
-    public void StopLoop()
+    private void OnDisable()
     {
-        if (loop != null)
+        HoldToBreathe.OnBreathingCycleComplete -= OnBreathingCycleComplete;
+        StopWaiting();
+    }
+
+    private void QueueNextTrigger()
+    {
+        if (waitRoutine == null)
+            waitRoutine = StartCoroutine(WaitThenTrigger());
+    }
+
+    private void StopWaiting()
+    {
+        if (waitRoutine != null)
         {
-            StopCoroutine(loop);
-            loop = null;
+            StopCoroutine(waitRoutine);
+            waitRoutine = null;
         }
     }
 
-    private IEnumerator FogLoop()
+    private IEnumerator WaitThenTrigger()
     {
-        // Small initial delay to avoid immediate trigger
+        // Wait interval, then trigger once
         yield return new WaitForSeconds(intervalSeconds);
-
-        while (true)
-        {
-            // Only trigger when breathing is not already active
-            if (holdToBreathe != null && !holdToBreathe.IsBreathingActive())
-            {
-                if (fogController != null)
-                    fogController.ShowFog();
-
-                holdToBreathe.StartBreathingCycle();
-            }
-
-            // Wait for next interval
-            yield return new WaitForSeconds(intervalSeconds);
-        }
+        waitRoutine = null;
+        TriggerOnce();
     }
 
     // Manual trigger for testing from other scripts or UI
@@ -65,5 +63,11 @@ public class FogEventManager : MonoBehaviour
 
             holdToBreathe.StartBreathingCycle();
         }
+    }
+
+    private void OnBreathingCycleComplete()
+    {
+        // Start counting down once the full cycle finishes
+        QueueNextTrigger();
     }
 }
