@@ -22989,7 +22989,7 @@ MonoBehaviour:
   fogController: {fileID: 2110258135}
   holdToBreathe: {fileID: 1360571129}
   intervalSeconds: 15
-  startOnPlay: 0
+  startOnPlay: 1
 --- !u!4 &892354602
 Transform:
   m_ObjectHideFlags: 0
@@ -24580,16 +24580,6 @@ MonoBehaviour:
   textComponent: {fileID: 1288911605}
   lines:
   - Find and collect enough apples to progress!
-  - But, there is a catch! At times during this level, there will be a sudden fog
-    clouding your vision. The fog represents a sudden onset of a panic attack.
-  - 'Don''t worry! I am here to teach you a technique that helps you stay calm when
-    things get overwhelming. '
-  - 'This coping technique is called box breathing, and it''s simple but powerful.
-    Imagine drawing a box: up, across, down, and back again.  '
-  - 'Here''s how it works: Inhale for 4 seconds, hold your breath for 4 seconds,
-    exhale for 4 seconds, then hold for 4 seconds. That''s one full cycle.'
-  - This rhythm helps slow your heart rate and quiets anxious thoughts. Let's try
-    it together!
   textSpeed: 0.05
   playerMovement: {fileID: 1488991033}
   platformToReveal: {fileID: 0}
@@ -24597,7 +24587,6 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
-  fogEventManager: {fileID: 892354601}
   useAIThoughtExplanation: 0
 --- !u!114 &1811688578
 MonoBehaviour:

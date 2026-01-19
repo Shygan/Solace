@@ -30,7 +30,7 @@ public class FogEventManager : MonoBehaviour
         StopWaiting();
     }
 
-    private void QueueNextTrigger()
+    public void QueueNextTrigger()
     {
         if (waitRoutine == null)
             waitRoutine = StartCoroutine(WaitThenTrigger());

@@ -21,6 +21,9 @@ public class Dialogue : MonoBehaviour
     public Transform levelsParent;          // Drag the parent GameObject "Levels"
     public GameObject player;               // Reference to player for repositioning
 
+    [Header("Door of Rhythm (Optional)")]
+    public FogEventManager fogEventManager; // Assign only in Door of Rhythm dialogue to start fog countdown after dialogue ends
+
     [Header("AI Thought Integration (Optional)")]
     [Tooltip("If true, will try to use AI-generated thought explanation when available")]
     public bool useAIThoughtExplanation = false;
@@ -124,6 +127,13 @@ public class Dialogue : MonoBehaviour
             // Reveal the platform immediately
             if (platformToReveal != null)
                 platformToReveal.SetActive(true);
+
+            // Start fog countdown (Door of Rhythm only)
+            if (fogEventManager != null)
+            {
+                fogEventManager.QueueNextTrigger();
+                Debug.Log("[Dialogue] Fog countdown started");
+            }
 
             // If returning to a level, handle that FIRST
             if (!string.IsNullOrEmpty(levelToReturnTo))
