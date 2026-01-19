@@ -24,7 +24,7 @@ public class DoorOfRhythmController : MonoBehaviour
         
         // Subscribe to apple collection event
         Apple.OnAppleCollect += IncreaseProgressAmount;
-        HoldToLoadLevel.OnHoldComplete += OnLevelComplete;
+        // Do NOT subscribe to HoldToLoadLevel yet - wait until progress is full
         
         if (LoadCanvas != null)
             LoadCanvas.SetActive(false);
@@ -68,6 +68,9 @@ public class DoorOfRhythmController : MonoBehaviour
                 fogEventManager.StopLoop();
                 Debug.Log("[DoorOfRhythm] Fog stopped");
             }
+            
+            // NOW subscribe to HoldToLoadLevel so we can return to lobby
+            HoldToLoadLevel.OnHoldComplete += OnLevelComplete;
             
             Debug.Log("[DoorOfRhythm] Level Complete! Hold E to proceed.");
         }
