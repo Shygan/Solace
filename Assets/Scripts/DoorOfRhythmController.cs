@@ -82,6 +82,9 @@ public class DoorOfRhythmController : MonoBehaviour
         if (LoadCanvas != null)
             LoadCanvas.SetActive(false);
         
+        // Unlock terrarium on first completion
+        PlayerProgress.Instance.CompleteSection("Section 3");
+        
         // Load Lobby Scene
         SceneManager.LoadScene("Lobby Scene");
     }

@@ -2360,6 +2360,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &637284043
 MonoBehaviour:
@@ -2460,7 +2461,7 @@ MonoBehaviour:
     create balance within yourself.
   - "You don\u2019t need to fix everything at once. Small, consistent care can help
     you grow resilience over time."
-  - You can now interact with the terrarium to practice XXX!
+  - You can now interact with the terrarium to practice box breathing!
   textSpeed: 0.05
   playerMovement: {fileID: 512736419}
   platformToReveal: {fileID: 0}
@@ -2468,6 +2469,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &709091259
 MonoBehaviour:
@@ -2825,14 +2827,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7b5c9f6f43cf748be102b5d4e2f011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SofaInteractable
-  interactKey: 101
-  interactionRange: 1.5
-  interactPrompt: {fileID: 0}
-  interactableName: Sofa
-  petChatSceneName: AI Pet Chat Scene
-  debugShowInteractionRange: 1
-  player: {fileID: 0}
-  playerInRange: 0
 --- !u!1 &768135332
 GameObject:
   m_ObjectHideFlags: 0
@@ -10725,6 +10719,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &1704689452
 MonoBehaviour:

@@ -286,10 +286,10 @@ MonoBehaviour:
   interactKey: 101
   interactionRange: 2
   interactPrompt: {fileID: 0}
-  quizSceneName: 
+  quizSceneName: DoorOfRhythm
   loadQuizScene: 1
-  practiceStartLevelIndex: 2
-  practiceRuns: 1
-  practiceReturnScene: Lobby Scene
+  practiceStartLevelIndex: 0
+  practiceRuns: 0
+  practiceReturnScene: 
   debugShowInteractionRange: 1
   lobbyController: {fileID: 0}
