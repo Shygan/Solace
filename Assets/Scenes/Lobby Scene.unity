@@ -3689,6 +3689,7 @@ GameObject:
   - component: {fileID: 1118225217}
   - component: {fileID: 1118225216}
   - component: {fileID: 1118225218}
+  - component: {fileID: 1118225219}
   m_Layer: 0
   m_Name: Door of Rhythm
   m_TagString: Untagged
@@ -3783,6 +3784,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaceholderInteractable
   interactionRange: 1.5
+  debugShowInteractionRange: 1
+--- !u!114 &1118225219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118225215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5b1009dc662c94ebc7dbeb51f87488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorInteractable
+  interactKey: 101
+  interactionRange: 1.5
+  interactPrompt: {fileID: 0}
+  targetSceneName: DoorOfRhythm
+  startLevelIndex: 0
   debugShowInteractionRange: 1
 --- !u!1 &1227060710
 GameObject:
@@ -9807,6 +9826,7 @@ GameObject:
   - component: {fileID: 1471617922}
   - component: {fileID: 1471617921}
   - component: {fileID: 1471617923}
+  - component: {fileID: 1471617924}
   m_Layer: 0
   m_Name: Door of Grounding
   m_TagString: Untagged
@@ -9901,6 +9921,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaceholderInteractable
   interactionRange: 1.5
+  debugShowInteractionRange: 1
+--- !u!114 &1471617924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471617920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5b1009dc662c94ebc7dbeb51f87488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorInteractable
+  interactKey: 101
+  interactionRange: 1.5
+  interactPrompt: {fileID: 0}
+  targetSceneName: DoorOfGrounding
+  startLevelIndex: 0
   debugShowInteractionRange: 1
 --- !u!1 &1479293282
 GameObject:
@@ -10272,7 +10310,7 @@ Transform:
   m_GameObject: {fileID: 1533286918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.499927, y: -0.99581003, z: -10}
+  m_LocalPosition: {x: -6.500745, y: -0.99581003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
