@@ -18119,7 +18119,7 @@ MonoBehaviour:
   LoadCanvas: {fileID: 250588356}
   PromptCanvas: {fileID: 669618684}
   fogEventManager: {fileID: 892354601}
-  progressGoal: 20
+  progressGoal: 200
 --- !u!4 &75597649
 Transform:
   m_ObjectHideFlags: 0
