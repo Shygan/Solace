@@ -706,7 +706,6 @@ GameObject:
   - component: {fileID: 505038113}
   - component: {fileID: 505038116}
   - component: {fileID: 505038117}
-  - component: {fileID: 505038118}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -864,21 +863,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!114 &505038118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505038112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 496a19d268d9b6b4288bd88f8c996527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraSway
-  swayIntensity: 2
-  swaySpeed: 1
-  isSwaying: 1
 --- !u!1 &755021521
 GameObject:
   m_ObjectHideFlags: 0
