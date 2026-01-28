@@ -2,11 +2,12 @@ using UnityEngine;
 
 /// <summary>
 /// Makes objects interactable for grounding tasks.
-/// When clicked, checks if it matches the current task requirement.
+/// When the player touches it, checks if it matches the current task requirement.
+/// Implements IItem to work with the Collector component.
 /// </summary>
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Collider2D))]
-public class InteractableGroundingObject : MonoBehaviour
+public class InteractableGroundingObject : MonoBehaviour, IItem
 {
     [Header("Object Properties")]
     [Tooltip("What type of grounding task this object belongs to")]
@@ -59,17 +60,41 @@ public class InteractableGroundingObject : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Implements IItem.Collect() for compatibility with the Collector component.
+    /// This method is called when the player collides with this object.
+    /// </summary>
+    public void Collect()
+    {
+        Debug.Log($"[GroundingObject] Collect() called on {gameObject.name}");
+        
+        if (hasBeenFound)
+        {
+            Debug.Log($"[GroundingObject] Already collected, ignoring.");
+            return;
+        }
+
+        // Only process sight objects for now
+        if (taskType == GroundingTaskType.Sight)
+        {
+            CheckIfMatchesTargetColor();
+        }
+    }
+
     void CheckIfMatchesTargetColor()
     {
+        Debug.Log($"[GroundingObject] Checking color match. Object color: {objectColor}, Target: {levelManager.targetColor}");
+        
         if (levelManager.DoesColorMatch(objectColor))
         {
+            Debug.Log($"[GroundingObject] Color matches!");
             MarkAsFound();
             levelManager.OnSightObjectFound();
         }
         else
         {
             // Wrong color - give feedback
-            Debug.Log($"<color=red>That's not the right color. Keep looking!</color>");
+            Debug.Log($"[GroundingObject] <color=red>That's not the right color. Keep looking!</color>");
             StartCoroutine(ShakeObject());
         }
     }

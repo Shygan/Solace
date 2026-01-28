@@ -3,6 +3,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 /// <summary>
 /// Manages the Door of Grounding level progression based on the 5-4-3-2-1 technique.
@@ -13,6 +14,16 @@ public class GroundingLevelManager : MonoBehaviour
     [Header("Post-Processing References")]
     [Tooltip("Drag the Global Volume GameObject here")]
     public Volume globalVolume;
+
+    /// <summary>
+    /// Event fired when a grounding object is found. 
+    /// Reuses the same ProgressBar that listens to OnAppleCollect.
+    /// </summary>
+    public static event Action<int> OnGroundingObjectFound;
+
+    [Header("Environment Grayscale")]
+    [Tooltip("Material used for environment sprites to control grayscale")]
+    public Material environmentGrayscaleMaterial;
 
     [Header("Task Tracking")]
     [SerializeField] private int sightObjectsRequired = 5;
@@ -94,8 +105,18 @@ public class GroundingLevelManager : MonoBehaviour
         sightObjectsFound++;
         Debug.Log($"Sight objects found: {sightObjectsFound}/{sightObjectsRequired}");
 
+        // Fire event for ProgressBar to listen to (same as OnAppleCollect)
+        OnGroundingObjectFound?.Invoke(1); // Each object found = 1 unit of progress
+
         // Progressively reduce distortion
         float progress = (float)sightObjectsFound / sightObjectsRequired;
+        
+        // Reduce environment grayscale
+        if (environmentGrayscaleMaterial != null)
+        {
+            float grayscaleAmount = Mathf.Lerp(1f, 0f, progress);
+            environmentGrayscaleMaterial.SetFloat("_GrayscaleAmount", grayscaleAmount);
+        }
         
         if (lensDistortion != null)
         {
@@ -132,9 +153,14 @@ public class GroundingLevelManager : MonoBehaviour
     /// </summary>
     public bool DoesColorMatch(Color spriteColor)
     {
+        // Debug: print the colors being compared
+        Debug.Log($"[GroundingLevelManager] Comparing colors - Sprite: RGB({spriteColor.r:F2}, {spriteColor.g:F2}, {spriteColor.b:F2}), Target: RGB({targetColor.r:F2}, {targetColor.g:F2}, {targetColor.b:F2})");
+        
         // Calculate color distance using HSV for better perceptual matching
         Color.RGBToHSV(spriteColor, out float h1, out float s1, out float v1);
         Color.RGBToHSV(targetColor, out float h2, out float s2, out float v2);
+
+        Debug.Log($"[GroundingLevelManager] Sprite HSV: ({h1:F2}, {s1:F2}, {v1:F2}), Target HSV: ({h2:F2}, {s2:F2}, {v2:F2})");
 
         // Hue wraps around (0-1), so handle circular distance
         float hueDiff = Mathf.Abs(h1 - h2);
@@ -149,6 +175,8 @@ public class GroundingLevelManager : MonoBehaviour
             satDiff * satDiff + 
             valDiff * valDiff
         );
+
+        Debug.Log($"[GroundingLevelManager] Color distance: {colorDistance:F3}, Tolerance: {colorMatchTolerance:F3}, Match: {colorDistance <= colorMatchTolerance}");
 
         return colorDistance <= colorMatchTolerance;
     }
