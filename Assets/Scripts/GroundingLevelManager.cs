@@ -46,6 +46,12 @@ public class GroundingLevelManager : MonoBehaviour
     private bool soundTaskComplete = false;
     private bool smellTaskComplete = false;
     private bool tasteTaskComplete = false;
+    
+    // Track which task has been explicitly started (not just completed previous)
+    private bool touchTaskStarted = false;
+    private bool soundTaskStarted = false;
+    private bool smellTaskStarted = false;
+    private bool tasteTaskStarted = false;
 
     [Header("Color Hunt Settings")]
     [Tooltip("The color players need to find (will be set by AI)")]
@@ -175,6 +181,7 @@ public class GroundingLevelManager : MonoBehaviour
     /// </summary>
     public void StartTouchTask()
     {
+        touchTaskStarted = true;
         Debug.Log("<color=cyan>Starting Touch Task: Find 4 things you can touch.</color>");
         touchObjectsFound = 0;
         
@@ -238,6 +245,7 @@ public class GroundingLevelManager : MonoBehaviour
     /// </summary>
     public void StartSoundTask()
     {
+        soundTaskStarted = true;
         Debug.Log("<color=yellow>Starting Sound Task: Find 3 things you can hear.</color>");
         soundObjectsFound = 0;
         
@@ -283,6 +291,7 @@ public class GroundingLevelManager : MonoBehaviour
     /// </summary>
     public void StartSmellTask()
     {
+        smellTaskStarted = true;
         Debug.Log("<color=magenta>Starting Smell Task: Find 2 things you can smell.</color>");
         smellObjectsFound = 0;
         
@@ -328,6 +337,7 @@ public class GroundingLevelManager : MonoBehaviour
     /// </summary>
     public void StartTasteTask()
     {
+        tasteTaskStarted = true;
         Debug.Log("<color=orange>Starting Taste Task: Find 1 thing you can taste.</color>");
         tasteObjectsFound = 0;
         
@@ -372,7 +382,7 @@ public class GroundingLevelManager : MonoBehaviour
     /// </summary>
     public bool IsTouchTaskActive()
     {
-        return sightTaskComplete && !touchTaskComplete;
+        return touchTaskStarted && !touchTaskComplete;
     }
     
     /// <summary>
@@ -380,7 +390,7 @@ public class GroundingLevelManager : MonoBehaviour
     /// </summary>
     public bool IsSoundTaskActive()
     {
-        return touchTaskComplete && !soundTaskComplete;
+        return soundTaskStarted && !soundTaskComplete;
     }
     
     /// <summary>
@@ -388,7 +398,7 @@ public class GroundingLevelManager : MonoBehaviour
     /// </summary>
     public bool IsSmellTaskActive()
     {
-        return soundTaskComplete && !smellTaskComplete;
+        return smellTaskStarted && !smellTaskComplete;
     }
     
     /// <summary>
@@ -396,7 +406,7 @@ public class GroundingLevelManager : MonoBehaviour
     /// </summary>
     public bool IsTasteTaskActive()
     {
-        return smellTaskComplete && !tasteTaskComplete;
+        return tasteTaskStarted && !tasteTaskComplete;
     }
 
     /// <summary>
