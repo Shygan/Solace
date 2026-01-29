@@ -19,6 +19,10 @@ public class DoorOfGroundingController : MonoBehaviour
     [Header("Level Settings")]
     [SerializeField] private string lobbySceneName = "Lobby Scene";
     [SerializeField] private int sightTaskGoal = 5; // 5 things to find for Sight task
+    [SerializeField] private int touchTaskGoal = 4; // 4 things to find for Touch task
+    [SerializeField] private int soundTaskGoal = 3; // 3 things to hear for Sound task
+    [SerializeField] private int smellTaskGoal = 2; // 2 things to smell for Smell task
+    [SerializeField] private int tasteTaskGoal = 1; // 1 thing to taste for Taste task
     [SerializeField] private float delayBeforeCompletion = 1f;
 
     [Header("Player Reference")]
@@ -26,6 +30,16 @@ public class DoorOfGroundingController : MonoBehaviour
 
     private int progressAmount = 0;
     private bool levelComplete = false;
+    private CurrentTask currentTask = CurrentTask.Sight;
+    
+    private enum CurrentTask
+    {
+        Sight,  // 5 objects
+        Touch,  // 4 objects
+        Sound,  // 3 objects
+        Smell,  // 2 objects
+        Taste   // 1 object
+    }
 
     void Start()
     {
@@ -61,18 +75,34 @@ public class DoorOfGroundingController : MonoBehaviour
         progressAmount += amount;
         progressSlider.value = progressAmount;
 
+        // Get current task goal based on active task
+        int currentGoal = GetCurrentTaskGoal();
+
         // Update task UI
         if (taskProgressUI != null)
         {
-            taskProgressUI.text = $"Found: {progressAmount}/{sightTaskGoal}";
+            taskProgressUI.text = $"Found: {progressAmount}/{currentGoal}";
         }
 
-        Debug.Log($"[DoorOfGrounding] Progress: {progressAmount}/{sightTaskGoal}");
+        Debug.Log($"[DoorOfGrounding] Progress: {progressAmount}/{currentGoal} ({currentTask})");
 
-        // Check if level is complete
-        if (progressAmount >= sightTaskGoal)
+        // Check if current task is complete
+        if (progressAmount >= currentGoal)
         {
             OnLevelComplete();
+        }
+    }
+    
+    int GetCurrentTaskGoal()
+    {
+        switch (currentTask)
+        {
+            case CurrentTask.Sight: return sightTaskGoal;
+            case CurrentTask.Touch: return touchTaskGoal;
+            case CurrentTask.Sound: return soundTaskGoal;
+            case CurrentTask.Smell: return smellTaskGoal;
+            case CurrentTask.Taste: return tasteTaskGoal;
+            default: return sightTaskGoal;
         }
     }
 
@@ -99,13 +129,59 @@ public class DoorOfGroundingController : MonoBehaviour
         if (loadCanvas != null)
             loadCanvas.SetActive(false);
 
-        Debug.Log("[DoorOfGrounding] Returning to lobby.");
+        GroundingLevelManager levelManager = FindObjectOfType<GroundingLevelManager>();
         
-        // Award the plant reward (same as completing a section)
-        PlayerProgress.Instance.CompleteSection1();
+        // Progress through all tasks in the 5-4-3-2-1 sequence
+        switch (currentTask)
+        {
+            case CurrentTask.Sight:
+                Debug.Log("[DoorOfGrounding] Sight task complete. Starting touch task (4 objects).");
+                TransitionToNextTask(CurrentTask.Touch, touchTaskGoal);
+                if (levelManager != null) levelManager.StartTouchTask();
+                break;
+                
+            case CurrentTask.Touch:
+                Debug.Log("[DoorOfGrounding] Touch task complete. Starting sound task (3 objects).");
+                TransitionToNextTask(CurrentTask.Sound, soundTaskGoal);
+                if (levelManager != null) levelManager.StartSoundTask();
+                break;
+                
+            case CurrentTask.Sound:
+                Debug.Log("[DoorOfGrounding] Sound task complete. Starting smell task (2 objects).");
+                TransitionToNextTask(CurrentTask.Smell, smellTaskGoal);
+                if (levelManager != null) levelManager.StartSmellTask();
+                break;
+                
+            case CurrentTask.Smell:
+                Debug.Log("[DoorOfGrounding] Smell task complete. Starting taste task (1 object).");
+                TransitionToNextTask(CurrentTask.Taste, tasteTaskGoal);
+                if (levelManager != null) levelManager.StartTasteTask();
+                break;
+                
+            case CurrentTask.Taste:
+                Debug.Log("[DoorOfGrounding] All grounding tasks complete! Returning to lobby.");
+                
+                // Award the plant reward
+                PlayerProgress.Instance.CompleteSection1();
 
-        // Return to lobby
-        SceneManager.LoadScene(lobbySceneName);
+                // Return to lobby after completing all 5 tasks
+                SceneManager.LoadScene(lobbySceneName);
+                break;
+        }
+    }
+    
+    void TransitionToNextTask(CurrentTask nextTask, int nextGoal)
+    {
+        currentTask = nextTask;
+        levelComplete = false;
+        progressAmount = 0;
+        progressSlider.value = 0;
+        progressSlider.maxValue = nextGoal;
+        
+        if (taskProgressUI != null)
+        {
+            taskProgressUI.text = $"Found: 0/{nextGoal}";
+        }
     }
 
     /// <summary>

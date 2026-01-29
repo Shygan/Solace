@@ -52,10 +52,24 @@ public class InteractableGroundingObject : MonoBehaviour, IItem
         // Check if player touched this object
         if (other.CompareTag("Player"))
         {
-            // Only process sight objects for now
-            if (taskType == GroundingTaskType.Sight)
+            // Handle based on task type
+            switch (taskType)
             {
-                CheckIfMatchesTargetColor();
+                case GroundingTaskType.Sight:
+                    CheckIfMatchesTargetColor();
+                    break;
+                case GroundingTaskType.Touch:
+                    CheckIfTouchable();
+                    break;
+                case GroundingTaskType.Sound:
+                    CheckIfSound();
+                    break;
+                case GroundingTaskType.Smell:
+                    CheckIfSmell();
+                    break;
+                case GroundingTaskType.Taste:
+                    CheckIfTaste();
+                    break;
             }
         }
     }
@@ -74,10 +88,24 @@ public class InteractableGroundingObject : MonoBehaviour, IItem
             return;
         }
 
-        // Only process sight objects for now
-        if (taskType == GroundingTaskType.Sight)
+        // Handle based on task type
+        switch (taskType)
         {
-            CheckIfMatchesTargetColor();
+            case GroundingTaskType.Sight:
+                CheckIfMatchesTargetColor();
+                break;
+            case GroundingTaskType.Touch:
+                CheckIfTouchable();
+                break;
+            case GroundingTaskType.Sound:
+                CheckIfSound();
+                break;
+            case GroundingTaskType.Smell:
+                CheckIfSmell();
+                break;
+            case GroundingTaskType.Taste:
+                CheckIfTaste();
+                break;
         }
     }
 
@@ -96,6 +124,71 @@ public class InteractableGroundingObject : MonoBehaviour, IItem
             // Wrong color - give feedback
             Debug.Log($"[GroundingObject] <color=red>That's not the right color. Keep looking!</color>");
             StartCoroutine(ShakeObject());
+        }
+    }
+    
+    void CheckIfTouchable()
+    {
+        Debug.Log($"[GroundingObject] Touch object found: {gameObject.name}");
+        
+        // For touch task, any touchable object is valid when the task is active
+        if (levelManager != null && levelManager.IsTouchTaskActive())
+        {
+            Debug.Log($"[GroundingObject] Valid touch object!");
+            MarkAsFound();
+            levelManager.OnTouchObjectFound();
+        }
+        else
+        {
+            Debug.Log($"[GroundingObject] Touch task is not active yet.");
+        }
+    }
+    
+    void CheckIfSound()
+    {
+        Debug.Log($"[GroundingObject] Sound object found: {gameObject.name}");
+        
+        if (levelManager != null && levelManager.IsSoundTaskActive())
+        {
+            Debug.Log($"[GroundingObject] Valid sound object!");
+            MarkAsFound();
+            levelManager.OnSoundObjectFound();
+        }
+        else
+        {
+            Debug.Log($"[GroundingObject] Sound task is not active yet.");
+        }
+    }
+    
+    void CheckIfSmell()
+    {
+        Debug.Log($"[GroundingObject] Smell object found: {gameObject.name}");
+        
+        if (levelManager != null && levelManager.IsSmellTaskActive())
+        {
+            Debug.Log($"[GroundingObject] Valid smell object!");
+            MarkAsFound();
+            levelManager.OnSmellObjectFound();
+        }
+        else
+        {
+            Debug.Log($"[GroundingObject] Smell task is not active yet.");
+        }
+    }
+    
+    void CheckIfTaste()
+    {
+        Debug.Log($"[GroundingObject] Taste object found: {gameObject.name}");
+        
+        if (levelManager != null && levelManager.IsTasteTaskActive())
+        {
+            Debug.Log($"[GroundingObject] Valid taste object!");
+            MarkAsFound();
+            levelManager.OnTasteObjectFound();
+        }
+        else
+        {
+            Debug.Log($"[GroundingObject] Taste task is not active yet.");
         }
     }
 
