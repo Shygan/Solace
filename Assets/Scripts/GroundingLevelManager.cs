@@ -62,9 +62,9 @@ public class GroundingLevelManager : MonoBehaviour
     public float colorMatchTolerance = 0.3f;
 
     // Post-processing effect references
-    private LensDistortion lensDistortion;
     private ChromaticAberration chromaticAberration;
-    private ColorAdjustments colorAdjustments;
+    private Vignette vignette;
+    private FilmGrain filmGrain;
 
     void Start()
     {
@@ -81,36 +81,40 @@ public class GroundingLevelManager : MonoBehaviour
             return;
         }
 
-        // Get references to all post-processing effects
-        globalVolume.profile.TryGet(out lensDistortion);
+        // Get references to post-processing effects
         globalVolume.profile.TryGet(out chromaticAberration);
-        globalVolume.profile.TryGet(out colorAdjustments);
+        globalVolume.profile.TryGet(out vignette);
+        globalVolume.profile.TryGet(out filmGrain);
 
-        if (lensDistortion == null || chromaticAberration == null || colorAdjustments == null)
+        if (chromaticAberration == null || vignette == null || filmGrain == null)
         {
-            Debug.LogError("Missing post-processing effects! Make sure Volume Profile has Lens Distortion, Chromatic Aberration, and Color Adjustments.");
+            Debug.LogWarning("[GroundingLevelManager] Some post-processing effects are missing. Effects available: " +
+                $"ChromaticAberration={chromaticAberration != null}, Vignette={vignette != null}, FilmGrain={filmGrain != null}");
         }
     }
 
     void ApplyInitialDistortion()
     {
-        // Set initial distortion at start (reduced for moving camera comfort)
-        if (lensDistortion != null)
-        {
-            lensDistortion.intensity.value = 0.3f; // Reduced from 1.0 - subtle warping
-            lensDistortion.active = true;
-        }
-
+        // Set initial post-processing effects
         if (chromaticAberration != null)
         {
-            chromaticAberration.intensity.value = 0.3f; // Reduced from 0.5
             chromaticAberration.active = true;
         }
-
-        if (colorAdjustments != null)
+        
+        if (vignette != null)
         {
-            colorAdjustments.saturation.value = -100f; // Grayscale
-            colorAdjustments.active = true;
+            vignette.active = true;
+        }
+        
+        if (filmGrain != null)
+        {
+            filmGrain.active = true;
+        }
+        
+        // Apply grayscale to environment materials
+        if (environmentGrayscaleMaterial != null)
+        {
+            environmentGrayscaleMaterial.SetFloat("_GrayscaleAmount", 1f);
         }
     }
 
@@ -134,28 +138,6 @@ public class GroundingLevelManager : MonoBehaviour
         // Fire event for ProgressBar to listen to (same as OnAppleCollect)
         OnGroundingObjectFound?.Invoke(1); // Each object found = 1 unit of progress
 
-        // Progressively reduce distortion
-        float progress = (float)sightObjectsFound / sightObjectsRequired;
-        
-        // Reduce environment grayscale
-        if (environmentGrayscaleMaterial != null)
-        {
-            float grayscaleAmount = Mathf.Lerp(1f, 0f, progress);
-            environmentGrayscaleMaterial.SetFloat("_GrayscaleAmount", grayscaleAmount);
-        }
-        
-        if (lensDistortion != null)
-        {
-            // Smoothly reduce lens distortion from 0.3 to 0
-            lensDistortion.intensity.value = Mathf.Lerp(0.3f, 0f, progress);
-        }
-
-        if (chromaticAberration != null)
-        {
-            // Reduce chromatic aberration as well
-            chromaticAberration.intensity.value = Mathf.Lerp(0.3f, 0f, progress);
-        }
-
         // Check if task is complete
         if (sightObjectsFound >= sightObjectsRequired)
         {
@@ -166,10 +148,9 @@ public class GroundingLevelManager : MonoBehaviour
     void CompleteSightTask()
     {
         sightTaskComplete = true;
-        Debug.Log("<color=green>✓ Vision cleared! You can see the world again.</color>");
+        Debug.Log("<color=green>✓ Sight Task Complete! Chromatic aberration removed.</color>");
         
-        // Disable lens distortion completely
-        if (lensDistortion != null) lensDistortion.active = false;
+        // Remove chromatic aberration
         if (chromaticAberration != null) chromaticAberration.active = false;
 
         // The DoorOfGroundingController will show the prompt/knob and call StartTouchTask when player holds E
@@ -209,15 +190,6 @@ public class GroundingLevelManager : MonoBehaviour
         // Fire event for ProgressBar to listen to
         OnGroundingObjectFound?.Invoke(1);
 
-        // Progressively restore color saturation
-        float progress = (float)touchObjectsFound / touchObjectsRequired;
-        
-        if (colorAdjustments != null)
-        {
-            // Gradually restore color from grayscale (-100) to full color (0)
-            colorAdjustments.saturation.value = Mathf.Lerp(-100f, 0f, progress);
-        }
-
         // Check if task is complete
         if (touchObjectsFound >= touchObjectsRequired)
         {
@@ -228,12 +200,12 @@ public class GroundingLevelManager : MonoBehaviour
     void CompleteTouchTask()
     {
         touchTaskComplete = true;
-        Debug.Log("<color=green>✓ Touch task complete! Colors are returning.</color>");
+        Debug.Log("<color=green>✓ Touch Task Complete! Grayscale cleared.</color>");
         
-        // Ensure color is fully restored
-        if (colorAdjustments != null)
+        // Remove grayscale from environment
+        if (environmentGrayscaleMaterial != null)
         {
-            colorAdjustments.saturation.value = 0f;
+            environmentGrayscaleMaterial.SetFloat("_GrayscaleAmount", 0f);
         }
 
         // The DoorOfGroundingController will show prompt/knob and call StartSoundTask when player holds E
@@ -282,7 +254,13 @@ public class GroundingLevelManager : MonoBehaviour
     void CompleteSoundTask()
     {
         soundTaskComplete = true;
-        Debug.Log("<color=green>✓ Sound task complete! You're more aware of your surroundings.</color>");
+        Debug.Log("<color=green>✓ Sound Task Complete! Vignette removed.</color>");
+        
+        // Remove vignette
+        if (vignette != null)
+        {
+            vignette.active = false;
+        }
     }
     
     /// <summary>
@@ -328,7 +306,13 @@ public class GroundingLevelManager : MonoBehaviour
     void CompleteSmellTask()
     {
         smellTaskComplete = true;
-        Debug.Log("<color=green>✓ Smell task complete! Your senses are sharpening.</color>");
+        Debug.Log("<color=green>✓ Smell Task Complete! Film grain removed.</color>");
+        
+        // Remove film grain
+        if (filmGrain != null)
+        {
+            filmGrain.active = false;
+        }
     }
     
     /// <summary>
@@ -374,7 +358,7 @@ public class GroundingLevelManager : MonoBehaviour
     void CompleteTasteTask()
     {
         tasteTaskComplete = true;
-        Debug.Log("<color=green>✓ Taste task complete! You are fully grounded in the present moment.</color>");
+        Debug.Log("<color=green>✓ Taste Task Complete! All effects removed. You are fully grounded.</color>");
     }
     
     /// <summary>

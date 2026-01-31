@@ -13888,6 +13888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   textComponent: {fileID: 1971464471}
   lines:
+  - Color is back!
   - Next, listen closely. Find 3 things you can hear.
   textSpeed: 0.05
   playerMovement: {fileID: 0}
@@ -14546,7 +14547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroundingLevelManager
   globalVolume: {fileID: 336947228}
-  environmentGrayscaleMaterial: {fileID: 0}
+  environmentGrayscaleMaterial: {fileID: 2100000, guid: fb09b2f8dbd3f524daa5130b7e82e223, type: 2}
   sightObjectsRequired: 5
   touchObjectsRequired: 4
   soundObjectsRequired: 3
@@ -16305,6 +16306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   textComponent: {fileID: 1191094354}
   lines:
+  - Film grain removed!
   - Finally, focus on your sense of taste. Find one thing you can taste!
   textSpeed: 0.05
   playerMovement: {fileID: 0}
@@ -16409,6 +16411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   textComponent: {fileID: 8704675}
   lines:
+  - Chromatic aberration removed!
   - Now, focus on touch. Find 4 things that ground you, and help you feel rooted
     to reality.
   textSpeed: 0.05
@@ -17349,7 +17352,7 @@ MonoBehaviour:
   levelsParent: {fileID: 0}
   player: {fileID: 0}
   fogEventManager: {fileID: 0}
-  groundingController: {fileID: 0}
+  groundingController: {fileID: 546282493}
   useAIThoughtExplanation: 0
 --- !u!114 &1826072274
 MonoBehaviour:
@@ -17615,6 +17618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   textComponent: {fileID: 281491675}
   lines:
+  - Vignette removed!
   - Focus on your sense of smell. Find 2 things you can usually smell!
   textSpeed: 0.05
   playerMovement: {fileID: 0}
