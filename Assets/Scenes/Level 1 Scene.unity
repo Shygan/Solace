@@ -15817,7 +15817,7 @@ MonoBehaviour:
   - {fileID: 2028062846}
   - {fileID: 1834021831}
   - {fileID: 1607803689}
-  debugStartLevelIndex: 4
+  debugStartLevelIndex: 0
   aiThoughtGenerator: {fileID: 420372268}
   generateAIThought: 1
   aiThoughtLevelIndices: 020000000300000004000000
@@ -16059,6 +16059,7 @@ MonoBehaviour:
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &427587789
 MonoBehaviour:
@@ -16974,7 +16975,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.304448, y: -1.00577, z: -10}
+  m_LocalPosition: {x: -4.419011, y: -1.00581, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19100,6 +19101,7 @@ MonoBehaviour:
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &606300569
 MonoBehaviour:
@@ -34424,6 +34426,7 @@ MonoBehaviour:
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &770001111
 MonoBehaviour:
@@ -37958,6 +37961,7 @@ MonoBehaviour:
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &818595888
 MonoBehaviour:
@@ -49113,6 +49117,7 @@ MonoBehaviour:
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &944701545
 MonoBehaviour:
@@ -63952,6 +63957,7 @@ MonoBehaviour:
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &1143507124
 MonoBehaviour:
@@ -64687,6 +64693,7 @@ MonoBehaviour:
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &1193340982
 MonoBehaviour:
@@ -69360,6 +69367,7 @@ MonoBehaviour:
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &1247845677
 MonoBehaviour:
@@ -69729,6 +69737,7 @@ MonoBehaviour:
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &1251635146
 MonoBehaviour:
@@ -78814,6 +78823,7 @@ MonoBehaviour:
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &1573328407
 MonoBehaviour:
@@ -78955,6 +78965,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!1 &1585055806
 GameObject:
@@ -79556,6 +79567,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &1607803692
 MonoBehaviour:
@@ -85492,6 +85504,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &1742331066
 MonoBehaviour:
@@ -85606,6 +85619,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &1744306419
 MonoBehaviour:
@@ -91333,6 +91347,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &1834021834
 MonoBehaviour:
@@ -104372,6 +104387,7 @@ MonoBehaviour:
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &2024992755
 MonoBehaviour:
@@ -104556,6 +104572,7 @@ MonoBehaviour:
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &2028062849
 MonoBehaviour:
@@ -105211,6 +105228,7 @@ MonoBehaviour:
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &2063936727
 MonoBehaviour:
@@ -105326,6 +105344,7 @@ MonoBehaviour:
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &2072313536
 MonoBehaviour:
@@ -105438,6 +105457,7 @@ MonoBehaviour:
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &2079438670
 MonoBehaviour:
@@ -105548,6 +105568,7 @@ MonoBehaviour:
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &2092078084
 MonoBehaviour:
@@ -105655,6 +105676,7 @@ MonoBehaviour:
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
+  fogEventManager: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &2092572572
 MonoBehaviour:
