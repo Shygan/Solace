@@ -202,8 +202,8 @@ public class DoorOfGroundingController : MonoBehaviour
                 // Show completion dialogue before returning to lobby
                 StartTaskDialogue(completionDialogue);
                 
-                // Award the plant reward
-                PlayerProgress.Instance.CompleteSection1();
+                // Award the plant reward (Section 2)
+                PlayerProgress.Instance.CompleteSection("Section 2");
 
                 // Return to lobby after completing all 5 tasks
                 SceneManager.LoadScene(lobbySceneName);

@@ -15817,7 +15817,7 @@ MonoBehaviour:
   - {fileID: 2028062846}
   - {fileID: 1834021831}
   - {fileID: 1607803689}
-  debugStartLevelIndex: 0
+  debugStartLevelIndex: 4
   aiThoughtGenerator: {fileID: 420372268}
   generateAIThought: 1
   aiThoughtLevelIndices: 020000000300000004000000
@@ -16061,6 +16061,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &427587789
 MonoBehaviour:
@@ -19104,6 +19105,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &606300569
 MonoBehaviour:
@@ -34430,6 +34432,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &770001111
 MonoBehaviour:
@@ -37966,6 +37969,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &818595888
 MonoBehaviour:
@@ -49123,6 +49127,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &944701545
 MonoBehaviour:
@@ -63964,6 +63969,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &1143507124
 MonoBehaviour:
@@ -64701,6 +64707,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &1193340982
 MonoBehaviour:
@@ -69376,6 +69383,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &1247845677
 MonoBehaviour:
@@ -69747,6 +69755,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &1251635146
 MonoBehaviour:
@@ -78834,6 +78843,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &1573328407
 MonoBehaviour:
@@ -78977,6 +78987,7 @@ MonoBehaviour:
   levelsParent: {fileID: 0}
   player: {fileID: 0}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!1 &1585055806
 GameObject:
@@ -79580,6 +79591,7 @@ MonoBehaviour:
   levelsParent: {fileID: 0}
   player: {fileID: 0}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &1607803692
 MonoBehaviour:
@@ -85518,6 +85530,7 @@ MonoBehaviour:
   levelsParent: {fileID: 0}
   player: {fileID: 0}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &1742331066
 MonoBehaviour:
@@ -85634,6 +85647,7 @@ MonoBehaviour:
   levelsParent: {fileID: 0}
   player: {fileID: 0}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &1744306419
 MonoBehaviour:
@@ -91363,6 +91377,7 @@ MonoBehaviour:
   levelsParent: {fileID: 0}
   player: {fileID: 0}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &1834021834
 MonoBehaviour:
@@ -104404,6 +104419,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &2024992755
 MonoBehaviour:
@@ -104590,6 +104606,7 @@ MonoBehaviour:
   levelsParent: {fileID: 0}
   player: {fileID: 0}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &2028062849
 MonoBehaviour:
@@ -105247,6 +105264,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &2063936727
 MonoBehaviour:
@@ -105364,6 +105382,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &2072313536
 MonoBehaviour:
@@ -105478,6 +105497,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &2079438670
 MonoBehaviour:
@@ -105590,6 +105610,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &2092078084
 MonoBehaviour:
@@ -105699,6 +105720,7 @@ MonoBehaviour:
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 1
 --- !u!114 &2092572572
 MonoBehaviour:
