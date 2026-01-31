@@ -24126,9 +24126,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 753716884589376809, guid: 77dd3cff29f0a6744aafd01fea36677c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4737441885982322740, guid: 77dd3cff29f0a6744aafd01fea36677c, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405492195673861638, guid: 77dd3cff29f0a6744aafd01fea36677c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5987807757538629643, guid: 77dd3cff29f0a6744aafd01fea36677c, type: 3}
       propertyPath: m_IsActive
@@ -24594,6 +24602,7 @@ MonoBehaviour:
   playerMovement: {fileID: 1488991033}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}

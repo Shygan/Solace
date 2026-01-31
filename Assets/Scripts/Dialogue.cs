@@ -15,6 +15,9 @@ public class Dialogue : MonoBehaviour
     [Header("Behaviour")]
     [Tooltip("If true, dialogue auto starts on enable. Disable for world objects you want to trigger manually.")]
     [SerializeField] private bool autoStart = true;
+    
+    [Tooltip("Optional: Dialogue to play immediately after this one finishes")]
+    [SerializeField] private Dialogue nextDialogue;
 
     [Header("Level Return (Optional)")]
     public string levelToReturnTo;          // Must match level name exactly (e.g., "Level 2")
@@ -23,12 +26,17 @@ public class Dialogue : MonoBehaviour
 
     [Header("Door of Rhythm (Optional)")]
     public FogEventManager fogEventManager; // Assign only in Door of Rhythm dialogue to start fog countdown after dialogue ends
+    
+    [Header("Door of Grounding (Optional)")]
+    [Tooltip("If set, will call ShowHoldEPrompt() on the controller when dialogue finishes")]
+    public DoorOfGroundingController groundingController; // For completion dialogue to trigger hold E prompt
 
     [Header("AI Thought Integration (Optional)")]
     [Tooltip("If true, will try to use AI-generated thought explanation when available")]
     public bool useAIThoughtExplanation = false;
 
     private int optionIndex = 0; // Which option (0-3) this dialogue represents
+    private bool hasStarted = false; // Prevent double-start from Start() and OnEnable()
 
     /// <summary>
     /// Set which option this dialogue represents (0-3)
@@ -40,6 +48,8 @@ public class Dialogue : MonoBehaviour
 
     void Start()
     {
+        Debug.Log($"[Dialogue] Start() called for {gameObject.name} - autoStart: {autoStart}, hasStarted: {hasStarted}");
+        
         // Check if we should use AI-generated thought content
         if (useAIThoughtExplanation && ThoughtManager.instance != null)
         {
@@ -60,14 +70,25 @@ public class Dialogue : MonoBehaviour
             }
         }
 
-        if (autoStart)
+        if (autoStart && !hasStarted)
+        {
+            hasStarted = true;
+            Debug.Log($"[Dialogue] AUTO-STARTING dialogue: {gameObject.name}");
             StartDialogue();
+        }
     }
 
     void OnEnable()
     {
-        if (autoStart)
+        Debug.Log($"[Dialogue] OnEnable() called for {gameObject.name} - autoStart: {autoStart}, hasStarted: {hasStarted}");
+        
+        // Only auto-start if we haven't started yet (prevents double-start with Start())
+        if (autoStart && !hasStarted)
+        {
+            hasStarted = true;
+            Debug.Log($"[Dialogue] AUTO-STARTING dialogue (OnEnable): {gameObject.name}");
             StartDialogue();
+        }
     }
 
     void Update()
@@ -157,6 +178,13 @@ public class Dialogue : MonoBehaviour
                 fogEventManager.QueueNextTrigger();
                 Debug.Log("[Dialogue] Fog countdown started");
             }
+            
+            // Trigger hold E prompt (Door of Grounding completion dialogue only)
+            if (groundingController != null)
+            {
+                groundingController.ShowHoldEPrompt();
+                Debug.Log("[Dialogue] Triggered hold E prompt for grounding completion");
+            }
 
             // If returning to a level, handle that FIRST
             if (!string.IsNullOrEmpty(levelToReturnTo))
@@ -165,8 +193,16 @@ public class Dialogue : MonoBehaviour
             }
             else
             {
-                // Otherwise just hide dialogue normally
-                StartCoroutine(DisableAfterDelay(0.2f));
+                // Trigger next dialogue if specified
+                if (nextDialogue != null)
+                {
+                    StartCoroutine(StartNextDialogueThenDisable());
+                }
+                else
+                {
+                    // Otherwise just hide dialogue normally
+                    StartCoroutine(DisableAfterDelay(0.2f));
+                }
             }
         }
     }
@@ -232,6 +268,20 @@ public class Dialogue : MonoBehaviour
     private IEnumerator DisableAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+        gameObject.SetActive(false);
+    }
+    
+    private IEnumerator StartNextDialogueThenDisable()
+    {
+        yield return new WaitForSeconds(0.2f);
+        
+        if (nextDialogue != null)
+        {
+            if (!nextDialogue.gameObject.activeInHierarchy)
+                nextDialogue.gameObject.SetActive(true);
+            nextDialogue.StartDialogue();
+        }
+        
         gameObject.SetActive(false);
     }
 }

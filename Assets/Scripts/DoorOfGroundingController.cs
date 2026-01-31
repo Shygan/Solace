@@ -28,11 +28,16 @@ public class DoorOfGroundingController : MonoBehaviour
     [Header("Player Reference")]
     [SerializeField] private GameObject player;
 
+    [Header("Intro Dialogue")]
+    [SerializeField] private Dialogue introDialogue; // shown at scene start
+
     [Header("Task Dialogues (Optional)")]
+    [SerializeField] private Dialogue sightTaskDialogue; // shown at start (5)
     [SerializeField] private Dialogue touchTaskDialogue; // shown after Sight complete
     [SerializeField] private Dialogue soundTaskDialogue; // shown after Touch complete
     [SerializeField] private Dialogue smellTaskDialogue; // shown after Sound complete
     [SerializeField] private Dialogue tasteTaskDialogue; // shown after Smell complete
+    [SerializeField] private Dialogue completionDialogue; // shown after Taste complete (final)
 
     private int progressAmount = 0;
     private bool levelComplete = false;
@@ -63,6 +68,9 @@ public class DoorOfGroundingController : MonoBehaviour
         // Subscribe to grounding events
         GroundingLevelManager.OnGroundingObjectFound += IncreaseProgress;
         HoldToLoadLevel.OnHoldComplete += CompleteLevel;
+
+        // Start with intro dialogue (will chain to sight dialogue via Next Dialogue field)
+        StartTaskDialogue(introDialogue);
 
         Debug.Log("[DoorOfGroundingController] Scene initialized. Find 5 objects to complete.");
     }
@@ -117,7 +125,27 @@ public class DoorOfGroundingController : MonoBehaviour
         levelComplete = true;
         Debug.Log("[DoorOfGrounding] All objects found! Level complete.");
 
-        // Show completion UI
+        // Special case: For Taste task (final), show completion dialogue BEFORE hold E prompt
+        if (currentTask == CurrentTask.Taste)
+        {
+            StartTaskDialogue(completionDialogue);
+            // Don't show hold E prompt yet - dialogue will trigger it when done
+            return;
+        }
+
+        // For all other tasks, show completion UI immediately
+        if (loadCanvas != null)
+            loadCanvas.SetActive(true);
+
+        if (holdPromptWorldText != null)
+            holdPromptWorldText.SetActive(true);
+    }
+    
+    /// <summary>
+    /// Called by completion dialogue to show hold E prompt after dialogue finishes
+    /// </summary>
+    public void ShowHoldEPrompt()
+    {
         if (loadCanvas != null)
             loadCanvas.SetActive(true);
 
@@ -170,6 +198,9 @@ public class DoorOfGroundingController : MonoBehaviour
                 
             case CurrentTask.Taste:
                 Debug.Log("[DoorOfGrounding] All grounding tasks complete! Returning to lobby.");
+                
+                // Show completion dialogue before returning to lobby
+                StartTaskDialogue(completionDialogue);
                 
                 // Award the plant reward
                 PlayerProgress.Instance.CompleteSection1();

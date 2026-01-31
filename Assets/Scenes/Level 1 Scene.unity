@@ -16056,6 +16056,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -16975,7 +16976,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.419011, y: -1.00581, z: -10}
+  m_LocalPosition: {x: -8.195877, y: -1.00701, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19098,6 +19099,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -34423,6 +34425,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -37958,6 +37961,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -49114,6 +49118,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -63954,6 +63959,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -64690,6 +64696,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -69364,6 +69371,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -69734,6 +69742,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -78820,6 +78829,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -78962,6 +78972,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 1017090552}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -79564,6 +79575,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -85501,6 +85513,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -85616,6 +85629,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -91344,6 +91358,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -104384,6 +104399,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 3
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -104569,6 +104585,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: 
   levelsParent: {fileID: 0}
   player: {fileID: 0}
@@ -105225,6 +105242,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -105341,6 +105359,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -105454,6 +105473,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 2
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -105565,6 +105585,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 5
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -105673,6 +105694,7 @@ MonoBehaviour:
   playerMovement: {fileID: 450267347}
   platformToReveal: {fileID: 0}
   autoStart: 1
+  nextDialogue: {fileID: 0}
   levelToReturnTo: Level 4
   levelsParent: {fileID: 102503062}
   player: {fileID: 450267340}
@@ -106871,10 +106893,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 753716884589376809, guid: 77dd3cff29f0a6744aafd01fea36677c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5405492195673861638, guid: 77dd3cff29f0a6744aafd01fea36677c, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 5405492195673861638, guid: 77dd3cff29f0a6744aafd01fea36677c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7773871085537018863, guid: 77dd3cff29f0a6744aafd01fea36677c, type: 3}
       propertyPath: m_Name
       value: Player
