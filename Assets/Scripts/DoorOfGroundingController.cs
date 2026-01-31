@@ -28,6 +28,12 @@ public class DoorOfGroundingController : MonoBehaviour
     [Header("Player Reference")]
     [SerializeField] private GameObject player;
 
+    [Header("Task Dialogues (Optional)")]
+    [SerializeField] private Dialogue touchTaskDialogue; // shown after Sight complete
+    [SerializeField] private Dialogue soundTaskDialogue; // shown after Touch complete
+    [SerializeField] private Dialogue smellTaskDialogue; // shown after Sound complete
+    [SerializeField] private Dialogue tasteTaskDialogue; // shown after Smell complete
+
     private int progressAmount = 0;
     private bool levelComplete = false;
     private CurrentTask currentTask = CurrentTask.Sight;
@@ -138,24 +144,28 @@ public class DoorOfGroundingController : MonoBehaviour
                 Debug.Log("[DoorOfGrounding] Sight task complete. Starting touch task (4 objects).");
                 TransitionToNextTask(CurrentTask.Touch, touchTaskGoal);
                 if (levelManager != null) levelManager.StartTouchTask();
+                StartTaskDialogue(touchTaskDialogue);
                 break;
                 
             case CurrentTask.Touch:
                 Debug.Log("[DoorOfGrounding] Touch task complete. Starting sound task (3 objects).");
                 TransitionToNextTask(CurrentTask.Sound, soundTaskGoal);
                 if (levelManager != null) levelManager.StartSoundTask();
+                StartTaskDialogue(soundTaskDialogue);
                 break;
                 
             case CurrentTask.Sound:
                 Debug.Log("[DoorOfGrounding] Sound task complete. Starting smell task (2 objects).");
                 TransitionToNextTask(CurrentTask.Smell, smellTaskGoal);
                 if (levelManager != null) levelManager.StartSmellTask();
+                StartTaskDialogue(smellTaskDialogue);
                 break;
                 
             case CurrentTask.Smell:
                 Debug.Log("[DoorOfGrounding] Smell task complete. Starting taste task (1 object).");
                 TransitionToNextTask(CurrentTask.Taste, tasteTaskGoal);
                 if (levelManager != null) levelManager.StartTasteTask();
+                StartTaskDialogue(tasteTaskDialogue);
                 break;
                 
             case CurrentTask.Taste:
@@ -182,6 +192,17 @@ public class DoorOfGroundingController : MonoBehaviour
         {
             taskProgressUI.text = $"Found: 0/{nextGoal}";
         }
+    }
+
+    void StartTaskDialogue(Dialogue dialogue)
+    {
+        if (dialogue == null)
+            return;
+
+        if (!dialogue.gameObject.activeInHierarchy)
+            dialogue.gameObject.SetActive(true);
+
+        dialogue.StartDialogue();
     }
 
     /// <summary>

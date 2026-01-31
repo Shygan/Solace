@@ -64,8 +64,17 @@ public class Dialogue : MonoBehaviour
             StartDialogue();
     }
 
+    void OnEnable()
+    {
+        if (autoStart)
+            StartDialogue();
+    }
+
     void Update()
     {
+        if (lines == null || lines.Length == 0)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             if (textComponent.text == lines[index])
@@ -82,8 +91,21 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue()
     {
+        if (textComponent == null)
+        {
+            Debug.LogWarning("[Dialogue] Text component is not assigned.");
+            return;
+        }
+
+        if (lines == null || lines.Length == 0)
+        {
+            Debug.LogWarning("[Dialogue] No dialogue lines set.");
+            return;
+        }
+
         StopAllCoroutines();
-        playerMovement.isMovementLocked = true;
+        if (playerMovement != null)
+            playerMovement.isMovementLocked = true;
         index = 0;
         textComponent.text = string.Empty;
         StartCoroutine(TypeLine());
@@ -122,7 +144,8 @@ public class Dialogue : MonoBehaviour
         else
         {
             // End of dialogue
-            playerMovement.isMovementLocked = false;
+            if (playerMovement != null)
+                playerMovement.isMovementLocked = false;
 
             // Reveal the platform immediately
             if (platformToReveal != null)
