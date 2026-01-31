@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 7.26}
-  m_SizeDelta: {x: 20, y: 5}
+  m_AnchoredPosition: {x: 0.32, y: 8.14}
+  m_SizeDelta: {x: 20.52, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &372722764152135167
 MeshRenderer:
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press E to practice
+  m_text: Press E to practice grounding
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c9ff57af974c64349923c2ef100115e0, type: 2}
   m_sharedMaterial: {fileID: 4473569545004048213, guid: c9ff57af974c64349923c2ef100115e0, type: 2}
@@ -286,10 +286,10 @@ MonoBehaviour:
   interactKey: 101
   interactionRange: 1
   interactPrompt: {fileID: 0}
-  quizSceneName: 
+  quizSceneName: DoorOfGrounding
   loadQuizScene: 1
-  practiceStartLevelIndex: 2
-  practiceRuns: 1
+  practiceStartLevelIndex: 0
+  practiceRuns: 0
   practiceReturnScene: Lobby Scene
   debugShowInteractionRange: 1
   lobbyController: {fileID: 0}

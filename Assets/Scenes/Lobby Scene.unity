@@ -2360,7 +2360,7 @@ MonoBehaviour:
   - Jasmine unlocked!
   - Jasmine is known for its uplifting fragrance, which may help reduce stress and
     improve mood.
-  - You can now interact with the plant to practice XXX!
+  - You can now interact with the plant to practice the grounding technique!
   textSpeed: 0.05
   playerMovement: {fileID: 512736419}
   platformToReveal: {fileID: 0}
@@ -2370,6 +2370,7 @@ MonoBehaviour:
   levelsParent: {fileID: 0}
   player: {fileID: 0}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &637284043
 MonoBehaviour:
@@ -2480,6 +2481,7 @@ MonoBehaviour:
   levelsParent: {fileID: 0}
   player: {fileID: 0}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &709091259
 MonoBehaviour:
@@ -10769,6 +10771,7 @@ MonoBehaviour:
   levelsParent: {fileID: 0}
   player: {fileID: 0}
   fogEventManager: {fileID: 0}
+  groundingController: {fileID: 0}
   useAIThoughtExplanation: 0
 --- !u!114 &1704689452
 MonoBehaviour:

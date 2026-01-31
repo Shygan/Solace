@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 14.64}
-  m_SizeDelta: {x: 20, y: 5}
+  m_AnchoredPosition: {x: 0.02, y: 15.63}
+  m_SizeDelta: {x: 22.412, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &2908746837900521691
 MeshRenderer:
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press E to practice
+  m_text: Press E to practice box breathing
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c9ff57af974c64349923c2ef100115e0, type: 2}
   m_sharedMaterial: {fileID: 4473569545004048213, guid: c9ff57af974c64349923c2ef100115e0, type: 2}
