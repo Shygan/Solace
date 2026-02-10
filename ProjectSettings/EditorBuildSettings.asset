@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DoorOfRhythm.unity
     guid: cfc862df384e3b74c87491271e456d04
+  - enabled: 1
+    path: Assets/Scenes/DoorOfGrounding.unity
+    guid: b58e7a99d743cfe48acf2787a3e47426
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: bd9562bff49c3b94f969276de158f2bd, type: 3}
   m_UseUCBPForAssetBundles: 0
