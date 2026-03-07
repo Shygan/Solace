@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerProgress
   debugAllSectionsComplete: 0
-  resetProgressOnStart: 0
+  resetProgressOnStart: 1
   section1Completed: 0
   section2Completed: 0
   section3Completed: 0
@@ -10322,7 +10322,7 @@ Transform:
   m_GameObject: {fileID: 1533286918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.499927, y: -0.99581003, z: -10}
+  m_LocalPosition: {x: -4.2486386, y: -0.99509, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

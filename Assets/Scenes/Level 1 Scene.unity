@@ -15817,7 +15817,7 @@ MonoBehaviour:
   - {fileID: 2028062846}
   - {fileID: 1834021831}
   - {fileID: 1607803689}
-  debugStartLevelIndex: 1
+  debugStartLevelIndex: 4
   aiThoughtGenerator: {fileID: 420372268}
   generateAIThought: 1
   aiThoughtLevelIndices: 020000000300000004000000
