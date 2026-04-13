@@ -2179,7 +2179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 509386604416939864, guid: 78595abd2caa13740ba417883b87fd39, type: 3}
+  m_Sprite: {fileID: -6588288348479245095, guid: 29834d49095aab443a445858217677cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -14424,7 +14424,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 509386604416939864, guid: 78595abd2caa13740ba417883b87fd39, type: 3}
+  m_Sprite: {fileID: -6588288348479245095, guid: 29834d49095aab443a445858217677cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -14499,7 +14499,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 509386604416939864, guid: 78595abd2caa13740ba417883b87fd39, type: 3}
+  m_Sprite: {fileID: -6588288348479245095, guid: 29834d49095aab443a445858217677cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -14627,7 +14627,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 509386604416939864, guid: 78595abd2caa13740ba417883b87fd39, type: 3}
+  m_Sprite: {fileID: -6588288348479245095, guid: 29834d49095aab443a445858217677cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -16520,7 +16520,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 509386604416939864, guid: 78595abd2caa13740ba417883b87fd39, type: 3}
+  m_Sprite: {fileID: -6588288348479245095, guid: 29834d49095aab443a445858217677cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -16704,7 +16704,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 509386604416939864, guid: 78595abd2caa13740ba417883b87fd39, type: 3}
+  m_Sprite: {fileID: -6588288348479245095, guid: 29834d49095aab443a445858217677cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -16885,7 +16885,7 @@ SpriteRenderer:
   m_Size: {x: 2.38, y: 2.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1709595540
